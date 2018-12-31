@@ -1,0 +1,1 @@
+/**/ typeof seller_154589189881829 === 'function' && seller_154589189881829({"status":1,"data":0});

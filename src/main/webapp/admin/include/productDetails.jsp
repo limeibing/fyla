@@ -443,7 +443,7 @@
 <div class="details_div_first">
     <input type="hidden" value="${requestScope.product.product_id}" id="details_product_id"/>
     <div class="frm_div_last warn_height">
-        <label class="frm_label text_info" id="lbl_product_category_id" for="select_product_category">产品类型</label>
+        <label class="frm_label text_info" id="lbl_product_category_id" >产品类型</label>
 
         <label class="frm_label text_info" id="lbl_product_isEnabled" for="radio_product_isEnabled_true">产品状态</label>
         <input id="radio_product_isEnabled_true" name="radio_product_isEnabled" type="radio" value="0" checked>

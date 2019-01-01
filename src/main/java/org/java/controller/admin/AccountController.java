@@ -37,7 +37,7 @@ public class AccountController extends BaseController{
         logger.info("获取目前登录的管理员信息，管理员ID：{}",adminId);
         Admin admin = adminService.get(null,Integer.parseInt(adminId.toString()));
         map.put("admin",admin);
-
+        session.setAttribute("admin", admin);
         logger.info("转到后台管理-账户页-ajax方式");
         return "/admin/accountManagePage";
     }

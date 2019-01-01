@@ -52,7 +52,7 @@ public class AdminLoginController extends BaseController {
     //获取管理员头像路径-ajax
     @ResponseBody
     @RequestMapping(value = "/admin/login/profile_picture",method = RequestMethod.GET,produces = "application/json;charset=utf-8")
-    public String getAdminProfilePicture(@RequestParam String username){
+    public String getAdminProfilePicture(@RequestParam String username,HttpSession ses){
         logger.info("根据用户名获取管理员头像路径");
         Admin admin = adminService.get(username,null);
 

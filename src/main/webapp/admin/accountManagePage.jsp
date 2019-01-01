@@ -70,7 +70,7 @@
                             $('#modalDiv').modal("hide");
                             setTimeout(function () {
                                 //ajax请求页面
-                                ajaxUtil.getPage("/account", null, true);
+                                ajaxUtil.getPage("account", null, true);
                             }, 170);
                         });
                         $(".modal-body").text("信息保存成功！");
@@ -140,15 +140,16 @@
                 }
             });
         }
+        function modifyPwd() {
+            $("#ss").css("display", "block");
+        }
     </script>
     <style rel="stylesheet">
         #admin_profile_picture {
             border-radius: 5px;
         }
 
-        .modifyPwd {
-            display: none;
-        }
+
 
         #uploadImage {
             vertical-align: middle;
@@ -188,7 +189,7 @@
     </div>
     <div class="frm_div">
         <label class="frm_label text_info" id="lbl_admin_nickname" >管理员昵称</label>
-        <input class="frm_input"  type="text" maxlength="50"
+        <input class="frm_input"  id="input_admin_nickname" type="text" maxlength="50"
                value="${sessionScope.admin.admin_nickname}"/>
     </div>
 </div>
@@ -198,6 +199,11 @@
     <div class="frm_div">
         <span class="details_value td_wait"><a id="span_admin_modifyPwd" href="javascript:void(0)"
                                                onclick="modifyPwd()">修改密码</a></span>
+
+
+
+
+
     </div>
     <div class="frm_div">
         <span class="details_value td_wait"><a id="span_admin_logout"
@@ -205,6 +211,24 @@
     </div>
 </div>
 
+<div class="details_div details_div_last modifyPwd" id="ss" style="display: none">
+    <span class="details_title text_info">修改密码</span>
+    <div class="frm_div">
+        <label class="frm_label text_info" id="lbl_admin_password" for="input_admin_password">当前密码</label>
+        <input class="frm_input" id="input_admin_password" type="password" maxlength="50"/>
+        <span class="frm_error_msg" id="text_password_details_msg"></span>
+    </div>
+    <div class="frm_div">
+        <label class="frm_label text_info" id="lbl_admin_newPassword" for="input_admin_newPassword">新密码</label>
+        <input class="frm_input" id="input_admin_newPassword" type="password" maxlength="50"/>
+        <span class="frm_error_msg" id="text_newPassword_details_msg"></span>
+    </div>
+    <div class="frm_div">
+        <label class="frm_label text_info" id="lbl_admin_confirmPassword" for="input_admin_confirmPassword">确认密码</label>
+        <input class="frm_input" id="input_admin_confirmPassword" type="password" maxlength="50"/>
+        <span class="frm_error_msg" id="text_confirmPassword_details_msg"></span>
+    </div>
+</div>
 <div class="details_tools_div">
     <input class="frm_btn" id="btn_admin_save" type="button" value="保存"/>
 </div>
@@ -214,14 +238,8 @@
      data-backdrop="static">
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title" id="myModalLabel">提示</h4>
-            </div>
-            <div class="modal-body">保存成功</div>
-            <div class="modal-footer">
-                <button type="submit" class="btn btn-primary" id="btn-ok">确定</button>
-                <button type="button" class="btn btn-default" data-dismiss="modal" id="btn-close">关闭</button>
-            </div>
+
+
         </div>
         <%-- /.modal-content %--%>
     </div>

@@ -200,7 +200,7 @@
     <div class="frm_group" >
         <label class="frm_label" id="lbl_product_name" for="input_product_name">产品名称</label>
         <input class="frm_input" id="input_product_name" type="text" maxlength="50"/>
-        <label class="frm_label" id="lbl_product_category_id" for="select_product_category">产品类型</label>
+        <label class="frm_label" id="lbl_product_category_id" >产品类型</label>
         <input class="frm_btn" id="btn_product_submit" type="button" value="查询"/>
         <input class="frm_btn frm_clear" id="btn_clear" type="button" value="重置"/>
     </div>

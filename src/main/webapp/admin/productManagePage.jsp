@@ -22,7 +22,7 @@
             //点击查询按钮时
             $("#btn_product_submit").click(function () {
                 var product_name = $.trim($("#input_product_name").val());
-                var category_id = parseInt($("#select_product_category").val());
+                var category_id = parseInt(0);
                 var lowest_price = $.trim($("#input_product_sale_price").val());
                 var highest_price = $.trim($("#input_product_price").val());
                 //产品状态数组
@@ -42,7 +42,7 @@
                 dataList.product_price = highest_price;
                 dataList.product_isEnabled_array = status_array;
 
-                getData($(this), "admin/product/0/10", dataList);
+                getData($(this), "/admin/product/0/10", dataList);
             });
             //点击刷新按钮时
             $("#btn_product_refresh").click(function () {
@@ -55,7 +55,7 @@
                 dataList.orderBy = null;
                 dataList.isDesc = true;
                 //获取数据
-                getData($(this), "admin/product/0/10", null);
+                getData($(this), "/admin/product/0/10", null);
                 //清除排序样式
                 var table = $("#table_product_list");
                 table.find("span.orderByDesc,span.orderByAsc").css("opacity","0");
@@ -72,7 +72,7 @@
                 //是否倒序排序
                 dataList.isDesc = $(this).attr("data-sort")==="asc";
 
-                getData($(this), "admin/product/0/10", dataList);
+                getData($(this), "/admin/product/0/10", dataList);
                 //设置排序
                 table.find("span.orderByDesc,span.orderByAsc").css("opacity","0");
                 if(dataList.isDesc){
@@ -197,16 +197,10 @@
 </head>
 <body>
 <div class="frm_div text_info">
-    <div class="frm_group">
+    <div class="frm_group" >
         <label class="frm_label" id="lbl_product_name" for="input_product_name">产品名称</label>
         <input class="frm_input" id="input_product_name" type="text" maxlength="50"/>
         <label class="frm_label" id="lbl_product_category_id" for="select_product_category">产品类型</label>
-        <select class="selectpicker" id="select_product_category" data-size="8">
-            <option value="0"></option>
-            <c:forEach items="${requestScope.categoryList}" var="category">
-                <option value="${category.category_id}">${category.category_name}</option>
-            </c:forEach>
-        </select>
         <input class="frm_btn" id="btn_product_submit" type="button" value="查询"/>
         <input class="frm_btn frm_clear" id="btn_clear" type="button" value="重置"/>
     </div>

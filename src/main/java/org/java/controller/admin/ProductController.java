@@ -72,7 +72,7 @@ public class ProductController extends BaseController{
         logger.info("检查管理员权限");
         Object adminId = checkAdmin(session);
         if(adminId == null){
-            return "、admin/include/loginMessage";
+            return "/admin/include/loginMessage";
         }
 
         logger.info("获取product_id为{}的产品信息",pid);

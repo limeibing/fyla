@@ -81,7 +81,7 @@ public class CategoryController extends BaseController {
     }
 
     //转到后台管理-分类添加页-ajax
-    @RequestMapping(value = "admin/category/new", method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/category/new", method = RequestMethod.GET)
     public String goToAddPage(HttpSession session, Map<String, Object> map) {
         logger.info("检查管理员权限");
         Object adminId = checkAdmin(session);

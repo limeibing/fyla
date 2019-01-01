@@ -26,12 +26,12 @@ public class AccountController extends BaseController{
     private AdminService adminService;
 
     //转到后台管理-账户页-ajax
-    @RequestMapping(value = "admin/account", method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/account", method = RequestMethod.GET)
     public String goToPage(HttpSession session, Map<String, Object> map){
         logger.info("检查管理员权限");
         Object adminId = checkAdmin(session);
         if(adminId == null){
-            return "admin/include/loginMessage";
+            return "/admin/include/loginMessage";
         }
 
         logger.info("获取目前登录的管理员信息，管理员ID：{}",adminId);
@@ -39,11 +39,11 @@ public class AccountController extends BaseController{
         map.put("admin",admin);
 
         logger.info("转到后台管理-账户页-ajax方式");
-        return "admin/accountManagePage";
+        return "/admin/accountManagePage";
     }
 
     //退出当前账号
-    @RequestMapping(value = "admin/account/logout", method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/account/logout", method = RequestMethod.GET)
     public String logout(HttpSession session) {
         Object o = session.getAttribute("adminId");
         if (o == null) {
@@ -58,7 +58,7 @@ public class AccountController extends BaseController{
 
     //管理员头像上传
     @ResponseBody
-    @RequestMapping(value = "admin/uploadAdminHeadImage", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    @RequestMapping(value = "/admin/uploadAdminHeadImage", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
     public String uploadAdminHeadImage(@RequestParam MultipartFile file, HttpSession session) {
         String originalFileName = file.getOriginalFilename();
         logger.info("获取图片原始文件名：{}", originalFileName);
@@ -85,7 +85,7 @@ public class AccountController extends BaseController{
     //更新管理员信息
     @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
     @ResponseBody
-    @RequestMapping(value = "admin/account/{admin_id}", method = RequestMethod.PUT, produces = "application/json;charset=UTF-8")
+    @RequestMapping(value = "/admin/account/{admin_id}", method = RequestMethod.PUT, produces = "application/json;charset=UTF-8")
     public String updateAdmin(HttpSession session, @RequestParam String admin_nickname/*管理员昵称*/,
                               @RequestParam(required = false) String admin_password/*管理员当前密码*/,
                               @RequestParam(required = false) String admin_newPassword/*管理员新密码*/,
@@ -94,7 +94,7 @@ public class AccountController extends BaseController{
         logger.info("检查管理员权限");
         Object adminId = checkAdmin(session);
         if (adminId == null) {
-            return "admin/include/loginMessage";
+            return "/admin/include/loginMessage";
         }
         JSONObject jsonObject = new JSONObject();
         Admin putAdmin = new Admin();
@@ -136,8 +136,8 @@ public class AccountController extends BaseController{
         return jsonObject.toJSONString();
     }
 
-    @RequestMapping("admin/sss")
+    @RequestMapping("/admin/sss")
     public String sss(){
-        return "admin/include/sss";
+        return "/admin/include/sss";
     }
 }

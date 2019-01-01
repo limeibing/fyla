@@ -171,7 +171,7 @@
                             $('#modalDiv').modal("hide");
                             setTimeout(function () {
                                 //ajax请求页面
-                                ajaxUtil.getPage("category/" + data.category_id, null, true);
+                                ajaxUtil.getPage("/category/" + data.category_id, null, true);
                             }, 170);
                         });
                         $(".modal-body").text("保存成功！");
@@ -263,23 +263,6 @@
 </div>
 
 <%-- 模态框 --%>
-<div class="modal fade" id="modalDiv" tabindex="-1" role="dialog" aria-labelledby="modalDiv" aria-hidden="true"
-     data-backdrop="static">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title" id="myModalLabel">提示</h4>
-            </div>
-            <div class="modal-body">您确定要删除分类图片吗？</div>
-            <div class="modal-footer">
-                <button type="submit" class="btn btn-primary" id="btn-ok">确定</button>
-                <button type="button" class="btn btn-default" data-dismiss="modal" id="btn-close">关闭</button>
-            </div>
-        </div>
-        <%-- /.modal-content --%>
-    </div>
-    <%-- /.modal --%>
-</div>
 <div class="loader"></div>
 </body>
 </html>

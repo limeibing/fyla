@@ -37,7 +37,7 @@ public class AdminHomeController extends BaseController {
     private UserService userService;
 
     //转到后台管理-主页
-    @RequestMapping(value = "admin", method = RequestMethod.GET)
+    @RequestMapping(value = "/admin", method = RequestMethod.GET)
     public String goToPage(HttpSession session, Map<String, Object> map) throws ParseException {
         logger.info("检查管理员权限");
         Object adminId = checkAdmin(session);
@@ -63,7 +63,7 @@ public class AdminHomeController extends BaseController {
     }
 
     //转到后台管理-主页-ajax
-    @RequestMapping(value = "admin/home", method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/home", method = RequestMethod.GET)
     public String goToPageByAjax(HttpSession session, Map<String, Object> map) throws ParseException {
         logger.info("检查管理员权限");
         Object adminId = checkAdmin(session);
@@ -91,7 +91,7 @@ public class AdminHomeController extends BaseController {
 
     //按日期查询图表数据-ajax
     @ResponseBody
-    @RequestMapping(value = "admin/home/charts", method = RequestMethod.GET, produces = "application/json;charset=utf-8")
+    @RequestMapping(value = "/admin/home/charts", method = RequestMethod.GET, produces = "application/json;charset=utf-8")
     public String getChartDataByDate(@RequestParam(required = false) String beginDate, @RequestParam(required = false) String endDate) throws ParseException {
         if (beginDate != null && endDate != null) {
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");

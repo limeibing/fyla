@@ -2,6 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
+
     <script>
         $(function () {
 
@@ -50,21 +51,10 @@
                     "admin_password": admin_password,
                     "admin_newPassword": admin_newPassword
                 };
-                doAction(dataList, "admin/account/" +${requestScope.admin.admin_id}, "PUT");
+                doAction(dataList, "/admin/account/" +${sessionScope.admin.admin_id}, "PUT");
             });
         });
 
-        function modifyPwd() {
-            var div = $(".modifyPwd");
-            if (div.css("display") === "none") {
-                div.slideDown();
-            } else {
-                div.slideUp();
-                styleUtil.basicErrorHide($("#lbl_admin_password"))
-                    .basicErrorHide($("#lbl_admin_newPassword"))
-                    .basicErrorHide($("#lbl_admin_confirmPassword"));
-            }
-        }
 
         //管理员操作
         function doAction(dataList, url, type) {
@@ -80,7 +70,7 @@
                             $('#modalDiv').modal("hide");
                             setTimeout(function () {
                                 //ajax请求页面
-                                ajaxUtil.getPage("account", null, true);
+                                ajaxUtil.getPage("/account", null, true);
                             }, 170);
                         });
                         $(".modal-body").text("信息保存成功！");
@@ -127,7 +117,7 @@
             formData.append("file", file);
             //上传图片
             $.ajax({
-                url: "/tmall/admin/uploadAdminHeadImage",
+                url: "/admin/uploadAdminHeadImage",
                 type: "post",
                 data: formData,
                 contentType: false,
@@ -176,14 +166,14 @@
 </head>
 <body>
 <div class="details_div_first">
-    <input type="hidden" value="${requestScope.admin.admin_id}" id="details_admin_id"/>
+    <input type="hidden" value="${sessionScope.admin.admin_id}" id="details_admin_id"/>
     <div class="frm_div">
         <label class="frm_label text_info" id="lbl_admin_id">管理员编号</label>
-        <span class="details_value" id="span_admin_id">${requestScope.admin.admin_id}</span>
+        <span class="details_value" id="span_admin_id">${sessionScope.admin.admin_id}</span>
     </div>
     <div class="frm_div">
         <label class="frm_label text_info" id="lbl_admin_name">账户名</label>
-        <span class="details_value" id="span_admin_name">${requestScope.admin.admin_name}</span>
+        <span class="details_value" id="span_admin_name">${sessionScope.admin.admin_name}</span>
     </div>
 </div>
 <div class="details_div">
@@ -191,19 +181,20 @@
     <div class="frm_div">
         <label class="frm_label text_info" id="lbl_admin_profile_picture">管理员头像</label>
         <img
-                src="${pageContext.request.contextPath}/res/images/item/adminProfilePicture/${requestScope.admin.admin_profile_picture_src}"
+                src="${pageContext.request.contextPath}/res/images/item/adminProfilePicture/${sessionScope.admin.admin_profile_picture_src}"
                 id="admin_profile_picture" width="84px" height="84px"
                 onerror="this.src='${pageContext.request.contextPath}/res/images/admin/loginPage/default_profile_picture-128x128.png'"/>
         <input type="file" onchange="uploadImage(this)" accept="image/*" id="uploadImage">
     </div>
     <div class="frm_div">
-        <label class="frm_label text_info" id="lbl_admin_nickname" for="input_admin_nickname">管理员昵称</label>
-        <input class="frm_input" id="input_admin_nickname" type="text" maxlength="50"
-               value="${requestScope.admin.admin_nickname}"/>
+        <label class="frm_label text_info" id="lbl_admin_nickname" >管理员昵称</label>
+        <input class="frm_input"  type="text" maxlength="50"
+               value="${sessionScope.admin.admin_nickname}"/>
     </div>
 </div>
 <div class="details_div">
     <span class="details_title text_info">管理员操作</span>
+
     <div class="frm_div">
         <span class="details_value td_wait"><a id="span_admin_modifyPwd" href="javascript:void(0)"
                                                onclick="modifyPwd()">修改密码</a></span>
@@ -213,24 +204,7 @@
                                                href="${pageContext.request.contextPath}/admin/account/logout">退出当前帐号</a></span>
     </div>
 </div>
-<div class="details_div details_div_last modifyPwd">
-    <span class="details_title text_info">修改密码</span>
-    <div class="frm_div">
-        <label class="frm_label text_info" id="lbl_admin_password" for="input_admin_password">当前密码</label>
-        <input class="frm_input" id="input_admin_password" type="password" maxlength="50"/>
-        <span class="frm_error_msg" id="text_password_details_msg"></span>
-    </div>
-    <div class="frm_div">
-        <label class="frm_label text_info" id="lbl_admin_newPassword" for="input_admin_newPassword">新密码</label>
-        <input class="frm_input" id="input_admin_newPassword" type="password" maxlength="50"/>
-        <span class="frm_error_msg" id="text_newPassword_details_msg"></span>
-    </div>
-    <div class="frm_div">
-        <label class="frm_label text_info" id="lbl_admin_confirmPassword" for="input_admin_confirmPassword">确认密码</label>
-        <input class="frm_input" id="input_admin_confirmPassword" type="password" maxlength="50"/>
-        <span class="frm_error_msg" id="text_confirmPassword_details_msg"></span>
-    </div>
-</div>
+
 <div class="details_tools_div">
     <input class="frm_btn" id="btn_admin_save" type="button" value="保存"/>
 </div>

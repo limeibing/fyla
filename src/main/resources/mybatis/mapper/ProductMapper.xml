@@ -202,17 +202,20 @@
 
         select  * from Product
         <where>
-            if(product_isEnabled != null)
-            {
-             product_isEnabled=#{product_isEnabled}
-
-            }
+           <if  test="product_isEnabled != null">
+               product_isEnabled=#{product_isEnabled}
+           </if>
         </where>
          limit #{strts},#{size}
     </select>
     <select id="cdszbbint" resultType="int">
 
       select count(*) from Product
+        <where>
+            <if  test="product_isEnabled != null">
+                product_isEnabled=${product_isEnabled}
+            </if>
+        </where>
 
   </select>
 

@@ -1,13 +1,15 @@
-<!DOCTYPE html>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!DOCTYPE html>
+
 <html>
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=0">
+    <script  type="text/javascript" src="${pageContext.request.contextPath}/js/layui/layui.js" charset="utf-8"></script>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/js/layui/css/layui.css">
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.12.4.js"></script>
-    <script src="${pageContext.request.contextPath}/js/layui/layui.js" charset="utf-8"></script>
+
     <title>地址管理</title>
 
     <link href="../AmazeUI-2.4.2/assets/css/admin.css" rel="stylesheet" type="text/css">
@@ -15,7 +17,6 @@
 
     <link href="../css/personal.css" rel="stylesheet" type="text/css">
     <link href="../css/addstyle.css" rel="stylesheet" type="text/css">
-    <script src="../AmazeUI-2.4.2/assets/js/jquery.min.js" type="text/javascript"></script>
     <script src="../AmazeUI-2.4.2/assets/js/amazeui.js"></script>
 
 
@@ -66,6 +67,11 @@
     </div>
 </div>
 <b class="line"></b>
+<script type="text/html" id="barDemo">
+    <a class="layui-btn layui-btn-xs" lay-event="zhiding" >删除宝贝</a>
+    <a class="layui-btn layui-btn-xs" lay-event="zhixing1" >更改状态</a>
+    <a class="layui-btn layui-btn-xs" lay-event="guidang2" >申请归档</a>
+</script>
 
 <div class="center">
     <div class="col-main">
@@ -136,11 +142,21 @@
                                 <tr style="height: 30px;line-height: 30px; border: 0px;">
                                     <td style="width: 10%;" class="td1">
                                         <p style="width: 100%;border-right: 1px solid #ddd;height: 15px;line-height: 15px;">
-                                            <a href="#" id="aa1" class="a1">近三个月订单</a>
+                                            <a onclick="aa1()" id="aa1" class="a1">正在出售中</a>
                                         </p>
                                     </td>
-
+                                    <td style="width: 10%;" class="td1">
+                                        <p style="width: 100%;border-right: 1px solid #ddd;height: 15px;line-height: 15px;">
+                                            <a onclick="aa2()" id="aa2" class="a1">特价出售中</a>
+                                        </p>
+                                    </td>
+                                    <td style="width: 10%;" class="td1">
+                                        <p style="width: 100%;border-right: 1px solid #ddd;height: 15px;line-height: 15px;">
+                                            <a onclick="aa3()" id="aa3" class="a1">停售中</a>
+                                        </p>
+                                    </td>
                                 </tr>
+
                             </table>
                             <style>
                                 .td1 {
@@ -269,10 +285,8 @@
 </div>
 <script>
     var tableIns;
-
-    layui.use(['table','form','layer'], function () {
+    layui.use('table', function () {
         var table = layui.table;
-        form = layui.form;
         var layer=layui.layer;
 
         tableIns=table.render({
@@ -293,72 +307,146 @@
         true //不显示尾页
             , width
     :
-        1380
+        1080
             , cols
     :
         [[
             {field: 'product_id', width: 120, title: '商品编号', sort: true},
-            {field: 'product_name', width: 100, title: '商品名', sort: true}
+            {field: 'product_name', width: 200, title: '商品名', sort: true}
             , {field: 'product_title', width: 120, title: '标题', sort: true}
             , {field: 'product_price', width: 120, title: '单价', sort: true}
             , {field: 'product_sale_price', width: 120, title: '限时优惠价', sort: true}
-            , {field: 'product_isEnabled', width:522, title: '商品状态', sort: true, templet: function (d) {
-                    if (d == 1) {
+            , {field: 'product_isEnabled', width:82, title: '商品状态', sort: true, templet: function (d) {
+                    if (d.product_isEnabled == 1) {
                         return '正常售卖中';
                     }else if(d==2) {
                         return '限时售卖';
                     }else{
                         return '已停售';
-                    }}
-            ,
-                field: 'product_id', width: 150, title: '操作', sort: true, templet: function (d) {
-
+                    }}}
+            , {field: 'product_id', width:250 , title: '操作',templet: function (d) {
+                if(d.product_isEnabled==1) {
+                    return '<a class="layui-btn layui-btn-xs" onclick="upe1(' + d.product_id + ')"  >更新宝贝状态</a>';
+                }else if(d.product_isEnabled==2) {
+                    return '<a class="layui-btn layui-btn-xs" onclick="upe1(' + d.product_id + ')"  >更新宝贝状态</a>';
+                }else{
+                    return '<a class="layui-btn layui-btn-xs" onclick="upe1(' + d.product_id + ')"  >更新宝贝状态</a><a class="layui-btn layui-btn-xs" onclick="upe1(\' + d.product_id + \')"  >删除宝贝</a>';
                 }
-            }
-
+                       }}
         ]]
             , even
     :
         true
     });
+
     });
-    function query(){
+    function aa1(){
         var layer=layui.layer;
-        var productorder_confirm_date1=$("#productorder_confirm_date1").val();
-        var productorder_confirm_date2=$("#productorder_confirm_date2").val();
-        var productorder_status=$("#productorder_status").val();
-        var productorder_receiver=$("#productorder_receiver").val();
-        var product_name=$("#product_name").val();
-        alert(productorder_confirm_date1);
+
         tableIns.reload({
             where : {
-                'productorder_confirm_date1': productorder_confirm_date1,
-                'productorder_confirm_date2': productorder_confirm_date2,
-                'productorder_status': productorder_status,
-                'productorder_receiver': productorder_receiver,
-                'product_name': product_name
+
+                'product_isEnabled': 1
             },
             page:{
                 curr:1
             }
         });
     }
-    layui.use('laydate', function() {
-        var laydate = layui.laydate;
-        laydate.render({
-            elem: '#productorder_confirm_date1'
+    function aa2(){
+        var layer=layui.layer;
+
+        tableIns.reload({
+            where : {
+
+                'product_isEnabled': 2
+            },
+            page:{
+                curr:1
+            }
         });
-        laydate.render({
-            elem: '#productorder_confirm_date2'
+    }
+    function aa3(){
+        var layer=layui.layer;
+
+        tableIns.reload({
+            where : {
+
+                'product_isEnabled': 3
+            },
+            page:{
+                curr:1
+            }
         });
-
-
-    });
-
+    }
 
 </script>
-
-
+<script>
+   function del1(d) {
+       var layer=layui.layer;
+       layer.open({
+           type: 1
+           ,
+           title: false //不显示标题栏
+           ,
+           closeBtn: false
+           ,
+           area: '300px;'
+           ,
+           shade: 0.8
+           ,
+           id: 'LAY_layuipro' //设定一个id，防止重复弹出
+           ,
+           btn: ['火速围观', '残忍拒绝']
+           ,
+           btnAlign: 'c'
+           ,
+           moveType: 1 //拖拽模式，0或者1
+           ,
+           content: '<div style="padding: 50px; line-height: 22px; background-color: #393D49; color: #fff; font-weight: 300;">确定删除吗？将会删除所有相关信息</div>'
+           ,
+           yes: function (layero) {
+                $.post('/delbb?bbid='+d,function(d){
+                   layer.alert("宝贝又点单在处理中，暂时不能删除")
+                });
+               layer.closeAll();
+           }
+       })
+   }
+</script>
+<script>
+    function upe1(d) {
+        var layer=layui.layer;
+        layer.open({
+            type: 1
+            ,
+            title: false //不显示标题栏
+            ,
+            closeBtn: false
+            ,
+            area: '300px;'
+            ,
+            shade: 0.8
+            ,
+            id: 'LAY_layuipro' //设定一个id，防止重复弹出
+            ,
+            btn: ['火速围观', '残忍拒绝']
+            ,
+            btnAlign: 'c'
+            ,
+            moveType: 1 //拖拽模式，0或者1
+            ,
+            content: '<div style="padding: 50px; line-height: 22px; background-color: #393D49; color: #fff; font-weight: 300;"><p>请选择状态</p><a class="layui-btn layui-btn-xs" onclick="upe1(' + d+')"  >上架</a> </div>'
+            ,
+            yes: function (layero) {
+                $.post('/delbb?bbid='+d,function(d){
+                    layer.alert("宝贝又点单在处理中，暂时不能删除")
+                });
+                layer.closeAll();
+            }
+        })
+    }
+</script>
 </body>
 
 </html>

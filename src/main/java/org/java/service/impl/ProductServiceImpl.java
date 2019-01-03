@@ -61,8 +61,8 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public int cdszbbint() {
-        return productMapper.cdszbbint();
+    public int cdszbbint(String product_isEnabled) {
+        return productMapper.cdszbbint(product_isEnabled);
     }
 
     @Override

@@ -24,6 +24,6 @@ public interface ProductService {
 
     List<Product> cszddd(Map m);
 
-    int cdszbbint();
+    int cdszbbint(String product_isEnabled);
 
 }

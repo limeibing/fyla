@@ -26,6 +26,6 @@ public interface ProductMapper {
 
     List<Product> cszddd(Map m);
 
-    int cdszbbint();
+    int cdszbbint(@Param("product_isEnabled") String product_isEnabled);
 
 }

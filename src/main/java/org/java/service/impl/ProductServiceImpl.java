@@ -61,6 +61,21 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    public void sj(String product_id) {
+        productMapper.sj(product_id);
+    }
+
+    @Override
+    public void xj(String product_id) {
+        productMapper.xj(product_id);
+    }
+
+    @Override
+    public void rx(String product_id) {
+        productMapper.rx(product_id);
+    }
+
+    @Override
     public int cdszbbint(String product_isEnabled) {
         return productMapper.cdszbbint(product_isEnabled);
     }

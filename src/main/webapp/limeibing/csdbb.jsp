@@ -267,7 +267,7 @@
                 <p><i class="am-icon-tags"></i>宝贝管理</p>
                 <ul>
                     <li><a href="/csdbb">出售中的宝贝</a></li><%--//出售的宝贝--%>
-                    <li><a href="/ckbb">仓库中的宝贝</a></li>
+                    <li><a href="/csdbb">仓库中的宝贝</a></li>
                 </ul>
             </li>
 
@@ -316,21 +316,15 @@
             , {field: 'product_title', width: 120, title: '标题', sort: true}
             , {field: 'product_price', width: 120, title: '单价', sort: true}
             , {field: 'product_sale_price', width: 120, title: '限时优惠价', sort: true}
-            , {field: 'product_isEnabled', width:82, title: '商品状态', sort: true, templet: function (d) {
-                    if (d.product_isEnabled == 1) {
-                        return '正常售卖中';
-                    }else if(d==2) {
-                        return '限时售卖';
-                    }else{
-                        return '已停售';
-                    }}}
             , {field: 'product_id', width:250 , title: '操作',templet: function (d) {
-                if(d.product_isEnabled==1) {
-                    return '<a class="layui-btn layui-btn-xs" onclick="upe1(' + d.product_id + ')"  >更新宝贝状态</a>';
-                }else if(d.product_isEnabled==2) {
-                    return '<a class="layui-btn layui-btn-xs" onclick="upe1(' + d.product_id + ')"  >更新宝贝状态</a>';
+                if(d.product_isEnabled==0) {
+                    return '<a class="layui-btn layui-btn-xs" onclick="del1(' + d.product_id + ')"  >删除宝贝</a><a class="layui-btn layui-btn-xs" onclick="rx(' + d.product_id + ')"  >热销</a>';
+
+                }else if(d.product_isEnabled==1) {
+                    return '<a class="layui-btn layui-btn-xs" onclick="sj(' + d.product_id + ')"  >取消特销</a><a class="layui-btn layui-btn-xs" onclick="xj(' + d.product_id + ')"  >下架特销</a>';
+
                 }else{
-                    return '<a class="layui-btn layui-btn-xs" onclick="upe1(' + d.product_id + ')"  >更新宝贝状态</a><a class="layui-btn layui-btn-xs" onclick="upe1(\' + d.product_id + \')"  >删除宝贝</a>';
+                    return '<a class="layui-btn layui-btn-xs" onclick="sj(' + d.product_id + ')"  >上架宝贝</a><a class="layui-btn layui-btn-xs" onclick="del1(' + d.product_id + ')"  >删除宝贝</a>';
                 }
                        }}
         ]]
@@ -372,7 +366,7 @@
         tableIns.reload({
             where : {
 
-                'product_isEnabled': 3
+                'product_isEnabled': 0
             },
             page:{
                 curr:1
@@ -405,46 +399,27 @@
            ,
            content: '<div style="padding: 50px; line-height: 22px; background-color: #393D49; color: #fff; font-weight: 300;">确定删除吗？将会删除所有相关信息</div>'
            ,
-           yes: function (layero) {
-                $.post('/delbb?bbid='+d,function(d){
+           yes: function () {
+
                    layer.alert("宝贝又点单在处理中，暂时不能删除")
-                });
-               layer.closeAll();
            }
        })
    }
 </script>
+
 <script>
-    function upe1(d) {
-        var layer=layui.layer;
-        layer.open({
-            type: 1
-            ,
-            title: false //不显示标题栏
-            ,
-            closeBtn: false
-            ,
-            area: '300px;'
-            ,
-            shade: 0.8
-            ,
-            id: 'LAY_layuipro' //设定一个id，防止重复弹出
-            ,
-            btn: ['火速围观', '残忍拒绝']
-            ,
-            btnAlign: 'c'
-            ,
-            moveType: 1 //拖拽模式，0或者1
-            ,
-            content: '<div style="padding: 50px; line-height: 22px; background-color: #393D49; color: #fff; font-weight: 300;"><p>请选择状态</p><a class="layui-btn layui-btn-xs" onclick="upe1(' + d+')"  >上架</a> </div>'
-            ,
-            yes: function (layero) {
-                $.post('/delbb?bbid='+d,function(d){
-                    layer.alert("宝贝又点单在处理中，暂时不能删除")
-                });
-                layer.closeAll();
-            }
-        })
+
+    function rx(d) {
+        $.post('/rx?bbid='+d);
+        layer.alert("热销成功");
+    }
+    function xj(d) {
+        $.post('/xj?bbid='+d);
+        layer.alert("下架成功");
+    }
+    function sj(d) {
+        $.post('/sj?bbid='+d);
+        layer.alert("上架成功");
     }
 </script>
 </body>

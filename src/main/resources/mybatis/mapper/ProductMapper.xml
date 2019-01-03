@@ -219,5 +219,35 @@
 
   </select>
 
+    <update id="sj">
+        UPDATE `product`
+	SET
+
+	`product_isEnabled` = '0'
+
+	WHERE
+	`product_id` = #{product_id} ;
+    </update>
+
+    <update id="rx">
+        UPDATE `product`
+	SET
+
+	`product_isEnabled` = '1'
+
+	WHERE
+	`product_id` = #{product_id} ;
+    </update>
+
+    <update id="xj">
+        UPDATE `product`
+	SET
+
+	`product_isEnabled` = '2'
+
+	WHERE
+	`product_id` = #{product_id} ;
+    </update>
+
 
 </mapper>

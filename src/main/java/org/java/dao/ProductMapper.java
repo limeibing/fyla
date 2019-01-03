@@ -27,5 +27,8 @@ public interface ProductMapper {
     List<Product> cszddd(Map m);
 
     int cdszbbint(@Param("product_isEnabled") String product_isEnabled);
+    void sj(@Param("product_id") String product_id);
+    void xj(@Param("product_id") String product_id);
+    void rx(@Param("product_id") String product_id);
 
 }

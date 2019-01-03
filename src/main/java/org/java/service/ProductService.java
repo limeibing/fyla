@@ -26,4 +26,8 @@ public interface ProductService {
 
     int cdszbbint(String product_isEnabled);
 
+    void sj( String product_id);
+    void xj( String product_id);
+    void rx( String product_id);
+
 }

@@ -47,4 +47,9 @@ public class UserServiceImpl implements UserService{
     public Integer getTotal(User user) {
         return userMapper.selectTotal(user);
     }
+
+    @Override
+    public void sfzrenzhen() {
+        userMapper.sfzrenzhen();
+    }
 }

@@ -17,6 +17,16 @@ public class User implements Serializable {
     private Address user_address;
     private Address user_homeplace;
     private String user_profile_picture_src;
+    private String user_renzhen;
+
+    public String getUser_renzhen() {
+        return user_renzhen;
+    }
+
+    public void setUser_renzhen(String user_renzhen) {
+        this.user_renzhen = user_renzhen;
+    }
+
     private List<Review> reviewList;
     private List<ProductOrderItem> productOrderItemList;
     private List<ProductOrder> productOrderList;
@@ -34,7 +44,10 @@ public class User implements Serializable {
                 ", user_address=" + user_address +
                 ", user_homeplace=" + user_homeplace +
                 ", user_profile_picture_src='" + user_profile_picture_src + '\'' +
+                ", user_renzhen='" + user_renzhen + '\'' +
                 ", reviewList=" + reviewList +
+                ", productOrderItemList=" + productOrderItemList +
+                ", productOrderList=" + productOrderList +
                 '}';
     }
 
@@ -49,7 +62,7 @@ public class User implements Serializable {
         this.user_gender = user_gender;
     }
 
-    public User(Integer user_id, String user_name, String user_nickname, String user_password, String user_realname, Byte user_gender, Date user_birthday, Address user_address, Address user_homeplace, String user_profile_picture_src, List<Review> reviewList) {
+    public User(Integer user_id, String user_name, String user_nickname, String user_password, String user_realname, Byte user_gender, Date user_birthday, Address user_address, Address user_homeplace, String user_profile_picture_src, String user_renzhen, List<Review> reviewList, List<ProductOrderItem> productOrderItemList, List<ProductOrder> productOrderList) {
         this.user_id = user_id;
         this.user_name = user_name;
         this.user_nickname = user_nickname;
@@ -60,7 +73,10 @@ public class User implements Serializable {
         this.user_address = user_address;
         this.user_homeplace = user_homeplace;
         this.user_profile_picture_src = user_profile_picture_src;
+        this.user_renzhen = user_renzhen;
         this.reviewList = reviewList;
+        this.productOrderItemList = productOrderItemList;
+        this.productOrderList = productOrderList;
     }
 
     public Integer getUser_id() {

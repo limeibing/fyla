@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class ProductServiceImpl implements ProductService {
@@ -57,5 +58,15 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public Integer getMoreListTotal(Product product, Byte[] bytes, String[] product_name_split) {
         return productMapper.selectMoreListTotal(product, bytes, product_name_split);
+    }
+
+    @Override
+    public int cdszbbint() {
+        return productMapper.cdszbbint();
+    }
+
+    @Override
+    public List<Product> cszddd(Map m) {
+        return productMapper.cszddd(m);
     }
 }

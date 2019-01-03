@@ -81,7 +81,30 @@ public class AccountController extends BaseController{
         }
         return jsonObject.toJSONString();
     }
-
+    //管理员头像上传
+    @ResponseBody
+    @RequestMapping(value = "/admin/uploadAdminHeadImagesfz", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    public void uploadAdminHeadImagesfz(@RequestParam MultipartFile file, HttpSession session) {
+        String originalFileName = file.getOriginalFilename();
+        logger.info("获取图片原始文件名：{}", originalFileName);
+        String extension = originalFileName.substring(originalFileName.lastIndexOf('.'));
+        String fileName = UUID.randomUUID() + extension;
+        String filePath = session.getServletContext().getRealPath("/") + "res/images/item/adminProfilePicture/" + fileName;
+        session.setAttribute("sfz", filePath);
+        logger.info("文件上传路径：{}", filePath);
+        JSONObject jsonObject = new JSONObject();
+        try {
+            logger.info("文件上传中...");
+            file.transferTo(new File(filePath));
+            logger.info("文件上传成功！");
+            jsonObject.put("success", true);
+            jsonObject.put("fileName", fileName);
+        } catch (IOException e) {
+            logger.warn("文件上传失败！");
+            e.printStackTrace();
+            jsonObject.put("success", false);
+        }
+    }
     //更新管理员信息
     @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
     @ResponseBody

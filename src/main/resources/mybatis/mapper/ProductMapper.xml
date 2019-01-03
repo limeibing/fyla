@@ -197,4 +197,24 @@
             </if>
         </where>
     </select>
+
+    <select id="cszddd" resultType="org.java.entity.Product" parameterType="java.util.Map" >
+
+        select  * from Product
+        <where>
+            if(product_isEnabled != null)
+            {
+             product_isEnabled=#{product_isEnabled}
+
+            }
+        </where>
+         limit #{strts},#{size}
+    </select>
+    <select id="cdszbbint" resultType="int">
+
+      select count(*) from Product
+
+  </select>
+
+
 </mapper>

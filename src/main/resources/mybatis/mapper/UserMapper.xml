@@ -12,6 +12,7 @@
         <result property="user_gender" column="user_gender"/>
         <result property="user_birthday" column="user_birthday"/>
         <result property="user_profile_picture_src" column="user_profile_picture_src"/>
+        <result property="user_renzhen" column="user_renzhen"/>
         <association property="user_address" javaType="org.java.entity.Address">
             <id property="address_areaId" column="user_address"/>
         </association>
@@ -98,4 +99,5 @@
             </where>
         </if>
     </select>
+    <update id="sfzrenzhen" >update user set user_renzhen='1' from user </update>
 </mapper>

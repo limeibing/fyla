@@ -1,10 +1,12 @@
 package org.java.service;
 
+import org.apache.ibatis.annotations.Param;
 import org.java.entity.Product;
 import org.java.util.OrderUtil;
 import org.java.util.PageUtil;
 
 import java.util.List;
+import java.util.Map;
 
 public interface ProductService {
     boolean add(Product product);
@@ -19,4 +21,9 @@ public interface ProductService {
     List<Product> getMoreList(Product product, Byte[] bytes, OrderUtil orderUtil, PageUtil pageUtil, String[] product_name_split);
 
     Integer getMoreListTotal(Product product, Byte[] bytes, String[] product_name_split);
+
+    List<Product> cszddd(Map m);
+
+    int cdszbbint();
+
 }

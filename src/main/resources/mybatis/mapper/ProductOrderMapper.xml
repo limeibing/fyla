@@ -150,4 +150,42 @@
         </where>
         GROUP BY DATE_FORMAT(productOrder_pay_date,'%Y-%m-%d'),productOrder_status
     </select>
+
+
+    <select id="kddd" parameterType="java.util.Map" resultType="java.util.Map">
+        SELECT p.productorder_id, pt.product_name,pt.product_price,p.productorder_receiver,p.productorder_status,pt.product_price FROM   productorder  p,productorderitem pr,product pt
+        where
+        p.productorder_id=pr.productorderitem_order_id AND pr.productorderitem_product_id=pt.product_id
+        <where>
+          <if test="productorder_confirm_date1 != null and productorder_confirm_date2 != null" >
+              and AND p.productorder_confirm_date BETWEEN #{productorder_confirm_date1} AND #{productorder_confirm_date2}
+          </if>
+        <if test="productorder_status != null " >
+            AND p.productorder_status = #{productorder_status}
+        </if>
+            <if test="productorder_receiver != null " >
+                AND p.productorder_receiver LIKE '%${productorder_receiver}%'
+            </if>
+            <if test="product_name != null " >
+                AND p.product_name LIKE '%${product_name}%'
+            </if>
+        </where>
+         limit #{strts},#{size}
+
+
+
+
+
+    </select>
+
+    <select id="intserlect" resultType="int">
+         SELECT count(*) FROM   productorder  p,productorderitem pr,product pt
+        where
+        p.productorder_id=pr.productorderitem_order_id AND pr.productorderitem_product_id=pt.product_id
+
+    </select>
+
+
+
+
 </mapper>

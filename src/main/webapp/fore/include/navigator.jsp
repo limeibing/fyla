@@ -22,14 +22,18 @@
                     <a href="${pageContext.request.contextPath}/login">请登录</a>
                     <a href="${pageContext.request.contextPath}/register">免费注册</a>
                     <a href="${pageContext.request.contextPath}/limeibing/index.html">个人中心</a>
+                    <a href="${pageContext.request.contextPath}/kai">商家中心</a>
                 </c:when>
                 <c:otherwise>
                     <em>Hi，</em>
                     <a href="${pageContext.request.contextPath}/userDetails" class="userName"
                        target="_blank">${requestScope.user.user_name}</a>
+                    <a href="${pageContext.request.contextPath}/limeibing/index.html">个人中心</a>
+                    <a href="${pageContext.request.contextPath}/kai">商家中心</a>
                     <a href="${pageContext.request.contextPath}/login/logout">退出</a>
                 </c:otherwise>
             </c:choose>
+
         </p>
         <ul class="quick_li">
             <li class="quick_li_MyTaobao">

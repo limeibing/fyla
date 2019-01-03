@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+		 pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <!-- saved from url=(0097)https://upload.taobao.com/auction/sell.jhtml?spm=a313o.201708ban.0.d48.64f0197aM99YHY&mytmenu=wym -->
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>

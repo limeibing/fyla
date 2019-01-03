@@ -9,6 +9,8 @@ import org.apache.ibatis.annotations.Param;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
+
 @Mapper
 public interface ProductOrderMapper {
     Integer insertOne(@Param("productOrder") ProductOrder productOrder);
@@ -20,4 +22,6 @@ public interface ProductOrderMapper {
     ProductOrder selectByCode(@Param("productOrder_code") String productOrder_code);
     Integer selectTotal(@Param("productOrder") ProductOrder productOrder, @Param("productOrder_status_array") Byte[] productOrder_status_array);
     List<OrderGroup> getTotalByDate(@Param("beginDate") Date beginDate, @Param("endDate") Date endDate);
+    List<Map> kddd(Map m);
+    int intserlect();
 }

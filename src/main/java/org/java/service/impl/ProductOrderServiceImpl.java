@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.annotation.Resource;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class ProductOrderServiceImpl implements ProductOrderService{
@@ -61,5 +62,15 @@ public class ProductOrderServiceImpl implements ProductOrderService{
     @Override
     public Integer getTotal(ProductOrder productOrder, Byte[] productOrder_status_array) {
         return productOrderMapper.selectTotal(productOrder,productOrder_status_array);
+    }
+
+    @Override
+    public List<Map> kddd(Map m) {
+        return productOrderMapper.kddd(m);
+    }
+
+    @Override
+    public int intserlect() {
+        return productOrderMapper.intserlect();
     }
 }

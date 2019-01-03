@@ -7,6 +7,8 @@ import org.java.util.PageUtil;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
+import java.util.Map;
+
 @Mapper
 public interface ProductMapper {
     Integer insertOne(@Param("product") Product product);
@@ -21,4 +23,9 @@ public interface ProductMapper {
     List<Product> selectMoreList(@Param("product") Product product, @Param("product_isEnabled_array") Byte[] bytes, @Param("orderUtil") OrderUtil orderUtil, @Param("pageUtil") PageUtil pageUtil, @Param("product_name_split") String[] product_name_split);
 
     Integer selectMoreListTotal(@Param("product") Product product, @Param("product_isEnabled_array") Byte[] product_isEnabled_array, @Param("product_name_split") String[] product_name_split);
+
+    List<Product> cszddd(Map m);
+
+    int cdszbbint();
+
 }

@@ -1,16 +1,17 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <!-- saved from url=(0097)https://upload.taobao.com/auction/sell.jhtml?spm=a313o.201708ban.0.d48.64f0197aM99YHY&mytmenu=wym -->
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=GBK">
-    <link rel="stylesheet" href="./发布商品_files/entry.css" charset="utf-8">
-    <script type="text/javascript" async="" src="./发布商品_files/entry.js.下载"></script>
-    <script src="./发布商品_files/saved_resource" id="femTrackerSdk"></script>
-    <script src="./发布商品_files/index.js.下载" id="femTrackerSdk"></script>
-    <script src="./发布商品_files/entry.js(1).下载" id="anywhere-sdk" charset="utf-8"></script>
-    <script src="./发布商品_files/flash-min.js.下载" async="" charset="utf-8"></script>
-    <script type="text/javascript" async="" src="./发布商品_files/index.js(1).下载" id="aplus-sufei"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="发布商品_files/entry.css" charset="utf-8">
+    <script type="text/javascript" async="" src="发布商品_files/entry.js.下载"></script>
+    <script src="发布商品_files/saved_resource" id="femTrackerSdk"></script>
+    <script src="发布商品_files/index.js.下载" id="femTrackerSdk"></script>
+    <script src="发布商品_files/entry.js(1).下载" id="anywhere-sdk" charset="utf-8"></script>
+    <script src="发布商品_files/flash-min.js.下载" async="" charset="utf-8"></script>
+    <script type="text/javascript" async="" src="发布商品_files/index.js(1).下载" id="aplus-sufei"></script>
     <script>/*! 2018-12-27 10:36:39 v8.8.0 */
     !function (e) {
         function i(n) {
@@ -4782,12 +4783,12 @@
             }
         }()
     }]);</script>
-    <script src="./发布商品_files/saved_resource(1)" async=""></script>
-    <script src="./发布商品_files/get_unread_num.do" async=""></script>
-    <script src="./发布商品_files/seller_sidebar.do" async=""></script>
-    <script src="./发布商品_files/overlay-min.js.下载" async="" charset="utf-8"></script>
-    <script src="./发布商品_files/saved_resource(2)" async="" charset="utf-8"></script>
-    <script crossorigin="" src="./发布商品_files/main-min.js.下载" async="" charset="utf-8"></script>
+    <script src="发布商品_files/saved_resource(1)" async=""></script>
+    <script src="发布商品_files/get_unread_num.do" async=""></script>
+    <script src="发布商品_files/seller_sidebar.do" async=""></script>
+    <script src="发布商品_files/overlay-min.js.下载" async="" charset="utf-8"></script>
+    <script src="发布商品_files/saved_resource(2)" async="" charset="utf-8"></script>
+    <script crossorigin="" src="发布商品_files/main-min.js.下载" async="" charset="utf-8"></script>
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="renderer" content="webkit">
@@ -4803,8 +4804,8 @@
           content="淘宝,掏宝,网上购物,购物,论坛,联盟,买,卖,1元,一元,电脑,视听,MP3,MD,CD,VCD,DV,耗材,化妆,相机,数码,配件,珠宝,手表,艺术,宠物,求购,出租,出售,二手,汽车,音响,保健,讨价换价,一口价,拍卖,auction,sell,buy,price,bid">
     <!-- vmcommon_s_2_assets  begin -->
 
-    <link rel="stylesheet" href="./发布商品_files/p_header_header_min.css">
-    <script src="./发布商品_files/header-v7-min.js.下载" crossorigin=""></script>
+    <link rel="stylesheet" href="发布商品_files/p_header_header_min.css">
+    <script src="发布商品_files/header-v7-min.js.下载" crossorigin=""></script>
 
 
     <!-- vmcommon_s_2_assets end -->
@@ -4812,29 +4813,29 @@
 
     <meta name="data-spm" content="a1z38n">
 
-    <link rel="stylesheet" href="./发布商品_files/index-min.css">
+    <link rel="stylesheet" href="发布商品_files/index-min.css">
 
 
-    <script type="text/javascript" src="./发布商品_files/kissy-min.js.下载" crossorigin=""></script>
-    <script type="text/javascript" src="./发布商品_files/index-min.js.下载" crossorigin=""></script>
-    <link href="./发布商品_files/index-min(1).css" rel="stylesheet">
-    <script src="./发布商品_files/index.js(2).下载" id="aplus-sufei"></script>
-    <script src="./发布商品_files/ns_a_51_2_fa.js.下载"></script>
-    <script async="" src="./发布商品_files/eg.js.下载"></script>
+    <script type="text/javascript" src="发布商品_files/kissy-min.js.下载" crossorigin=""></script>
+    <script type="text/javascript" src="发布商品_files/index-min.js.下载" crossorigin=""></script>
+    <link href="发布商品_files/index-min(1).css" rel="stylesheet">
+    <script src="发布商品_files/index.js(2).下载" id="aplus-sufei"></script>
+    <script src="发布商品_files/ns_a_51_2_fa.js.下载"></script>
+    <script async="" src="发布商品_files/eg.js.下载"></script>
 </head>
 
 <body class="W950 CurHome new-seller " data-spm="10677100"
       data-spm-anchor-id="a1z38n.10677100.0.10677100.7a47466bKootY1">
-<script id="tb-beacon-aplus" src="./发布商品_files/aplus_v2.js.下载"
+<script id="tb-beacon-aplus" src="发布商品_files/aplus_v2.js.下载"
         exparams="category=&amp;userid=1936168155&amp;aplus&amp;yunid=&amp;e158b6bae6e1f&amp;trid=0b0f936b15458918963274787e6e42&amp;asid=AduUZ3M4cCRcGyv9YgAAAABeekDrJ830XQ=="></script>
 <script>
     with (document) with (body) with (insertBefore(createElement("script"), firstChild)) setAttribute("exparams", "category=&userid=1936168155&aplus&yunid=&e158b6bae6e1f&trid=0b0f936b15458918963274787e6e42&asid=AduUZ3M4cCRcGyv9YgAAAABeekDrJ830XQ==", id = "tb-beacon-aplus", src = (location > "https" ? "//g" : "//g") + ".alicdn.com/alilog/mlog/aplus_v2.js")
 </script>
 
 
-<script src="./发布商品_files/saved_resource(3)"></script>
-<link href="./发布商品_files/global.css" rel="stylesheet">
-<script src="./发布商品_files/saved_resource(4)" charset="utf-8"></script>
+<script src="发布商品_files/saved_resource(3)"></script>
+<link href="发布商品_files/global.css" rel="stylesheet">
+<script src="发布商品_files/saved_resource(4)" charset="utf-8"></script>
 
 
 <div id="seller-nav" role="navigation">
@@ -4875,7 +4876,7 @@
                         </div>
                         <div class="J_Tmsg_Panel_AppsBody tmsg_panel_body"><img style="display:block;margin:30px auto"
                                                                                 width="48" height="48"
-                                                                                src="./发布商品_files/T1HcvHXd4nXXb6ROYh-48-48.gif">
+                                                                                src="发布商品_files/T1HcvHXd4nXXb6ROYh-48-48.gif">
                         </div>
                         <div class="J_Tmsg_Panel_Foot tmsg_panel_foot"><a
                                 class="J_Tmsg_Button_Setting tmsg_button_setting" data-tips="setting" title="消息设置"
@@ -5232,12 +5233,12 @@ document.getElementsByTagName('body')[0].className += ' new-seller ';</script>
     <div id="header">
         <h1 id="logo">
             <a href="https://www.taobao.com/" target="_top"><img alt="淘宝网 Taobao.com - 阿里巴巴旗下网站"
-                                                                 src="./发布商品_files/logo.png" width="140"
+                                                                 src="发布商品_files/logo.png" width="140"
                                                                  height="35"></a>
         </h1>
     </div>
 
-    <script type="text/javascript" src="./发布商品_files/killie-min.js.下载" async="true" defer="true"
+    <script type="text/javascript" src="发布商品_files/killie-min.js.下载" async="true" defer="true"
             crossorigin=""></script>
 
 
@@ -5794,7 +5795,7 @@ document.getElementsByTagName('body')[0].className += ' new-seller ';</script>
                 </div>
                 <div class="cc-loading">
                     <div class="cc-loading-content">
-                        <div class="cc-loading-icon"><img src="./发布商品_files/T1jBamXj4fXXXXXXXX-16-16.gif"></div>
+                        <div class="cc-loading-icon"><img src="发布商品_files/T1jBamXj4fXXXXXXXX-16-16.gif"></div>
                         <span class="cc-loading-text">加载中，请稍候...</span>
                     </div>
                 </div>
@@ -6458,18 +6459,18 @@ document.getElementsByTagName('body')[0].className += ' new-seller ';</script>
         </div>
         <div style="margin: 0 0 5px;">
             <img width="18" height="18" style="vertical-align: middle;" alt="反馈"
-                 src="./发布商品_files/T1TPhsXoRlXXXXXXXX-18-18.png">
+                 src="发布商品_files/T1TPhsXoRlXXXXXXXX-18-18.png">
             我对类目选择有意见或建议，
             <a target="_blank" href="https://ur.taobao.com/survey/view.htm?id=999">跟淘宝说两句</a>
         </div>
     </div>
-    <script src="./发布商品_files/yahoo-dom-event.js.下载" crossorigin=""></script>
+    <script src="发布商品_files/yahoo-dom-event.js.下载" crossorigin=""></script>
     <script type="text/javascript">
         MINERVA_POPUP_URL = '//service.taobao.com/support/minerva/minerva_ask.htm?minervasource=187&dcs=1&businessId=100&moduleGroupId=taobaocrm';
     </script>
-    <script type="text/javascript" src="./发布商品_files/app_detect-min.js.下载" crossorigin=""></script>
+    <script type="text/javascript" src="发布商品_files/app_detect-min.js.下载" crossorigin=""></script>
 
-    <script src="./发布商品_files/include.js.下载" crossorigin=""></script>
+    <script src="发布商品_files/include.js.下载" crossorigin=""></script>
     <script type="text/javascript">
         window.awAsyncInit = function () {
             AW.init({
@@ -6479,7 +6480,7 @@ document.getElementsByTagName('body')[0].className += ' new-seller ';</script>
         }
     </script>
 
-    <script src="./发布商品_files/log.js.下载" crossorigin=""></script>
+    <script src="发布商品_files/log.js.下载" crossorigin=""></script>
     <script>
         window.__WPO && window.__WPO.setConfig({
             sample: 100,
@@ -6766,17 +6767,17 @@ document.getElementsByTagName('body')[0].className += ' new-seller ';</script>
                 <div class="aw-hover-tip stress" data-name="tool-ser-history">服务追踪</div>
             </li>
         </ul>
-        <img class="aw-logo aw-dragger" src="./发布商品_files/TB1HxcCMpXXXXbfaXXXXXXXXXXX-102-83.png" alt="万象LOGO"
+        <img class="aw-logo aw-dragger" src="发布商品_files/TB1HxcCMpXXXXbfaXXXXXXXXXXX-102-83.png" alt="万象LOGO"
              style="display: block;">
         <div class="aw-anim-lge-logo" style="display: none;"></div>
         <div class="aw-anim-small-logo"></div>
         <div class="aw-bubble-wrapper" style="display:none;">
             <div class="aw-bubble-text">有问题找我哦~</div>
-            <img class="aw-bubble-close" src="./发布商品_files/TB1OE0BLVXXXXaVXXXXXXXXXXXX-18-18.png" alt="万象叉叉"
-                 style="display:none;"><img class="aw-bubble" src="./发布商品_files/TB1molpLVXXXXaGXFXXXXXXXXXX-97-63.png"
+            <img class="aw-bubble-close" src="发布商品_files/TB1OE0BLVXXXXaVXXXXXXXXXXXX-18-18.png" alt="万象叉叉"
+                 style="display:none;"><img class="aw-bubble" src="发布商品_files/TB1molpLVXXXXaGXFXXXXXXXXXX-97-63.png"
                                             alt="万象气泡"></div>
     </div>
 </div>
-<iframe src="./发布商品_files/blk.html" id="_oid_ifr_" style="width: 0px; height: 0px; display: none;"></iframe>
+<iframe src="发布商品_files/blk.html" id="_oid_ifr_" style="width: 0px; height: 0px; display: none;"></iframe>
 </body>
 </html>

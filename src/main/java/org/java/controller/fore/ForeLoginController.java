@@ -44,6 +44,8 @@ public class ForeLoginController extends BaseController {
         } else {
             logger.info("登录验证成功,用户ID传入会话");
             session.setAttribute("userId", user.getUser_id());
+            session.setAttribute("user", user);
+            System.out.println(user);
             jsonObject.put("success", true);
         }
         return jsonObject.toJSONString();

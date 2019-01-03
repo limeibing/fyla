@@ -21,4 +21,7 @@ public interface ProductOrderService {
     ProductOrder get(Integer productOrder_id);
     ProductOrder getByCode(String productOrder_code);
     Integer getTotal(ProductOrder productOrder, Byte[] productOrder_status_array);
+
+    List<Map> kddd(Map m);
+    int intserlect();
 }

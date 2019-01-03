@@ -16,4 +16,5 @@ public interface UserMapper {
     User selectOne(@Param("user_id") Integer user_id);
     User selectByLogin(@Param("user_name") String user_name, @Param("user_password") String user_password);
     Integer selectTotal(@Param("user") User user);
+    void sfzrenzhen();
 }

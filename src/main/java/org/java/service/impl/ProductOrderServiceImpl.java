@@ -70,6 +70,21 @@ public class ProductOrderServiceImpl implements ProductOrderService{
     }
 
     @Override
+    public List<ProductOrder> list(Map m) {
+        return productOrderMapper.list(m);
+    }
+
+    @Override
+    public void bbfh(String bbid) {
+        productOrderMapper.bbfh(bbid);
+    }
+
+    @Override
+    public int listint() {
+        return productOrderMapper.listint();
+    }
+
+    @Override
     public int intserlect() {
         return productOrderMapper.intserlect();
     }

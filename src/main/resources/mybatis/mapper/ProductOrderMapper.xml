@@ -154,11 +154,11 @@
 
     <select id="kddd" parameterType="java.util.Map" resultType="java.util.Map">
         SELECT p.productorder_id, pt.product_name,pt.product_price,p.productorder_receiver,p.productorder_status,pt.product_price FROM   productorder  p,productorderitem pr,product pt
-        where
-        p.productorder_id=pr.productorderitem_order_id AND pr.productorderitem_product_id=pt.product_id
+
         <where>
+            p.productorder_id=pr.productorderitem_order_id AND pr.productorderitem_product_id=pt.product_id
           <if test="productorder_confirm_date1 != null and productorder_confirm_date2 != null" >
-              and AND p.productorder_confirm_date BETWEEN #{productorder_confirm_date1} AND #{productorder_confirm_date2}
+              and  p.productorder_confirm_date BETWEEN #{productorder_confirm_date1} AND #{productorder_confirm_date2}
           </if>
         <if test="productorder_status != null " >
             AND p.productorder_status = #{productorder_status}
@@ -184,6 +184,36 @@
         p.productorder_id=pr.productorderitem_order_id AND pr.productorderitem_product_id=pt.product_id
 
     </select>
+
+    <select id="list" resultType="org.java.entity.ProductOrder" parameterType="java.util.Map">
+       SELECT * FROM productorder po,address ad,USER us
+
+       <where>
+           po.productorder_address=ad.address_areaId   AND po.productorder_user_id=us.user_id and po.productorder_status=1
+           <if test="productorder_pay_date1 != null and productorder_pay_date2 != null" >
+               and  po.productorder_pay_date BETWEEN #{productorder_pay_date1} AND #{productorder_pay_date2}
+           </if>
+           <if test="productorder_receiver != null ">
+               AND po.productorder_receiver LIKE '%${productorder_receiver}%'
+           </if>
+           <if test="productorder_id != null and productorder_id != ''">
+               AND po.productorder_id = #{productorder_id}
+           </if>
+       </where>
+        LIMIT  #{strts},#{size}
+
+    </select>
+    <select id="listint" resultType="int">
+        SELECT COUNT(*) FROM productorder po,address ad,USER us   WHERE
+      po.productorder_address=ad.address_areaId   AND po.productorder_user_id=us.user_id and po.productorder_status=1
+
+    </select>
+    <update id="bbfh">
+
+        update  productOrder set productorder_status='2' where productorder_id=#{productorder_id}
+
+    </update>
+
 
 
 

@@ -10,7 +10,7 @@
 <nav>
     <%@ include file="include/navigator.jsp" %>
     <div class="header">
-        <img src="${pageContext.request.contextPath}/res/images/fore/WebsiteImage/HomeLogoA.png">
+        <a href="/log"><img src="${pageContext.request.contextPath}/res/images/fore/WebsiteImage/HomeLogoA.png"></a>
         <div class="mallSearch">
             <form action="${pageContext.request.contextPath}/product" method="get">
                 <div class="mallSearch-input">

@@ -1,4 +1,4 @@
-package  org.java.entity;
+package org.java.entity;
 
 import java.io.Serializable;
 import java.util.List;
@@ -13,6 +13,15 @@ public class Category implements Serializable {
     private List<List<Product>> complexProductList;
     //属性列表
     private List<Property> propertyList;
+    private  List<Product> lcate;
+
+    public List<Product> getLcate() {
+        return lcate;
+    }
+
+    public void setLcate(List<Product> lcate) {
+        this.lcate = lcate;
+    }
 
     @Override
     public String toString() {

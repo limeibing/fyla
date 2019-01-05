@@ -11,11 +11,16 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class UserServiceImpl implements UserService{
+
+
     @Autowired
     private UserMapper userMapper;
+
+
     @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
     @Override
     public boolean add(User user) {
@@ -51,5 +56,10 @@ public class UserServiceImpl implements UserService{
     @Override
     public void sfzrenzhen() {
         userMapper.sfzrenzhen();
+    }
+
+    @Override
+    public void updateTwo(Map<String, Object> m) {
+            userMapper.updateTwo(m);
     }
 }

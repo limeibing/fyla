@@ -21,12 +21,15 @@
                     <em>喵，欢迎来天猫</em>
                     <a href="${pageContext.request.contextPath}/login">请登录</a>
                     <a href="${pageContext.request.contextPath}/register">免费注册</a>
+
                 </c:when>
                 <c:otherwise>
+
                     <em>Hi，</em>
                     <a href="${pageContext.request.contextPath}/userDetails" class="userName"
                        target="_blank">${requestScope.user.user_name}</a>
                     <a href="${pageContext.request.contextPath}/login/logout">退出</a>
+
                 </c:otherwise>
             </c:choose>
         </p>
@@ -36,7 +39,7 @@
                     <a href="${pageContext.request.contextPath}/userDetails">我的淘宝<b></b></a>
                     <div class="quick_menu">
                         <a href="${pageContext.request.contextPath}/order/0/10">已买到的宝贝</a>
-                        <a href="#">已卖出的宝贝</a>
+                        <a href="log">客服中心</a>
                     </div>
                 </div>
             </li>
@@ -154,6 +157,7 @@
                     </div>
                 </div>
             </li>
+
         </ul>
     </div>
 </div>

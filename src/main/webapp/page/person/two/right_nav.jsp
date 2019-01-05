@@ -1,0 +1,59 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="Shortcut Icon" href="wlogo_img/favicon.ico" type="image/x-icon">
+		<link rel="stylesheet" type="text/css" href="css/wstyle.css"/>
+	</head>
+	<body>
+		<!--侧边栏导航条-->
+			<div id="nav_right">
+				<ul>
+					<li class="li1">
+						<a href="wlogin.html" target="_blank">
+							<s></s>
+						</a>
+						
+					</li>
+					
+					<li class="li2">
+						<a href="#">
+							<s></s>
+							<div id="bar_1">
+								<a href="../wangqi/jiesuan.html" target="_blank">购物车
+								</a>
+							</div>
+							<div id="bar_2">2</div>
+						</a>
+					</li>
+					
+					<li class="li3">
+						<a href="#">
+							<s></s>
+						</a>
+					</li>
+					<li class="li4">
+						<a href="#">
+							<s></s>
+						</a>
+					</li>
+					<li class="li5">
+						<a href="#">
+							<s></s>
+						</a>
+					</li>
+					<li class="li6" >
+						<a href="#">
+							<s></s>
+						</a>
+					</li>
+					<li class="li7">
+						<a href="#">
+							<s></s>
+						</a>
+					</li>
+				</ul>
+			</div>
+	</body>
+</html>

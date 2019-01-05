@@ -1,4 +1,4 @@
-package   org.java.entity;
+package org.java.entity;
 
 import java.io.Serializable;
 import java.text.SimpleDateFormat;

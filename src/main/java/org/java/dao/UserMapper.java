@@ -7,10 +7,17 @@ import org.java.util.PageUtil;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
+import java.util.Map;
+
 @Mapper
 public interface UserMapper {
     Integer insertOne(@Param("user") User user);
     Integer updateOne(@Param("user") User user);
+
+    /**
+     * 修改
+     */
+    public void updateTwo(Map<String, Object> m);
 
     List<User> select(@Param("user") User user, @Param("orderUtil") OrderUtil orderUtil, @Param("pageUtil") PageUtil pageUtil);
     User selectOne(@Param("user_id") Integer user_id);

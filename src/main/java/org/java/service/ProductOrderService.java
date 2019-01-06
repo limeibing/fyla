@@ -1,5 +1,6 @@
 package org.java.service;
 
+import org.apache.ibatis.annotations.Param;
 import org.java.entity.OrderGroup;
 import org.java.entity.ProductOrder;
 import org.java.util.OrderUtil;
@@ -24,4 +25,9 @@ public interface ProductOrderService {
 
     List<Map> kddd(Map m);
     int intserlect();
+
+    List<ProductOrder> list(Map m);
+    int listint();
+
+    void bbfh(String bbid);
 }

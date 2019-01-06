@@ -5077,8 +5077,6 @@
                                             <li><a href="https://c.cainiao.com/" target="_blank" title="物流市场">物流市场</a>
                                             </li>
 
-                                            <li><a href="https://wlmart.wuliu.taobao.com/user/consign_setting.htm"
-                                                   target="_blank" title="物流服务">物流服务</a></li>
 
                                             <li><a href="https://wuliu.taobao.com/kuaidi/post.htm" target="_blank"
                                                    title="我要寄快递">我要寄快递</a></li>

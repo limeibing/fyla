@@ -24,6 +24,7 @@ import org.java.util.HttpUtil;
 
 import java.io.PrintWriter;
 import java.net.URLEncoder;
+import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -237,9 +238,46 @@ public void delbb( String bbid){
         System.out.println("xj");
     }
 
+    @RequestMapping("/fh")
+    public String fh(){
+        System.out.println("发货");
+        return "/limeibing/发货";
+}
 
-
-
+    @RequestMapping("/bbfh")
+    public void bbfh(String bbid,HttpServletResponse  resq)throws Exception{
+        productOrderMapper.bbfh(bbid);
+        PrintWriter out=resq.getWriter();
+        out.write(JSON.toJSONString("msg").toString());
+    }
+    @RequestMapping("/bbqrfh")
+    public void bbqrfh(HttpServletResponse resp,HttpServletRequest req,String bbid
+        ,String productorder_pay_date1,String productorder_pay_date2,String productorder_id,String productorder_receiver
+    )throws Exception{
+        resp.setContentType("text/html;charset=utf-8");
+        req.setCharacterEncoding("UTF-8");
+        Map m=new HashMap();
+        PrintWriter out=resp.getWriter();
+        Integer pageindex=Integer.parseInt(req.getParameter("page"));
+        Integer pagesize=Integer.parseInt(req.getParameter("limit"));
+        m.put("productorder_pay_date1", productorder_pay_date1!=null?productorder_pay_date1+" 00:00:00":null);
+        m.put("productorder_pay_date2", productorder_pay_date2!=null?productorder_pay_date2+" 00:00:00":null);
+        m.put("productorder_id", productorder_id);
+        m.put("productorder_receiver", productorder_receiver);
+        m.put("strts", pageindex);
+        m.put("size", pagesize);
+        System.out.println(m+"*********************************************");
+        List<ProductOrder> list=productOrderMapper.list(m);
+        System.out.println(list);
+        Map<String,Object> map = new HashMap<String, Object>();
+        map.put("code", 0);
+        map.put("msg", "");
+        map.put("count",productOrderMapper.listint());
+        map.put("data",list);
+        out.write(JSON.toJSONString(map).toString());
+        out.flush();
+        out.close();
+    }
 
 
 

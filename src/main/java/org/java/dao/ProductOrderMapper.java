@@ -24,4 +24,8 @@ public interface ProductOrderMapper {
     List<OrderGroup> getTotalByDate(@Param("beginDate") Date beginDate, @Param("endDate") Date endDate);
     List<Map> kddd(Map m);
     int intserlect();
+
+    List<ProductOrder> list(Map m);
+    int listint();
+    void bbfh(@Param("productorder_id") String bbid);
 }

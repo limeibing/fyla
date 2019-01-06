@@ -239,7 +239,7 @@
     <aside class="menu">
         <ul>
             <li class="person active">
-                <a href="index.html"><i class="am-icon-user"></i>个人中心</a>
+                <a href="index.html"><i class="am-icon-user"></i>商家中心</a>
             </li>
             <li class="person">
                 <p><i class="am-icon-newspaper-o"></i>店铺管理</p>
@@ -251,6 +251,8 @@
                 <p><i class="am-icon-balance-scale"></i>交易管理</p>
                 <ul>
                     <li><a href="//kdcg">卖出的宝贝</a></li>
+                    <li><a href="/csdbb">出售中的宝贝</a></li><%--//出售的宝贝--%>
+                    <li><a href="/csdbb">仓库中的宝贝</a></li>
                 </ul>
             </li>
             <li class="person">
@@ -260,14 +262,6 @@
                     <li><a href="coupon.html">物流管理</a></li>
                     <li><a href="bonus.html">物流服务</a></li>
                     <li><a href="walletlist.html">寄快递</a></li>
-                </ul>
-            </li>
-
-            <li class="person">
-                <p><i class="am-icon-tags"></i>宝贝管理</p>
-                <ul>
-                    <li><a href="/csdbb">出售中的宝贝</a></li><%--//出售的宝贝--%>
-                    <li><a href="/csdbb">仓库中的宝贝</a></li>
                 </ul>
             </li>
 

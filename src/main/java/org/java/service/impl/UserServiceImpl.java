@@ -54,12 +54,13 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public void sfzrenzhen() {
-        userMapper.sfzrenzhen();
+    public void updateTwo(Map<String, Object> m) {
+            userMapper.updateTwo(m);
     }
 
     @Override
-    public void updateTwo(Map<String, Object> m) {
-            userMapper.updateTwo(m);
+    public List<Map<String,Object>>  findAddress(Integer user_id) {
+        System.err.println("购买实现类UID"+user_id);
+        return userMapper.findAddress(user_id);
     }
 }

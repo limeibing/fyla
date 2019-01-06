@@ -10,7 +10,7 @@ import java.util.Properties;
 public class SendEmail {
 
     public static final String FROM = "1350430787@qq.com";// 发件人的email
-    public static final String PWD = "ouydszashinbgcbf";// 发件人密码--邮箱密码
+    public static final String PWD = "dpcatzvxsehkfhae";// 发件人密码--邮箱密码
     public static final String TITLE = "艾   筱";
     public static final String HOST = "smtp.qq.com";
     public static final String SMTP = "smtp";

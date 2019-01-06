@@ -1,4 +1,4 @@
-package  org.java.service;
+package org.java.service;
 
 import org.java.entity.Address;
 

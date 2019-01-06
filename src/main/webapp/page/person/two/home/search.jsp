@@ -234,7 +234,7 @@
                 </li>
             </ul>
         </div>
-		<a  href="${pageContext.request.contextPath}/ppp/1">啊啊啊啊啊啊啊啊铺铺铺铺铺铺铺铺铺铺铺铺铺</a>
+		<%--<a  href="${pageContext.request.contextPath}/ppp/1">啊啊啊啊啊啊啊啊铺铺铺铺铺铺铺铺铺铺铺铺铺</a>--%>
         <div class="context_main">
             <c:forEach items="${requestScope.productList}" var="product">
                 <div class="context_productStyle">

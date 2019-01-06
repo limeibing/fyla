@@ -1,19 +1,19 @@
 package org.java.controller.fore;
 
 import com.alibaba.fastjson.JSONObject;
-import org.java.controller.BaseController;
-import org.java.entity.User;
-import org.java.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import  org.java.controller.BaseController;
+import  org.java.entity.User;
+import  org.java.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 import java.util.Map;
-
 
 /**
  * 前台天猫-登陆页

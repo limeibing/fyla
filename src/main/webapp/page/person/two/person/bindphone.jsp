@@ -118,49 +118,38 @@
 		<div class="main-wrap">
 
 			<div class="am-cf am-padding">
-				<div class="am-fl am-cf"><strong class="am-text-danger am-text-lg">绑定手机</strong> / <small>Bind&nbsp;Phone</small></div>
+				<div class="am-fl am-cf"><strong class="am-text-danger am-text-lg">绑定手机</strong></div>
 			</div>
 			<hr/>
 			<!--进度条-->
 			<div class="m-progress" style="height: 170px;">
 				<div class="m-progress-list">
-							<%--<span class="step-1 step">
-                                <em class="u-progress-stage-bg"></em>
-                                <i class="u-stage-icon-inner">1<em class="bg"></em></i>
-                                <p class="stage-name">绑定手机</p>
-                            </span>
-					        <span class="step-2 step">
-                                <em class="u-progress-stage-bg"></em>
-                                <i class="u-stage-icon-inner">2<em class="bg"></em></i>
-                                <p class="stage-name">完成</p>
-                            </span>--%>
 								<div id="step"></div>
-					<%--<span class="u-progress-placeholder"></span>--%>
 				</div>
 				<div class="u-progress-bar total-steps-2">
 					<div class="u-progress-bar-inner"></div>
 				</div>
 			</div>
-			<form class="am-form am-form-horizontal">
+			<form class="am-form am-form-horizontal" id="frm">
 				<div class="am-form-group bind">
 					<label for="user-phone" class="am-form-label">验证手机</label>
 					<div class="am-form-content">
-						<span id="user-phone">18571693213</span>
+						<span id="user-phone" class="phone1">18571693213</span>
 					</div>
 				</div>
 				<div class="am-form-group code">
 					<label for="user-code" class="am-form-label">验证码</label>
 					<div class="am-form-content">
-						<input type="tel" id="user-code" placeholder="短信验证码">
+						<input type="tel" id="user-code" placeholder="短信验证码" >
 					</div>
-					<a class="btn" href="javascript:void(0);" onclick="sendMobileCode();" id="sendMobileCode">
-						<div class="am-btn am-btn-danger">验证码</div>
+					<a class="btn" href="javascript:void(0);"  >
+						<div class="am-btn am-btn-danger" id="phone1">验证码</div>
 					</a>
 				</div>
 				<div class="am-form-group">
 					<label for="user-new-phone" class="am-form-label">验证手机</label>
 					<div class="am-form-content">
-						<input type="tel" id="user-new-phone" placeholder="绑定新手机号">
+						<input type="text" id="user-new-phone" placeholder="绑定新手机号" name="phone2">
 					</div>
 				</div>
 				<div class="am-form-group code">
@@ -169,11 +158,11 @@
 						<input type="tel" id="user-new-code" placeholder="短信验证码">
 					</div>
 					<a class="btn" href="javascript:void(0);" onclick="sendMobileCode();" id="sendMobileCode">
-						<div class="am-btn am-btn-danger">验证码</div>
+						<div class="am-btn am-btn-danger" id="phone2">验证码</div>
 					</a>
 				</div>
 				<div class="info-btn">
-					<div class="am-btn am-btn-danger">保存修改</div>
+					<div class="am-btn am-btn-danger" id="btn">保存修改</div>
 				</div>
 
 			</form>
@@ -258,23 +247,73 @@
 
 	</aside>
 </div>
+<script type="text/javascript">
+
+    var $step = $("#step");
+    var phone1=$(".phone1").text();
+
+    $("#phone1").click(function () {
+        $step.nextStep();
+        $.ajax({
+            url:'${pageContext.request.contextPath}/phone1',
+            data: "phone1"+phone1,
+            type:'post',
+            success:function (data) {
+                alert(data);
+                // window.location.href="${pageContext.request.contextPath}/emailinfo";
+            }
+        })
+    })
+
+</script>
+<script type="text/javascript">
+
+    var $step = $("#step");
+    var phone2=$("[name=phone2]").text();
+
+    $("#phone2").click(function () {
+
+        $step.nextStep();
+        $.ajax({
+            url:'${pageContext.request.contextPath}/phone2',
+            data: "phone2"+phone2,
+            type:'post',
+            dataType:'json',
+            success:function (data) {
+                 alert(data);
+                // window.location.href="${pageContext.request.contextPath}/emailinfo";
+            }
+        })
+    })
+
+</script>
+<script type="text/javascript">
+
+    var $step = $("#step");
+
+    $("#btn").click(function () {
+        $step.nextStep();
+        $.ajax({
+            url:'${pageContext.request.contextPath}/btn',
+            data: $("#frm").serialize(),
+            type:'post',
+            dataType:'json',
+            success:function () {
+                 window.location.href="${pageContext.request.contextPath}/btninfo";
+            }
+        })
+    })
+
+</script>
 
 
 <script type="text/javascript">
     var $step = $("#step");
-
-
     $step.step({
         index: 0,
         time: 500,
         title: [ "验证手机", "验证中", "验证中","验证完成"]
     });
-
-
-     $("#nextBtn").on("click", function() {
-         $step.nextStep();
-     });
-
 
 </script>
 </body>

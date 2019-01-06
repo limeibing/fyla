@@ -225,7 +225,7 @@
                 </a>
             </div>
             <div class="am-u-sm-3">
-                <a href="${pageContext.request.contextPath}/index"><img src="../images/mansmall.jpg" />
+                <a href=""><img src="../images/mansmall.jpg" />
                     <div class="title">个人中心</div>
                 </a>
             </div>
@@ -554,7 +554,7 @@
 
             <div class="quick_toggle ">
                 <li class="qtitem ">
-                    <a href="${pageContext.request.contextPath}/log"><span class="kfzx "></span></a>
+                    <a href="# "><span class="kfzx "></span></a>
                     <div class="mp_tooltip ">客服中心<i class="icon_arrow_right_black "></i></div>
                 </li>
                 <!--二维码 -->

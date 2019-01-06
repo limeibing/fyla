@@ -1,6 +1,7 @@
 package org.java.controller.fore;
 
 import com.alibaba.fastjson.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.java.controller.BaseController;
 import org.java.entity.Category;
 import org.java.entity.Product;
@@ -11,13 +12,13 @@ import org.java.service.ProductService;
 import org.java.service.UserService;
 import org.java.util.OrderUtil;
 import org.java.util.PageUtil;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
@@ -67,9 +68,7 @@ public class ForeHomeController extends BaseController {
                    product.setSingleProductImageList(productImageService.getList(product_id, (byte) 0, new PageUtil(0, 1)));
                }
            }
-
-           category.setLcate(lcate);
-
+          category.setLcate(lcate);
            category.setProductList(productList);
        }
         map.put("categoryList",categoryList);

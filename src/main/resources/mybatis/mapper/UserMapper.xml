@@ -20,7 +20,11 @@
             <id property="address_areaId" column="user_homeplace"/>
         </association>
     </resultMap>
+    <select id="findAddress" resultType="java.util.HashMap" >
+    SELECT u.user_realname,a.* from user u,address a WHERE u.user_homeplace=a.address_regionId
+    and user_id=#{user_id}
 
+</select>
     <insert id="insertOne" parameterType="org.java.entity.User">
         INSERT INTO user(user_id,user_name,user_nickname,user_password,user_realname,user_gender,user_birthday,user_profile_picture_src,user_address,user_homeplace)
             VALUES (

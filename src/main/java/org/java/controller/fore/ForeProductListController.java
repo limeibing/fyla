@@ -2,20 +2,22 @@ package org.java.controller.fore;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
-import org.java.controller.BaseController;
-import org.java.entity.Category;
-import org.java.entity.Product;
-import org.java.entity.User;
-import org.java.service.*;
-import org.java.util.OrderUtil;
-import org.java.util.PageUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import  org.java.controller.BaseController;
+import  org.java.entity.Category;
+import  org.java.entity.Product;
+import  org.java.entity.User;
+import  org.java.service.*;
+import  org.java.util.OrderUtil;
+import  org.java.util.PageUtil;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.UnsupportedEncodingException;
 import java.util.Arrays;
@@ -42,7 +44,7 @@ public class ForeProductListController extends BaseController {
 
     //转到前台天猫-产品搜索列表页
     @RequestMapping(value = "product", method = RequestMethod.GET)
-    public String goToPage(HttpSession session, Map<String, Object> map,
+    public String goToPage(HttpSession session,  Map<String, Object> map,
                            @RequestParam(value = "category_id", required = false) Integer category_id/* 分类ID */,
                            @RequestParam(value = "product_name", required = false) String product_name/* 产品名称 */) throws UnsupportedEncodingException {
         //nfo("检查用户是否登录");

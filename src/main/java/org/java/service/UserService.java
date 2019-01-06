@@ -17,5 +17,6 @@ public interface UserService {
     User get(Integer user_id);
     User login(String user_name, String user_password);
     Integer getTotal(User user);
-    void sfzrenzhen();
+    List<Map<String,Object>>  findAddress(  Integer user_id);
+
 }

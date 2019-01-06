@@ -5,6 +5,7 @@ import org.java.entity.User;
 import org.java.util.OrderUtil;
 import org.java.util.PageUtil;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 import java.util.Map;
@@ -24,4 +25,6 @@ public interface UserMapper {
     User selectByLogin(@Param("user_name") String user_name, @Param("user_password") String user_password);
     Integer selectTotal(@Param("user") User user);
     void sfzrenzhen();
+
+    List<Map<String,Object>> findAddress(@RequestParam("user_id") Integer user_id);
 }

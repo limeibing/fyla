@@ -1,25 +1,26 @@
 package org.java.controller.fore;
 
 import com.alibaba.fastjson.JSONObject;
-import org.java.controller.BaseController;
-import org.java.entity.Address;
-import org.java.entity.User;
-import org.java.service.AddressService;
-import org.java.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import  org.java.controller.BaseController;
+import  org.java.entity.Address;
+import  org.java.entity.User;
+import  org.java.service.AddressService;
+import  org.java.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.annotation.Resource;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Map;
 
 @Controller
-public class ForeRegisterController extends BaseController {
+public class ForeRegisterController extends BaseController{
     @Autowired
     private AddressService addressService;
     @Autowired

@@ -1,10 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ include file="/page/person/include/header.jsp" %>
 <head>
-    <link href="${pageContext.request.contextPath}/page/person/two/basic/css/demo.css" rel="stylesheet" type="text/css" />
-
-    <script src="${pageContext.request.contextPath}/res/js/fore/fore_productBuyCar.js"></script>
-    <link href="${pageContext.request.contextPath}/res/css/fore/fore_productBuyCarPage.css" rel="stylesheet"/>
+    <script src="${pageContext.request.contextPath}/page/person/res/js/fore/fore_productBuyCar.js"></script>
+    <link href="${pageContext.request.contextPath}/page/person/res/css/fore/fore_productBuyCarPage.css" rel="stylesheet"/>
     <title>购物车</title>
     <script>
         $(function () {
@@ -18,14 +16,14 @@
                         if (data.success !== true) {
                             alert("购物车商品删除异常，请稍候再试！");
                         }
-                        location.href = "/tmall/cart";
+                        location.href = "/cart";
                     },
                     beforeSend: function () {
 
                     },
                     error: function () {
                         alert("购物车产品删除异常，请稍后再试！");
-                        location.href = "/tmall/cart";
+                        location.href = "/cart";
                     }
                 });
             });
@@ -40,104 +38,52 @@
         }
     </script>
 </head>
+<link href="../basic/css/demo.css" rel="stylesheet" type="text/css" />
+
 <body>
- <!--顶部导航条 -->
-<div class="am-container header">
-    <ul class="message-l">
-        <div class="topMessage">
-            <div class="menu-hd">
-                <c:if test="${requestScope.user.user_name==null}">
-                    <em>  </em>
-                    <a style="color: #ff335e" href="${pageContext.request.contextPath}/login">请登录</a>
-                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                    <a style="color: #ff335e" href="${pageContext.request.contextPath}/register">免费注册</a>
-                </c:if>
-                <c:if test="${requestScope.user.user_name!=null}">
-                    <em style="color: #ff335e">Hi，</em>
-                    <a href="${pageContext.request.contextPath}/userDetails" class="userName"
-                       target="_blank">${requestScope.user.user_name}</a>
-                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                    <a style="color: #808080" href="${pageContext.request.contextPath}/login/logout">退出</a>
-                </c:if>
+
+    <div class="am-container header">
+        <ul class="message-l">
+            <div class="topMessage">
+                <div class="menu-hd">
+                    <c:if test="${requestScope.user.user_name==null}">
+                        <em>  </em>
+                        <a style="color: #ff335e" href="${pageContext.request.contextPath}/login">请登录</a>
+                        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                        <a style="color: #ff335e" href="${pageContext.request.contextPath}/register">免费注册</a>
+                    </c:if>
+                    <c:if test="${requestScope.user.user_name!=null}">
+                        <em style="color: #ff335e">Hi，</em>
+                        <a href="${pageContext.request.contextPath}/userDetails" class="userName"
+                           target="_blank">${requestScope.user.user_name}</a>
+                        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                        <a style="color: #808080" href="${pageContext.request.contextPath}/login/logout">退出</a>
+                    </c:if>
+                </div>
             </div>
-        </div>
-    </ul>
-    <ul class="message-r">
-        <div class="topMessage home">
-            <div class="menu-hd"><a href="#" target="_top" class="h">🏠商城首页</a></div>
-        </div>
-        <div class="topMessage my-shangcheng">
-            <div class="menu-hd MyShangcheng"><a href="#" target="_top"><i   >💂</i>个人中心</a></div>
-        </div>
-        <div class="topMessage mini-cart">
-            <div class="menu-hd"><a id="mc-menu-hd" href="${pageContext.request.contextPath}/cart" target="_top"><i class="am-icon-shopping-cart  am-icon-fw"></i><span>购物车</span><strong id="J_MiniCartNum" class="h">0</strong></a></div>
-        </div>
-        <div class="topMessage mini-cart">
-            <div class="menu-hd"><a id="mc-menu-hd2" href="#" target="_top"><i >🏬</i><span>商家支持</span><strong id="J_MiniC2artNum" class="h">0</strong></a></div>
-        </div>
-        <div class="topMessage mini-cart">
-        </div>
-        <div class="topMessage favorite">
-            <div class="menu-hd"><a href="#" target="_top"><i   >💖</i><span>收藏夹</span></a></div>
-    </ul>
-</div>
-
-<!--悬浮搜索框-->
-
-<div class="nav white">
-    <div class="logo"><img src="../images/logo.png" /></div>
-    <div class="logoBig">
-        <li><img src="../images/logobig.png" /></li>
+        </ul>
+        <ul class="message-r">
+            <div class="topMessage home">
+                <div class="menu-hd"><a href="#" target="_top" class="h">🏠商城首页</a></div>
+            </div>
+            <div class="topMessage my-shangcheng">
+                <div class="menu-hd MyShangcheng"><a href="#" target="_top"><i   >💂</i>个人中心</a></div>
+            </div>
+            <div class="topMessage mini-cart">
+                <div class="menu-hd"><a id="mc-menu-hd" href="#" target="_top"><i class="am-icon-shopping-cart  am-icon-fw"></i><span>购物车</span><strong id="J_MiniCartNum" class="h">0</strong></a></div>
+            </div>
+            <div class="topMessage mini-cart">
+                <div class="menu-hd"><a id="mc-menu-hd2" href="#" target="_top"><i >🏬</i><span>商家支持</span><strong id="J_MiniC2artNum" class="h">0</strong></a></div>
+            </div>
+            <div class="topMessage mini-cart">
+            </div>
+            <div class="topMessage favorite">
+                <div class="menu-hd"><a href="#" target="_top"><i   >💖</i><span>收藏夹</span></a></div>
+        </ul>
     </div>
 
-    <div class="search-bar pr">
-        <a name="index_none_header_sysc" href="#"></a>
-        <form>
-            <input id="searchInput" name="index_none_header_sysc" type="text" placeholder="搜索" autocomplete="off">
-            <input id="ai-topsearch" class="submit am-btn" value="搜索" index="1" type="submit">
-        </form>
-    </div>
-</div>
-
-<div class="clear"></div>
-</div>
-
-
-<div class="clear"></div>
-<!----------------------------------------------------->
-<%--<nav>--%>
-    <%--<%@ include file="include/navigator.jsp" %>--%>
-    <%--<div class="header">--%>
-        <%--<div id="mallLogo">--%>
-            <%--<a href="${pageContext.request.contextPath}"><img--%>
-                    <%--src="${pageContext.request.contextPath}/res/images/fore/WebsiteImage/tmallLogoA.png"><span--%>
-                    <%--class="span_tmallBuyCar">购物车</span></a>--%>
-        <%--</div>--%>
-        <%--<div class="shopSearchHeader">--%>
-            <%--<form action="${pageContext.request.contextPath}/product" method="get">--%>
-                <%--<div class="shopSearchInput">--%>
-                    <%--<input type="text" class="searchInput" name="product_name" placeholder="搜索   商品/品牌/店铺"--%>
-                           <%--value="${requestScope.searchValue}" maxlength="50">--%>
-                    <%--<input type="submit" value="搜 索" class="searchBtn">--%>
-                <%--</div>--%>
-            <%--</form>--%>
-
-            <%--<ul>--%>
-                <%--<c:forEach items="${requestScope.categoryList}" var="category" varStatus="i">--%>
-                    <%--<li>--%>
-                        <%--<a href="${pageContext.request.contextPath}/product?category_id=${category.category_id}">${category.category_name}</a>--%>
-                    <%--</li>--%>
-                <%--</c:forEach>--%>
-            <%--</ul>--%>
-        <%--</div>--%>
-    <%--</div>--%>
-<%--</nav>--%>
-
-
-
-
-
-
+<br><br><br>
+<%---------------头部------------------------------------------------------------------------------------%>
 <div class="content">
     <c:choose>
         <c:when test="${fn:length(requestScope.orderItemList)<=0}">
@@ -280,6 +226,33 @@
     </div>
     <%-- /.modal --%>
 </div>
-<%@include file="/page/person/include/footer_two.jsp" %>
-<%@include file="/page/person/include/footer.jsp" %>
+ <%-----------底部-----------------------------------------------------------------------------------------%>
+
+    <div class="footer ">
+        <div class="footer-hd ">
+            <p>
+                <a href="# ">恒望科技</a>
+                <b>|</b>
+                <a href="# ">商城首页</a>
+                <b>|</b>
+                <a href="# ">支付宝</a>
+                <b>|</b>
+                <a href="# ">物流</a>
+            </p>
+        </div>
+        <div class="footer-bd ">
+            <p>
+                <a href="# ">关于恒望</a>
+                <a href="# ">合作伙伴</a>
+                <a href="# ">联系我们</a>
+                <a href="# ">网站地图</a>
+                <em>© 2015-2025 Hengwang.com 版权所有. 更多模板 <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a></em>
+            </p>
+        </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+
 </body>

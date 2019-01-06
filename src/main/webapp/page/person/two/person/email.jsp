@@ -252,13 +252,12 @@
 
         $("#info").click(function () {
             $step.nextStep();
-            document.getElementById("#frm").reset();
             $.ajax({
                 url:'${pageContext.request.contextPath}/info',
                 data: $("#frm").serialize(),
                 type:'post',
                 success:function () {
-                    //window.location.href="${pageContext.request.contextPath}/emailinfo";
+                    window.location.href="${pageContext.request.contextPath}/emailinfo";
 
                 }
             })

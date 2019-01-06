@@ -164,7 +164,7 @@
 								<i class="i-safety-iphone"></i>
 								<div class="m-left">
 									<div class="fore1">手机验证</div>
-									<div class="fore2"><small>您验证的手机：186XXXXXXXX 若已丢失或停用，请立即更换</small></div>
+									<div class="fore2"><small>您验证的手机：${sessionScope.phone} 若已丢失或停用，请立即更换</small></div>
 								</div>
 								<div class="fore3">
 									<a href="${pageContext.request.contextPath}/bindphone">
@@ -176,7 +176,7 @@
 								<i class="i-safety-mail"></i>
 								<div class="m-left">
 									<div class="fore1">邮箱验证</div>
-									<div class="fore2"><small>您验证的邮箱：5831XXX@qq.com 可用于快速找回登录密码</small></div>
+									<div class="fore2"><small>您验证的邮箱：${sessionScope.email} 可用于快速找回登录密码</small></div>
 								</div>
 								<div class="fore3">
 									<a href="${pageContext.request.contextPath}/email">

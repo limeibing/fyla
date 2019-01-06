@@ -4,6 +4,8 @@ package org.java.web;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpSession;
+
 @Controller
 public class GerenController {
 //
@@ -36,8 +38,9 @@ public class GerenController {
     }
     //安全设置
     @RequestMapping("/anquanshezhi")
-    public String anquanshezhi(){
-
+    public String anquanshezhi(HttpSession ses){
+        ses.setAttribute("email", "1350430787@qq.com");
+        ses.setAttribute("phone", "18571693213");
         return  "page/person/two/person/safety";
         //return  "page/person/two/person/index";
     }

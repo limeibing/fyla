@@ -2,15 +2,16 @@ package org.java.controller.fore;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.java.controller.BaseController;
 import org.java.entity.*;
 import org.java.service.*;
 import org.java.util.OrderUtil;
 import org.java.util.PageUtil;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.Resource;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -50,9 +51,11 @@ public class ForeOrderController extends BaseController {
 
     @RequestMapping(value = "order/{index}/{count}", method = RequestMethod.GET)
     public String goToPage(HttpSession session, Map<String, Object> map,
+                           HttpServletRequest request,
                            @RequestParam(required = false) Byte status,
                            @PathVariable("index") Integer index/* 页数 */,
                            @PathVariable("count") Integer count/* 行数*/) {
+      System.out.println("所有订单页");
         //nfo("检查用户是否登录");
         Object userId = checkUser(session);
         User user;
@@ -63,15 +66,16 @@ public class ForeOrderController extends BaseController {
         } else {
             return "redirect:/login";
         }
+     //   System.out.println("点击结算之后1");
         Byte[] status_array = null;
         if (status != null) {
             status_array = new Byte[]{status};
         }
-
+     //   System.out.println("点击结算之后2");
         PageUtil pageUtil = new PageUtil(index, count);
         //nfo("根据用户ID:{}获取订单列表", userId);
         List<ProductOrder> productOrderList = productOrderService.getList(new ProductOrder().setProductOrder_user(new User().setUser_id(Integer.valueOf(userId.toString()))), status_array, new OrderUtil("productOrder_id", true), pageUtil);
-
+      //  System.out.println("点击结算之后3");
         //订单总数量
         Integer orderCount = 0;
         if (productOrderList.size() > 0) {
@@ -93,27 +97,31 @@ public class ForeOrderController extends BaseController {
                 order.setProductOrderItemList(productOrderItemList);
             }
         }
+     //   System.out.println("点击结算之后4");
         pageUtil.setTotal(orderCount);
 
         //nfo("获取产品分类列表信息");
         List<Category> categoryList = categoryService.getList(null, new PageUtil(0, 5));
-
+      //  System.out.println("点击结算之后5");
         map.put("pageUtil", pageUtil);
         map.put("productOrderList", productOrderList);
         map.put("categoryList", categoryList);
         map.put("status", status);
-
-        //nfo("转到前台天猫-订单列表页");
-        return "fore/orderListPage";
+     //   System.out.println("点击结算之后6");
+         //nfo("转到前台天猫-订单列表页");
+      return "/page/person/two/person/order";
+//        return  "fore/productPayPage";
     }
 
     //转到前台天猫-订单建立页
+
     @RequestMapping(value = "order/create/{product_id}", method = RequestMethod.GET)
     public String goToOrderConfirmPage(@PathVariable("product_id") Integer product_id,
                                        @RequestParam(required = false, defaultValue = "1") Short product_number,
                                        Map<String, Object> map,
                                        HttpSession session,
                                        HttpServletRequest request) throws UnsupportedEncodingException {
+        System.err.println("单商品    //转到前台天猫-订单建立页\n");
         //nfo("检查用户是否登录");
         Object userId = checkUser(session);
         User user;
@@ -200,9 +208,15 @@ public class ForeOrderController extends BaseController {
         map.put("order_receiver", order_receiver);
         map.put("order_phone", order_phone);
         map.put("detailsAddress", detailsAddress);
-
-        //nfo("转到前台天猫-订单建立页");
-        return "fore/productBuyPage";
+        List<Map<String,Object>>   addressMap=userService.findAddress(user.getUser_id());
+        //map.put("addressMap", addressMap);
+        request.setAttribute("addressMap", addressMap);
+//      logger.info("地址map:"+addressMap.toString());
+//  //nfo("转到前台天猫-订单建立页");
+        System.err.println("product:"+map.toString());
+      return "/page/person/two/home/pay";
+//      return "/fore/productBuyPage";
+//        return  map.toString();
     }
 
     //转到前台天猫-购物车订单建立页
@@ -210,6 +224,8 @@ public class ForeOrderController extends BaseController {
     public String goToOrderConfirmPageByCart(Map<String, Object> map,
                                              HttpSession session, HttpServletRequest request,
                                              @RequestParam(required = false) Integer[] order_item_list) throws UnsupportedEncodingException {
+        System.err.println("购物车购买 //转到前台天猫-购物车订单建立页");
+      //  System.err.println("进入购物车购买");
         //nfo("检查用户是否登录");
         Object userId = checkUser(session);
         User user;
@@ -235,8 +251,11 @@ public class ForeOrderController extends BaseController {
             return "redirect:/cart";
         }
         for (ProductOrderItem orderItem : orderItemList) {
-            if (orderItem.getProductOrderItem_user().getUser_id() != userId) {
+        //    System.err.println("用户订单项与用户不匹配"+orderItem);
+            if (!orderItem.getProductOrderItem_user().getUser_id() .equals( userId)) {
                 logger.warn("用户订单项与用户不匹配，回到购物车页");
+        //        System.err.println("不匹配id:"+orderItem.getProductOrderItem_user().getUser_id()+"userId"+userId);
+
                 return "redirect:/cart";
             }
             if (orderItem.getProductOrderItem_order() != null) {
@@ -310,15 +329,21 @@ public class ForeOrderController extends BaseController {
         map.put("order_receiver", order_receiver);
         map.put("order_phone", order_phone);
         map.put("detailsAddress", detailsAddress);
-
+//我的新增 用户地址
+        List<Map<String,Object>>   addressMap=userService.findAddress(user.getUser_id());
+        //map.put("addressMap", addressMap);
+        request.setAttribute("addressMap", addressMap);
+        //我的新增 用户地址
         //nfo("转到前台天猫-订单建立页");
-        return "fore/productBuyPage";
+        System.err.println("进入购物车结算方法最后");
+        return "/page/person/two/home/pay";
     }
 
     //转到前台天猫-订单支付页
     @RequestMapping(value = "order/pay/{order_code}", method = RequestMethod.GET)
     public String goToOrderPayPage(Map<String, Object> map, HttpSession session,
                                    @PathVariable("order_code") String order_code) {
+        System.err.println(" //转到前台天猫-订单支付页-结算页");
         //nfo("检查用户是否登录");
         Object userId = checkUser(session);
         User user;
@@ -329,7 +354,7 @@ public class ForeOrderController extends BaseController {
         } else {
             return "redirect:/login";
         }
-        //nfo("------验证订单信息------");
+         //nfo("------验证订单信息------");
         //nfo("查询订单是否存在");
         ProductOrder order = productOrderService.getByCode(order_code);
         if (order == null) {
@@ -346,6 +371,7 @@ public class ForeOrderController extends BaseController {
             logger.warn("用户与订单信息不一致，返回订单列表页");
             return "redirect:/order/0/10";
         }
+
         order.setProductOrderItemList(productOrderItemService.getListByOrderId(order.getProductOrder_id(), null));
 
         double orderTotalPrice = 0.00;
@@ -367,13 +393,14 @@ public class ForeOrderController extends BaseController {
         map.put("orderTotalPrice", orderTotalPrice);
 
         //nfo("转到前台天猫-订单支付页");
-        return "fore/productPayPage";
+        return "page/person/two/home/productPayPage";
     }
 
     //转到前台天猫-订单支付成功页
     @RequestMapping(value = "order/pay/success/{order_code}", method = RequestMethod.GET)
     public String goToOrderPaySuccessPage(Map<String, Object> map, HttpSession session,
                                           @PathVariable("order_code") String order_code) {
+        System.err.println("//转到前台天猫-订单支付成功页");
         //nfo("检查用户是否登录");
         Object userId = checkUser(session);
         User user;
@@ -445,6 +472,7 @@ public class ForeOrderController extends BaseController {
     @RequestMapping(value = "order/confirm/{order_code}", method = RequestMethod.GET)
     public String goToOrderConfirmPage(Map<String, Object> map, HttpSession session,
                                        @PathVariable("order_code") String order_code) {
+        System.err.println("    //转到前台天猫-订单确认页\n");
         //nfo("检查用户是否登录");
         Object userId = checkUser(session);
         User user;
@@ -506,6 +534,7 @@ public class ForeOrderController extends BaseController {
     @RequestMapping(value = "order/success/{order_code}", method = RequestMethod.GET)
     public String goToOrderSuccessPage(Map<String, Object> map, HttpSession session,
                                        @PathVariable("order_code") String order_code) {
+        System.err.println("    //转到前台天猫-订单完成页\n");
         //nfo("检查用户是否登录");
         Object userId = checkUser(session);
         User user;
@@ -591,14 +620,23 @@ public class ForeOrderController extends BaseController {
         map.put("orderItemTotal", orderItemTotal);
 
         //nfo("转到前台天猫-购物车页");
-//        return "page/person/two/home/productBuyCarPage";
-        return "page/person/two/home/shopcart";
+      return "page/person/two/home/productBuyCarPage";
+//        return "page/person/two/home/shopcart";
     }
+//pay2222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222
+    @ResponseBody
+    @RequestMapping( "order/pay2/{order_code}")
+    public String orderPay2( @PathVariable("order_code") String order_code) {
+        System.out.println("进入pay2");
+        return  order_code;
+    }
+//pay2222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222
 
     //更新订单信息为已支付，待发货-ajax
     @ResponseBody
-    @RequestMapping(value = "order/pay/{order_code}", method = RequestMethod.PUT)
+    @RequestMapping(value = "order/pay/{order_code}", method = RequestMethod.POST)
     public String orderPay(HttpSession session, @PathVariable("order_code") String order_code) {
+        System.err.println("进入支付页面，待发货-ajax");
         JSONObject object = new JSONObject();
         //nfo("检查用户是否登录");
         Object userId = checkUser(session);
@@ -607,6 +645,7 @@ public class ForeOrderController extends BaseController {
             object.put("url", "/login");
             return object.toJSONString();
         }
+        System.err.println("进入支付页面1");
         //nfo("------验证订单信息------");
         //nfo("查询订单是否存在");
         ProductOrder order = productOrderService.getByCode(order_code);
@@ -631,6 +670,7 @@ public class ForeOrderController extends BaseController {
             return object.toJSONString();
         }
         order.setProductOrderItemList(productOrderItemService.getListByOrderId(order.getProductOrder_id(), null));
+        System.err.println("进入支付页面2");
 
         double orderTotalPrice = 0.00;
         if (order.getProductOrderItemList().size() == 1) {
@@ -645,12 +685,15 @@ public class ForeOrderController extends BaseController {
                 orderTotalPrice += productOrderItem.getProductOrderItem_price();
             }
         }
+        System.err.println("进入支付页面3");
+
         //nfo("总共支付金额为：{}元", orderTotalPrice);
         //nfo("更新订单信息");
         ProductOrder productOrder = new ProductOrder()
                 .setProductOrder_id(order.getProductOrder_id())
                 .setProductOrder_pay_date(new Date())
                 .setProductOrder_status((byte) 1);
+        System.err.println("进入支付页面4");
 
         boolean yn = productOrderService.update(productOrder);
         if (yn) {
@@ -660,6 +703,8 @@ public class ForeOrderController extends BaseController {
             object.put("success", false);
             object.put("url", "/order/0/10");
         }
+        System.err.println("进入支付页面5");
+
         return object.toJSONString();
     }
 
@@ -703,6 +748,7 @@ public class ForeOrderController extends BaseController {
     @ResponseBody
     @RequestMapping(value = "order/success/{order_code}", method = RequestMethod.PUT, produces = "application/json;charset=utf-8")
     public String orderSuccess(HttpSession session, @PathVariable("order_code") String order_code) {
+        System.err.println(" //更新订单信息为已支付，待发货-ajax");
         JSONObject object = new JSONObject();
         //nfo("检查用户是否登录");
         Object userId = checkUser(session);
@@ -803,6 +849,7 @@ public class ForeOrderController extends BaseController {
     @RequestMapping(value = "orderItem", method = RequestMethod.PUT, produces = "application/json;charset=utf-8")
     public String updateOrderItem(HttpSession session, Map<String, Object> map, HttpServletResponse response,
                                   @RequestParam String orderItemMap) {
+        System.err.println(" //更新订单信息为已支付，待发货-ajax");
         JSONObject object = new JSONObject();
         //nfo("检查用户是否登录");
         Object userId = checkUser(session);

@@ -1,16 +1,17 @@
 package org.java.web;
 
+import com.alibaba.fastjson.JSON;
 import org.java.entity.User;
 import org.java.service.UserService;
 import org.java.util.SendEmail;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.PrintWriter;
 import java.util.Map;
 
 @Controller
@@ -60,20 +61,58 @@ public class PersonController {
     }
     @RequestMapping("/info")
     @ResponseBody
-    public void info(@RequestParam Map map){
-        String tel=(String)map.get("tel");
-        System.out.println("修改成功！");
+    public void info(@RequestParam Map map,HttpSession ses){
+        String email=(String)map.get("email");
+        ses.setAttribute("email", email);
     }
-  /*  @RequestMapping("/emailinfo")
-    public String emailinfo(){
-        return  "page/person/two/person/email";
-    }
-*/
 
+    @RequestMapping("/emailinfo")
+    public String emailinfo(){
+        return  "page/person/two/person/safety";
+    }
 
     @RequestMapping("/bindphone")
     public String bindphone(){
         return  "page/person/two/person/bindphone";
+    }
+
+
+    @RequestMapping(value = "/phone1" , method = RequestMethod.POST , produces = "application/json; charset=utf-8")
+    @ResponseBody
+    public void phone1(HttpServletRequest req,HttpServletResponse response) throws Exception{
+        response.setCharacterEncoding("UTF-8");
+        response.setContentType("text/html;charset=UTF-8");
+
+        PrintWriter out=response.getWriter();
+        String context ="验证码："+ (int)((Math.random()*9+1)*100000);
+        out.write(JSON.toJSONString(context));
+        out.flush();
+        out.close();
+        //System.out.println(context);
+    }
+    @RequestMapping(value = "/phone2" , method = RequestMethod.POST , produces = "application/json; charset=utf-8")
+    @ResponseBody
+    public void phone2(HttpServletRequest req,HttpServletResponse response) throws Exception{
+        response.setCharacterEncoding("UTF-8");
+        response.setContentType("text/html;charset=UTF-8");
+
+        PrintWriter out=response.getWriter();
+        String context ="新手机号验证码："+ (int)((Math.random()*9+1)*100000);
+        out.write(JSON.toJSONString(context));
+        out.flush();
+        out.close();
+        System.out.println(context);
+    }
+    @RequestMapping("/btn")
+    @ResponseBody
+    public void  btn(@RequestParam Map map,HttpSession ses){
+         String phone2=(String)map.get("phone2");
+         ses.setAttribute("phone", phone2);
+        // return  "page/person/two/person/safety";
+    }
+    @RequestMapping("/btninfo")
+    public String  btninfo(){
+        return  "page/person/two/person/safety";
     }
 
 }

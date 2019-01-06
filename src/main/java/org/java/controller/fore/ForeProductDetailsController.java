@@ -3,14 +3,15 @@ package org.java.controller.fore;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import org.java.controller.BaseController;
-import org.java.entity.*;
-import org.java.service.*;
-import org.java.util.PageUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import  org.java.controller.BaseController;
+import  org.java.entity.*;
+import  org.java.service.*;
+import  org.java.util.PageUtil;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
@@ -42,14 +43,14 @@ public class ForeProductDetailsController extends BaseController {
 
     @RequestMapping("/ppp/{pid}" )
     public String ss(HttpSession session, HttpServletRequest request, Map<String, Object> map,
-                     @PathVariable("pid") String pid /*产品ID*/) {
+                           @PathVariable("pid") String pid /*产品ID*/) {
         System.out.println(pid);
         return  "/aaa";
     }
         //转到前台天猫-产品详情页
     @RequestMapping("/product/{pid}" )
      public String goToPage(HttpSession session, HttpServletRequest request, Map<String, Object> map,
-                            @PathVariable("pid") String pid /*产品ID*/) {
+                           @PathVariable("pid") String pid /*产品ID*/) {
 
         Object userId = checkUser(session);
         if (userId != null) {

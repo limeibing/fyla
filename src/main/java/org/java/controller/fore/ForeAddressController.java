@@ -1,16 +1,17 @@
 package org.java.controller.fore;
 
 import com.alibaba.fastjson.JSONObject;
-import org.java.controller.BaseController;
-import org.java.entity.Address;
-import org.java.service.AddressService;
 import org.springframework.beans.factory.annotation.Autowired;
+import  org.java.controller.BaseController;
+import  org.java.entity.Address;
+import  org.java.service.AddressService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 @Controller

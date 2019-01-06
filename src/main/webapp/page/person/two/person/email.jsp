@@ -5,28 +5,26 @@
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>验证邮箱</title>
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/jquery.step.css" />
 
-<html>
+	<script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
+	<script src="${pageContext.request.contextPath}/js/jquery.step.min.js"></script>
 
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=0">
+	<link href="${pageContext.request.contextPath}/page/person/two/AmazeUI-2.4.2/assets/css/admin.css" rel="stylesheet" type="text/css">
+	<link href="${pageContext.request.contextPath}/page/person/two/AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet" type="text/css">
 
-		<title>验证邮箱</title>
+	<link href="${pageContext.request.contextPath}/page/person/two/css/personal.css" rel="stylesheet" type="text/css">
+	<link href="${pageContext.request.contextPath}/page/person/two/css/stepstyle.css" rel="stylesheet" type="text/css">
 
-		<link href="${pageContext.request.contextPath}/page/person/two/AmazeUI-2.4.2/assets/css/admin.css" rel="stylesheet" type="text/css">
-		<link href="${pageContext.request.contextPath}/page/person/two/AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet" type="text/css">
+	<%--<script type="text/javascript" src="${pageContext.request.contextPath}/page/person/two/js/jquery-1.7.2.min.js"></script>--%>
+	<script src="${pageContext.request.contextPath}/page/person/two/AmazeUI-2.4.2/assets/js/amazeui.js"></script>
 
-		<link href="${pageContext.request.contextPath}/page/person/two/css/personal.css" rel="stylesheet" type="text/css">
-		<link href="${pageContext.request.contextPath}/page/person/two/css/stepstyle.css" rel="stylesheet" type="text/css">
+</head>
+<body>
 
-		<script type="text/javascript" src="${pageContext.request.contextPath}/page/person/two/js/jquery-1.7.2.min.js"></script>
-		<script src="${pageContext.request.contextPath}/page/person/two/AmazeUI-2.4.2/assets/js/amazeui.js"></script>
-
-	</head>
-
-	<body>
-	<!--头 -->
+<!--头 -->
 	<header>
 		<article>
 			<div class="mt-logo">
@@ -74,7 +72,6 @@
 				<!--悬浮搜索框-->
 
 				<div class="nav white">
-					<%--<div class="logo"><img src="/images/logo.png" /></div>--%>
 					<div class="logoBig">
 						<li><img src="/images/logobig.png" /></li>
 					</div>
@@ -119,41 +116,36 @@
 				</div>
 				<hr/>
 				<!--进度条-->
-				<div class="m-progress">
+				<div class="m-progress" style="height: 170px;">
 					<div class="m-progress-list">
-							<span class="step-1 step">
-                                <em class="u-progress-stage-bg"></em>
-                                <i class="u-stage-icon-inner">1<em class="bg"></em></i>
-                                <p class="stage-name">验证邮箱</p>
-                            </span>
-						<span class="step-2 step">
-                                <em class="u-progress-stage-bg"></em>
-                                <i class="u-stage-icon-inner">2<em class="bg"></em></i>
-                                <p class="stage-name">完成</p>
-                            </span>
-						<span class="u-progress-placeholder"></span>
+									<div id="step"></div>
+									<%--<div class="btns">
+										<button id="nextBtn">下一步</button>
+									</div>
+--%>
+						<%--<span class="u-progress-placeholder"></span>--%>
 					</div>
 					<div class="u-progress-bar total-steps-2">
 						<div class="u-progress-bar-inner"></div>
 					</div>
 				</div>
-				<form class="am-form am-form-horizontal">
+				<form class="am-form am-form-horizontal" id="frm">
 					<div class="am-form-group">
 						<label for="user-email" class="am-form-label">验证邮箱</label>
 						<div class="am-form-content">
-							<input type="email" id="user-email" placeholder="请输入邮箱地址">
+							<input type="email" id="user-email" placeholder="请输入邮箱地址" name="email">
 						</div>
 					</div>
 					<div class="am-form-group code">
 						<label for="user-code" class="am-form-label">验证码</label>
 						<div class="am-form-content">
-							<input type="tel" id="user-code" placeholder="验证码">
+							<input type="tel" id="user-code" placeholder="验证码" name="tel">
 						</div>
 						<a class="btn" href="javascript:void(0);" onclick="sendMobileCode();" id="sendMobileCode">
 							<div class="am-btn am-btn-danger">验证码</div>
 						</a>
 					</div>
-					<div class="info-btn">
+					<div class="info-btn" id="info">
 						<div class="am-btn am-btn-danger">保存修改</div>
 					</div>
 
@@ -239,8 +231,61 @@
 
 		</aside>
 	</div>
+<script type="text/javascript">
+    var $step = $("#step");
+	$("#sendMobileCode").click(function () {
+        $step.nextStep();
+        $.ajax({
+            url:'${pageContext.request.contextPath}/emails',
+            data: $("#frm").serialize(),
+            type:'post',
+            success:function () {
+               // window.location.href="${pageContext.request.contextPath}/emailinfo";
+            }
+        })
+    })
 
-	</body>
+</script>
+	<script type="text/javascript">
+
+        var $step = $("#step");
+
+        $("#info").click(function () {
+            $step.nextStep();
+            document.getElementById("#frm").reset();
+            $.ajax({
+                url:'${pageContext.request.contextPath}/info',
+                data: $("#frm").serialize(),
+                type:'post',
+                success:function () {
+                    //window.location.href="${pageContext.request.contextPath}/emailinfo";
+
+                }
+            })
 
 
+        })
+
+	</script>
+
+
+<script type="text/javascript">
+    var $step = $("#step");
+
+
+    $step.step({
+        index: 0,
+        time: 500,
+        title: [ "验证邮箱", "验证中", "验证完成"]
+    });
+
+
+   /* $("#nextBtn").on("click", function() {
+        $step.nextStep();
+    });
+*/
+
+</script>
+
+</body>
 </html>

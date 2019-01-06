@@ -167,7 +167,7 @@
 									<div class="fore2"><small>您验证的手机：186XXXXXXXX 若已丢失或停用，请立即更换</small></div>
 								</div>
 								<div class="fore3">
-									<a href="bindphone.html">
+									<a href="${pageContext.request.contextPath}/bindphone">
 										<div class="am-btn am-btn-secondary">换绑</div>
 									</a>
 								</div>

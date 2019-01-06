@@ -1,7 +1,7 @@
 .m-progress {margin: 0 auto 25px;height: 60px;width: 80%;max-width: 700px;margin-top:60px ;}
 .m-progress-list{height: 66px;font-size: 0;text-align: justify;}
 /*步骤背景*/
-.m-progress-list .step {display: inline-block;width: 80px;text-align: center;color: #999;letter-spacing: -5px;}
+.m-progress-list .step {display: inline-block;width: 80px;text-align: center;letter-spacing: -5px;}
 .m-progress-list .stage-name {padding-top: 10px;font-size: 12px;line-height: 14px;
 letter-spacing: normal;word-spacing: normal;}
 .u-progress-stage-bg {position: relative;display: inline-block;background-image: url(../images/sprite.png);

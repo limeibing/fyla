@@ -258,19 +258,19 @@
             <li class="person">
                 <p><i class="am-icon-dollar"></i>物流管理</p>
                 <ul>
-                    <li><a href="points.html">发货</a></li>
-                    <li><a href="coupon.html">物流管理</a></li>
-                    <li><a href="bonus.html">物流服务</a></li>
-                    <li><a href="walletlist.html">寄快递</a></li>
+                    <li><a href="/fh">发货</a></li>
+                    <li><a href="#">物流管理</a></li>
+                    <li><a href="#">物流服务</a></li>
+                    <li><a href="/jkd">寄快递</a></li>
                 </ul>
             </li>
 
             <li class="person">
                 <p><i class="am-icon-qq"></i>服务客服</p>
                 <ul>
-                    <li><a href="consultation.html">退款管理</a></li>
-                    <li><a href="suggest.html">违规记录</a></li>
-                    <li><a href="suggest.html">基金还款</a></li>
+                    <li><a href="#">退款管理</a></li>
+                    <li><a href="#">违规记录</a></li>
+                    <li><a href="#">基金还款</a></li>
                 </ul>
             </li>
         </ul>

@@ -5078,7 +5078,7 @@
                                             </li>
 
 
-                                            <li><a href="https://wuliu.taobao.com/kuaidi/post.htm" target="_blank"
+                                            <li><a href="/jkd" target="_blank"
                                                    title="我要寄快递">我要寄快递</a></li>
 
                                             <li><a href="https://data.i56.taobao.com/main.htm" target="_blank"

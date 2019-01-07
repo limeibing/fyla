@@ -107,6 +107,7 @@
                         "><img src="../images/TB1ZXGdrXooBKNjSZFPXXXa2XXa-750-90.png"/></li>
                     </ul>
                     <div>
+                        <form>
                         <div class="J_FilterBody filter-bd" style="margin-top: -50px;
                         " data-spm-anchor-id="a1z0f.3.0.i4.294713a2NuzZO5">
                             <ul>
@@ -121,7 +122,7 @@
                                 <li class="date">
                                     <label>创建时间：</label>
                                     <span>
-        				<input  id="productorder_pay_date1"  type="text" value="2018-12-01" >
+        				<input  id="productorder_pay_date1"  type="text" value="2018-01-01" >
         				至
         				<input id="productorder_pay_date2" type="text" value="2018-12-31" class="plain deal_date" >
         			</span>
@@ -131,7 +132,8 @@
                                 <li class="no">
                                     <label>订单编号：</label>
                                     <span>
-        				<input type="text" id="productorder_id" maxlength="32" >
+        				<input type="text" id="productorder_id" maxlength="32" style="margin-bottom: 20px;margin-top: 20px;" >
+
         			</span>
                                 </li>
 
@@ -140,9 +142,10 @@
                                 <!--add by tdd end-->
                             </ul>
                             <span class="skin-gray">
-    		    <input type="button" value="搜索" class="search" onclick="query()">
+    		                    <button  onclick="query()" type="button"  class="button" >搜索订单</button>  <button type="reset" class="button" >重置</button>
     		       		       		       		</span>
                         </div>
+                        </form>
                         <table width="95%" id="table">
 
                         </table>
@@ -239,17 +242,17 @@
             <li class="person">
                 <p><i class="am-icon-dollar"></i>物流管理</p>
                 <ul>
-                    <li><a href="points.html">发货</a></li>
-                    <li><a href="coupon.html">物流管理</a></li>
-                    <li><a href="walletlist.html">寄快递</a></li>
+                    <li><a href="/fh">发货</a></li>
+                    <li><a href="#">物流管理</a></li>
+                    <li><a href="/jkd">寄快递</a></li>
                 </ul>
             </li>
 
             <li class="person">
                 <p><i class="am-icon-tags"></i>宝贝管理</p>
                 <ul>
-                    <li><a href="collection.html">出售中的宝贝</a></li>
-                    <li><a href="foot.html">仓库中的宝贝</a></li>
+                    <li><a href="/kdcg">出售中的宝贝</a></li>
+                    <li><a href="/kdcg">仓库中的宝贝</a></li>
                 </ul>
             </li>
 
@@ -258,6 +261,47 @@
 
     </aside>
 </div>
+<style>
+    .button {
+        width: 80px;
+        height: 30px;
+        border-radius: 3px;
+        border: 0px;
+        font-size: 12px;
+        color: #ffffff;
+        background-color: #ff4200;
+    }
+
+    .button:hover {
+        width: 80px;
+        height: 30px;
+        border-radius: 3px;
+        border: 0px;
+        font-size: 12px;
+        color: #ffffff;
+        background-color: #ff1d00;
+    }
+
+    .button2 {
+        width: 80px;
+        height: 30px;
+        border-radius: 3px;
+        border: 1px solid #ddd;
+        font-size: 12px;
+        color: #000;
+        background-color: #fff;
+    }
+
+    .button2:hover {
+        width: 80px;
+        height: 30px;
+        border-radius: 3px;
+        border: 1px solid #ff1d00;
+        font-size: 12px;
+        color: #ff1d00;
+        background-color: #fff;
+    }
+</style>
 <script>
     var tableIns;
 
@@ -279,7 +323,7 @@
                 'productorder_pay_date1': productorder_pay_date1,
                 'productorder_pay_date2': productorder_pay_date2,
                 'productorder_id': productorder_id,
-                'productorder_receiver': productorder_receiver,
+                'productorder_receiver': productorder_receiver
             }
             , limit:
                 10 //每页默认显示的数量
@@ -346,6 +390,7 @@
 
     });
 </script>
+
 </body>
 
 </html>

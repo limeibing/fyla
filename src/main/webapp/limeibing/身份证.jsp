@@ -71,8 +71,8 @@
 										<div class="frm_div">
 
 											<img
-													src="${pageContext.request.contextPath}/../res/images/item/adminProfilePicture/${sessionScope.sfz}"
-													id="admin_profile_picture" width="84px" height="84px"
+													src=""
+													id="admin_profile_picture" width="50%" height="50%"
 													onerror="this.src='${pageContext.request.contextPath}/res/images/admin/loginPage/default_profile_picture-128x128.png'"/>
 											<input type="file" onchange="uploadImage(this)" accept="image/*" id="uploadImage">
 										</div>
@@ -87,7 +87,6 @@
 							</ul>
 						</div>
 						<div class="info-btn">
-							<div class="am-btn am-btn-danger">提交</div>
 							<div class="am-btn am-btn-danger" style="margin-top: 50px" onclick="sfzyz()">立即验证身份证</div>
 						</div>
 					</div>
@@ -173,6 +172,13 @@
         var file = fileDom.files[0];
         //判断类型
         var imageType = /^image\//;
+
+        var imgUrl =window.URL.createObjectURL(fileDom.files[0]);
+        var img =document.getElementById('admin_profile_picture');
+        img.setAttribute('src',imgUrl);
+
+
+
         if (file === undefined || !imageType.test(file.type)) {
             $("#btn-ok").unbind("click").click(function () {
                 $("#modalDiv").modal("hide");
@@ -222,19 +228,26 @@
 	function sfzyz() {
         var sfzname=$("#user-name").val();
         var sfzid=$("#user-IDcard").val();
-        $.ajax({
-            url: "/sfzyz",
-            type: "post",
-            data: {'sfzname':sfzname,'sfzid':sfzid},
-			success:function(data){
-              if (data=="success") {
-				location.href='/kai4';
-                  //进入下一个页面
-              }else {
-                  alert(data);
-			  }
-			}
-        });
+        if(sfzname == null ||sfzname == '' || sfzid==null || sfzid=='') {
+            alert("请填写身份证信息再操作！");
+        }else{
+            alert("身份证信息正在验证中，请不要刷新本页面.........！");
+            $.ajax({
+                url: "/sfzyz",
+                type: "post",
+                data: {'sfzname':sfzname,'sfzid':sfzid},
+                success:function(data){
+                    if (data=="success") {
+                        location.href='/kdcg';
+                        //进入下一个页面
+                    }else {
+                        alert(data);
+                        location.href='/renzhenzhifubao';
+
+                    }
+                }
+            });
+		}
     }
 
 </script>

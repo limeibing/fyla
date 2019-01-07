@@ -49,7 +49,7 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public void sfzrenzhen() {
-        userMapper.sfzrenzhen();
+    public void sfzrenzhen( String user_id) {
+        userMapper.sfzrenzhen(  user_id);
     }
 }

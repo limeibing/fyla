@@ -56,7 +56,7 @@
         </where>
     </update>
     <select id="select" resultMap="userMap">
-        SELECT user_id,user_name,user_nickname,user_password,user_realname,user_gender,user_birthday,user_profile_picture_src,user_address,user_homeplace FROM user
+        SELECT user_id,user_name,user_nickname,user_renzhen,user_password,user_realname,user_gender,user_birthday,user_profile_picture_src,user_address,user_homeplace FROM user
         <if test="user != null">
             <where>
                 <if test="user.user_name != null">
@@ -75,13 +75,13 @@
         </if>
     </select>
     <select id="selectOne" resultMap="userMap" parameterType="int">
-        SELECT user_id,user_name,user_nickname,user_password,user_realname,user_gender,user_birthday,user_profile_picture_src,user_address,user_homeplace FROM user
+        SELECT user_id,user_name,user_nickname,user_renzhen,user_password,user_realname,user_gender,user_birthday,user_profile_picture_src,user_address,user_homeplace FROM user
         <where>
             user_id = #{user_id}
         </where>
     </select>
     <select id="selectByLogin" resultMap="userMap">
-        SELECT user_id,user_name,user_nickname,user_password,user_realname,user_gender,user_birthday,user_profile_picture_src,user_address,user_homeplace FROM user
+        SELECT user_id,user_name,user_nickname,user_renzhen,user_password,user_realname,user_gender,user_birthday,user_profile_picture_src,user_address,user_homeplace FROM user
         <where>
             user_name = #{user_name} and user_password = #{user_password}
         </where>
@@ -99,5 +99,5 @@
             </where>
         </if>
     </select>
-    <update id="sfzrenzhen" >update user set user_renzhen='1' from user </update>
+    <update id="sfzrenzhen" >update user set user_renzhen='1'  where user_id=#{user_id} </update>
 </mapper>

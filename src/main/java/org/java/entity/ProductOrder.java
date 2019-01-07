@@ -17,7 +17,7 @@ public class ProductOrder implements Serializable {
     private Date productOrder_pay_date;
     private Date productOrder_delivery_date;
     private Date productOrder_confirm_date;
-    private Byte productOrder_status;
+    private Integer productOrder_status;
     private User productOrder_user;
     private List<ProductOrderItem> productOrderItemList;
 
@@ -43,7 +43,7 @@ public class ProductOrder implements Serializable {
     public ProductOrder() {
     }
 
-    public ProductOrder(Integer productOrder_id, String productOrder_code, Address productOrder_address, String productOrder_detail_address, String productOrder_post, String productOrder_receiver, String productOrder_mobile, Date productOrder_pay_date, Byte productOrder_status, User productOrder_user) {
+    public ProductOrder(Integer productOrder_id, String productOrder_code, Address productOrder_address, String productOrder_detail_address, String productOrder_post, String productOrder_receiver, String productOrder_mobile, Date productOrder_pay_date, Integer productOrder_status, User productOrder_user) {
         this.productOrder_id = productOrder_id;
         this.productOrder_code = productOrder_code;
         this.productOrder_address = productOrder_address;
@@ -56,7 +56,7 @@ public class ProductOrder implements Serializable {
         this.productOrder_user = productOrder_user;
     }
 
-    public ProductOrder(Integer productOrder_id, String productOrder_code, Address productOrder_address, String productOrder_detail_address, String productOrder_post, String productOrder_receiver, String productOrder_mobile, Date productOrder_pay_date, Date productOrder_delivery_date, Date productOrder_confirm_date, Byte productOrder_status, User productOrder_user, List<ProductOrderItem> productOrderItemList) {
+    public ProductOrder(Integer productOrder_id, String productOrder_code, Address productOrder_address, String productOrder_detail_address, String productOrder_post, String productOrder_receiver, String productOrder_mobile, Date productOrder_pay_date, Date productOrder_delivery_date, Date productOrder_confirm_date, Integer productOrder_status, User productOrder_user, List<ProductOrderItem> productOrderItemList) {
         this.productOrder_id = productOrder_id;
         this.productOrder_code = productOrder_code;
         this.productOrder_address = productOrder_address;
@@ -174,11 +174,11 @@ public class ProductOrder implements Serializable {
         return this;
     }
 
-    public Byte getProductOrder_status() {
+    public Integer getProductOrder_status() {
         return productOrder_status;
     }
 
-    public ProductOrder setProductOrder_status(Byte productOrder_status) {
+    public ProductOrder setProductOrder_status(Integer productOrder_status) {
         this.productOrder_status = productOrder_status;
         return this;
     }

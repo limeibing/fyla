@@ -158,24 +158,22 @@
         <where>
             p.productorder_id=pr.productorderitem_order_id AND pr.productorderitem_product_id=pt.product_id
           <if test="productorder_confirm_date1 != null and productorder_confirm_date2 != null" >
-              and  p.productorder_confirm_date BETWEEN #{productorder_confirm_date1} AND #{productorder_confirm_date2}
+              and  p.productorder_confirm_date BETWEEN '${productorder_confirm_date1}' AND '${productorder_confirm_date2}'
           </if>
-        <if test="productorder_status != null " >
+        <if test="productorder_status != null and  productorder_status != ''" >
             AND p.productorder_status = #{productorder_status}
         </if>
-            <if test="productorder_receiver != null " >
+            <if test="productorder_receiver != null and productorder_receiver != ''" >
                 AND p.productorder_receiver LIKE '%${productorder_receiver}%'
             </if>
-            <if test="product_name != null " >
-                AND p.product_name LIKE '%${product_name}%'
+            <if test="product_name != null and  product_name != ''" >
+                AND pt.product_name LIKE '%${product_name}%'
+            </if>
+            <if test="productorder_id !=null and productorder_id !=''">
+                and  productorder_id  LIKE '%${productorder_id}%'
             </if>
         </where>
          limit #{strts},#{size}
-
-
-
-
-
     </select>
 
     <select id="intserlect" resultType="int">
@@ -193,12 +191,13 @@
            <if test="productorder_pay_date1 != null and productorder_pay_date2 != null" >
                and  po.productorder_pay_date BETWEEN #{productorder_pay_date1} AND #{productorder_pay_date2}
            </if>
-           <if test="productorder_receiver != null ">
+           <if test="productorder_receiver != null and productorder_receiver != '' ">
                AND po.productorder_receiver LIKE '%${productorder_receiver}%'
            </if>
            <if test="productorder_id != null and productorder_id != ''">
-               AND po.productorder_id = #{productorder_id}
+               AND po.productorder_id   LIKE '%${productorder_id}%'
            </if>
+
        </where>
         LIMIT  #{strts},#{size}
 

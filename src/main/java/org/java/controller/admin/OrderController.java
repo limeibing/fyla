@@ -126,7 +126,7 @@ public class OrderController extends BaseController{
         logger.info("整合订单信息");
         ProductOrder productOrder = new ProductOrder()
                 .setProductOrder_id(Integer.valueOf(order_id))
-                .setProductOrder_status((byte) 2)
+                .setProductOrder_status((Integer) 2)
                 .setProductOrder_delivery_date(new Date());
         logger.info("更新订单信息，订单ID值为：{}", order_id);
         boolean yn = productOrderService.update(productOrder);

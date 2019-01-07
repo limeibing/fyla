@@ -5,9 +5,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=0">
+    <script src="${pageContext.request.contextPath}/js/layui/layui.js" charset="utf-8"></script>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/js/layui/css/layui.css">
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.12.4.js"></script>
-    <script src="${pageContext.request.contextPath}/js/layui/layui.js" charset="utf-8"></script>
+
     <title>地址管理</title>
 
     <link href="../AmazeUI-2.4.2/assets/css/admin.css" rel="stylesheet" type="text/css">
@@ -21,6 +22,15 @@
 
 </head>
 <style type="text/css">
+
+
+    input::-webkit-input-placeholder {
+        /* placeholder颜色  */
+        color: #aab2bd;
+        /* placeholder字体大小  */
+        font-size: 12px;
+    }
+
     table {
         border-collapse: collapse;
         margin: 0 auto;
@@ -77,12 +87,6 @@
 
                 </div>
                 <hr/>
-
-
-                <div class="clear">
-
-
-                </div>
                 <a class="new-abtn-type" data-am-modal="{target: '#doc-modal-1', closeViaDimmer: 0}">添加新地址</a>
                 <!--例子-->
                 <div class="am-modal am-modal-no-btn" id="doc-modal-1">
@@ -94,107 +98,51 @@
                             <div style="width: 100%; height: 50px; border: 1px dotted #999; background-color: #eee;">
                                 <p style="width: 100%; height: 50px;line-height: 50px;font-size: 12px;">
                                     <span style="color: #0F81C8;font-size: 12px;">我是卖家</span>&nbsp;&nbsp;&nbsp;&gt;&nbsp;&nbsp;&nbsp;
-                                    <span style="color: #0F81C8;font-size: 12px;">交易管理</span>&nbsp;&nbsp;&nbsp;&gt;&nbsp;&nbsp;&nbsp;
-                                    已卖出的宝贝</p>
+                                    <span style="color: #0F81C8;font-size: 12px;">物流</span>&nbsp;&nbsp;&nbsp;&gt;&nbsp;&nbsp;&nbsp;
+                                    寄快递</p>
                             </div>
-                            <div style="width: 100%; margin-top: 10px;" id="div1">
+                            <div style="width: 100%; margin-top: 10px;" id="div2">
                                 <form>
                                     <table style="border: 0;background-color: #ffffff;width: 100%; border: 0px;">
                                         <tr style="border: 0;background-color: #ffffff; border: 0px;">
-                                            <td style="width: 10%;font-size: 12px;color: #0C0C0C; border: 0px;">商品ID：
+                                            <td style="width: 10%;font-size: 12px;color: #0C0C0C; border: 0px;"><span
+                                                    style="color: #ff1d00">*</span> 寄件人：
                                             </td>
-                                            <td colspan="5" align="left" style=" border: 0px;"><input disabled="disabled"
-                                                                                    value="暂不可用"                  style="width:200px; height: 30px;border: 1px solid #ccc;text-indent:1em;">
+                                            <td colspan="5" align="left" style=" border: 0px;"><input type="text"
+                                                    id="jjrname" placeholder="寄件人姓名" value="王**"
+                                                    style="width:200px; height: 30px;border: 1px solid #ccc;text-indent:1em;">
                                             </td>
                                         </tr>
                                         <tr style="border: 0;background-color: #ffffff; border: 0px;">
-                                            <td style="width: 10%;font-size: 12px;color: #0C0C0C; border: 0px;">宝贝名称：
+                                            <td style="width: 10%;font-size: 12px;color: #0C0C0C; border: 0px;"><span
+                                                    style="color: #ff1d00">*</span>地址：
                                             </td>
                                             <td style=" border: 0px;" align="left"><input
-                                                    id="product_name"
+                                                    id="jjrdz" placeholder="寄件人地址" value="重庆市成都市"
                                                     style="width:200px; height: 30px;border: 1px solid #ccc;text-indent:1em;">
                                             </td>
-                                            <td style="width: 10%;font-size: 12px;color: #0C0C0C; border: 0px;">成交时间：
-                                            </td>
-                                            <td colspan="3" style=" border: 0px;" align="left">
-                                                <input id="productorder_confirm_date1" value="2018-1-01"
-                                                       style="width:200px; height: 30px;border: 1px solid #ccc;text-indent:1em;">-<input
-                                                    id="productorder_confirm_date2" value="2018-12-31"
-                                                    style="width:200px; height: 30px;border: 1px solid #ccc;text-indent:1em;">
-                                            </td>
+
                                         </tr>
                                         <tr style="border: 0;background-color: #ffffff; border: 0px;">
-                                            <td style="width: 10%;font-size: 12px;color: #0C0C0C;border: 0px;">卖家昵称：
+                                            <td style="width: 10%;font-size: 12px;color: #0C0C0C;border: 0px;"><span
+                                                    style="color: #ff1d00">*</span>邮编：
                                             </td>
                                             <td style="width: 23%; border: 0px;" align="left"><input
-                                                    id="productorder_receiver"
+                                                    id="jjryb" placeholder="寄件人邮编" value="412563"
                                                     style="width:200px; height: 30px;border: 1px solid #ccc;text-indent:1em;">
                                             </td>
-                                            <td style="width: 10%;font-size: 12px;color: #0C0C0C;border: 0px;">订单状态：
-                                            </td>
-                                            <td style="width: 23%; border: 0px;" align="left">
-                                                <select id="productorder_status"
-                                                        style="width:200px; height: 30px;border: 1px solid #ccc;text-indent:1em;">
-                                                    <option value="" selected>请选择</option>
-                                                    <option value="1">已发货</option>
-                                                    <option value="2">未发货</option>
-                                                    <option value="3">已收货</option>
-                                                </select>
-                                            </td>
-                                            <td style="width: 10%;font-size: 12px;color: #0C0C0C;border: 0px;">评价状态：
-                                            </td>
-                                            <td style="width: 23%; border: 0px;" align="left">
-                                                <select style="width:200px; height: 30px;border: 1px solid #ccc;text-indent:1em;">
-                                                    <option>暂无</option>
-                                                </select>
-                                            </td>
                                         </tr>
                                         <tr style="border: 0;background-color: #ffffff; border: 0px;">
-                                            <td style="width: 10%;font-size: 12px;color: #0C0C0C; border: 0px;">订单编号：
+                                            <td style="width: 10%;font-size: 12px;color: #0C0C0C; border: 0px;"><span
+                                                    style="color: #ff1d00">*</span>手机：
                                             </td>
-                                            <td style=" border: 0px;" align="left"><input id="productorder_id"
-                                                    style="width:200px; height: 30px;border: 1px solid #ccc;text-indent:1em;">
+                                            <td style=" border: 0px;" align="left"><input id="jjrphone" value="135****7152"
+                                                                                          placeholder="寄件人手机"
+                                                                                          style="width:200px; height: 30px;border: 1px solid #ccc;text-indent:1em;">
                                             </td>
-                                            <td style="width: 10%;font-size: 12px;color: #0C0C0C; border: 0px;">物流服务：
-                                            </td>
-                                            <td style=" border: 0px;" align="left">
-                                                <select style="width:200px; height: 30px;border: 1px solid #ccc;text-indent:1em;">
-                                                    <option>暂无</option>
-                                                </select>
-                                            </td>
-                                            <td style="width: 10%;font-size: 12px;color: #0C0C0C; border: 0px;">售后服务：
-                                            </td>
-                                            <td style=" border: 0px;" align="left">
-                                                <select style="width:200px; height: 30px;border: 1px solid #ccc;text-indent:1em;">
-                                                    <option>暂无</option>
-                                                </select>
-                                            </td>
+
                                         </tr>
-                                        <tr style="border: 0;background-color: #ffffff; border: 0px;">
-                                            <td style="width: 10%;font-size: 12px;color: #0C0C0C; border: 0px;">交易类型：
-                                            </td>
-                                            <td style=" border: 0px;" align="left">
-                                                <select style="width:200px; height: 30px;border: 1px solid #ccc;text-indent:1em;">
-                                                    <option>暂无</option>
-                                                </select>
-                                            </td>
-                                            <td style="width: 10%;font-size: 12px;color: #0C0C0C; border: 0px;">订单类型：
-                                            </td>
-                                            <td colspan="3" style=" border: 0px;" align="left">
-                                                <select style="width:200px; height: 30px;border: 1px solid #ccc;text-indent:1em;">
-                                                    <option>暂无</option>
-                                                </select>
-                                            </td>
-                                        </tr>
-                                        <tr style="border: 0;background-color: #ffffff; border: 0px;">
-                                            <td style="width: 10%;font-size: 12px;color: #0C0C0C; border: 0px;">预售类型：
-                                            </td>
-                                            <td colspan="5" style=" border: 0px;" align="left">
-                                                <select style="width:200px; height: 30px;border: 1px solid #ccc;text-indent:1em;">
-                                                    <option>暂无</option>
-                                                </select>
-                                            </td>
-                                        </tr>
+
                                         <tr style="border: 0;background-color: #ffffff; border: 0px;">
                                             <td style=" border: 0px;"></td>
                                             <td colspan="5" style=" border: 0px;" align="left">
@@ -239,9 +187,6 @@
                                                         background-color: #fff;
                                                     }
                                                 </style>
-                                                <button  onclick="query()" type="button"  class="button" >搜索订单</button>  &nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;
-                                                <button type="reset" class="button" >重置</button>
-
 
                                             </td>
                                         </tr>
@@ -266,30 +211,121 @@
                                 </td>
                             </tr>
                         </table>
+                        <div style="width: 100%; margin-top: 10px;" id="div1">
+                            <form>
+                                <table style="border: 0;background-color: #ffffff;width: 100%; border: 0px;">
+                                    <tr style="border: 0;background-color: #ffffff; border: 0px;">
+                                        <td style="width: 10%;font-size: 12px;color: #0C0C0C; border: 0px;"><span
+                                                style="color: #ff1d00">*</span> 收件人：
+                                        </td>
+                                        <td colspan="5" align="left" style=" border: 0px;"><input id="sjrname" value="王**"
+                                                                                                  placeholder="收件人姓名"
+                                                                                                  style="width:200px; height: 30px;border: 1px solid #ccc;text-indent:1em;">
+                                        </td>
+                                    </tr>
+                                    <tr style="border: 0;background-color: #ffffff; border: 0px;">
+                                        <td style="width: 10%;font-size: 12px;color: #0C0C0C; border: 0px;"><span
+                                                style="color: #ff1d00">*</span>地址：
+                                        </td>
+                                        <td style=" border: 0px;" align="left"><input
+                                                id="sjrdz" placeholder="收件人地址" value="湖北省武汉市徐家棚"
+                                                style="width:200px; height: 30px;border: 1px solid #ccc;text-indent:1em;">
+                                        </td>
+
+                                    </tr>
+                                    <tr style="border: 0;background-color: #ffffff; border: 0px;">
+                                        <td style="width: 10%;font-size: 12px;color: #0C0C0C;border: 0px;"><span
+                                                style="color: #ff1d00">*</span>邮编：
+                                        </td>
+                                        <td style="width: 23%; border: 0px;" align="left"><input value="442300"
+                                                id="sjryb" placeholder="收件人邮编"
+                                                style="width:200px; height: 30px;border: 1px solid #ccc;text-indent:1em;">
+                                        </td>
+                                    </tr>
+                                    <tr style="border: 0;background-color: #ffffff; border: 0px;">
+                                        <td style="width: 10%;font-size: 12px;color: #0C0C0C; border: 0px;"><span
+                                                style="color: #ff1d00">*</span>手机：
+                                        </td>
+                                        <td style=" border: 0px;" align="left"><input id="sjrphone" placeholder="收件人手机" value="135****2135"
+                                                                                      style="width:200px; height: 30px;border: 1px solid #ccc;text-indent:1em;">
+                                        </td>
+
+                                    </tr>
+                                    <tr style="border: 0;background-color: #ffffff; border: 0px;">
+                                        <td style=" border: 0px;"></td>
+                                        <td colspan="5" style=" border: 0px;" align="left">
+                                            <style>
+                                                .button {
+                                                    width: 80px;
+                                                    height: 30px;
+                                                    border-radius: 3px;
+                                                    border: 0px;
+                                                    font-size: 12px;
+                                                    color: #ffffff;
+                                                    background-color: #ff4200;
+                                                }
+
+                                                .button:hover {
+                                                    width: 80px;
+                                                    height: 30px;
+                                                    border-radius: 3px;
+                                                    border: 0px;
+                                                    font-size: 12px;
+                                                    color: #ffffff;
+                                                    background-color: #ff1d00;
+                                                }
+
+                                                .button2 {
+                                                    width: 80px;
+                                                    height: 30px;
+                                                    border-radius: 3px;
+                                                    border: 1px solid #ddd;
+                                                    font-size: 12px;
+                                                    color: #000;
+                                                    background-color: #fff;
+                                                }
+
+                                                .button2:hover {
+                                                    width: 80px;
+                                                    height: 30px;
+                                                    border-radius: 3px;
+                                                    border: 1px solid #ff1d00;
+                                                    font-size: 12px;
+                                                    color: #ff1d00;
+                                                    background-color: #fff;
+                                                }
+                                            </style>
+
+                                        </td>
+                                    </tr>
+                                    <tr style="border: 0;background-color: #ffffff; border: 0px;">
+                                        <td style="width: 10%;font-size: 12px;color: #0C0C0C;border: 0px;">
+                                        </td>
+                                        <td style="width: 23%; border: 0px;" align="left"><input type="button"
+                                                                                                 onclick="query()"
+                                                                                                 value="确认提交"
+                                                                                                 class="button">
+                                        </td>
+                                    </tr>
+                                </table>
+                            </form>
+
+                        </div>
                         <script>
                             function shouqi() {
                                 var txt = document.getElementById("bt3").value;
                                 if (txt == "展开") {
-                                    $("#div1").css("display", "block");
+                                    $("#div2").css("display", "block");
                                     $("#bt3").val("收起");
                                 } else if (txt == "收起") {
-                                    $("#div1").css("display", "none");
+                                    $("#div2").css("display", "none");
                                     $("#bt3").val("展开");
                                 }
                             }
                         </script>
                         <hr>
                         <div style="width: 100%; margin-top: 10px;">
-                            <table width="95%" style="border: 0px;">
-                                <tr style="height: 30px;line-height: 30px; border: 0px;">
-                                    <td style="width: 10%;" class="td1">
-                                        <p style="width: 100%;border-right: 1px solid #ddd;height: 15px;line-height: 15px;">
-                                            <a href="#" id="aa1" class="a1">近三个月订单</a>
-                                        </p>
-                                    </td>
 
-                                </tr>
-                            </table>
                             <style>
                                 .td1 {
                                     border: 0px;
@@ -395,107 +431,76 @@
                     <li><a href="/fh">发货</a></li>
                     <li><a href="#">物流管理</a></li>
                     <li><a href="#">物流服务</a></li>
-                    <li><a href="/jkd">寄快递</a></li>
+                </ul>
+            </li>
+
+            <li class="person">
+                <p><i class="am-icon-qq"></i>服务客服</p>
+                <ul>
+                    <li><a href="#">退款管理</a></li>
+                    <li><a href="#">违规记录</a></li>
+                    <li><a href="#">基金还款</a></li>
                 </ul>
             </li>
         </ul>
 
     </aside>
 </div>
+
+
 <script>
-    var tableIns;
-
-    layui.use(['table', 'form', 'layer'], function () {
-        var table = layui.table;
-        form = layui.form;
-        var layer = layui.layer;
-        var productorder_confirm_date1 = $("#productorder_confirm_date1").val();
-        var productorder_confirm_date2 = $("#productorder_confirm_date2").val();
-        var productorder_status = $("#productorder_status").val();
-        var productorder_receiver = $("#productorder_receiver").val();
-        var product_name = $("#product_name").val();
-        var productorder_id=$("#productorder_id").val();
-        tableIns = table.render({
-            elem: '#table'
-            , url: '${pageContext.request.contextPath}/kdcg1'
-            , cellMinWidth: 150 //全局定义常规单元格的最小宽度，layui 2.2.1 新增
-            , page: true   //开启分页
-            , limit: [10, 15, 20],
-            data: {
-                'productorder_confirm_date1': productorder_confirm_date1,
-                'productorder_confirm_date2': productorder_confirm_date2,
-                'productorder_status': productorder_status,
-                'productorder_receiver': productorder_receiver,
-                'product_name': product_name,
-                'productorder_id':productorder_id
-            }
-            , limit:
-                10 //每页默认显示的数量
-            , first:
-                true //不显示首页
-            , last:
-                true //不显示尾页
-            , width:
-                1380
-            , cols:
-                [[
-                    {field: 'productorder_id', width: 120, title: '订单编号', sort: true},
-                    {field: 'productorder_receiver', width: 100, title: '客户名', sort: true}
-                    , {field: 'product_price', width: 120, title: '单价', sort: true}
-                    , {field: 'product_name', width: 522, title: '商品名', sort: true}
-                    , {
-                        field: 'productorder_status', width: 150, title: '订单状态', sort: true, templet: function (d) {
-                            if (d == 1) {
-                                return '订单正在处理中';
-                            } else if (d == 2) {
-                                return '订单正在派发中';
-                            } else {
-                                return '订单已完成';
-                            }
-                        }
-                    }
-
-                ]]
-            , even:
-                true
-        });
-    });
 
     function query() {
         var layer = layui.layer;
-        var productorder_confirm_date1 = $("#productorder_confirm_date1").val();
-        var productorder_confirm_date2 = $("#productorder_confirm_date2").val();
-        var productorder_status = $("#productorder_status").val();
-        var productorder_receiver = $("#productorder_receiver").val();
-        var product_name = $("#product_name").val();
-        var productorder_id=$("#productorder_id").val();
-        tableIns.reload({
-            where: {
-                'productorder_confirm_date1': productorder_confirm_date1,
-                'productorder_confirm_date2': productorder_confirm_date2,
-                'productorder_status': productorder_status,
-                'productorder_receiver': productorder_receiver,
-                'product_name': product_name,
-                'productorder_id':productorder_id
-            },
-            page: {
-                curr: 1
+        var jjrname = $("#jjrname").val();
+        var jjrdz = $("#jjrdz").val();
+        var jjrphone = $("#jjrphone").val();
+        var jjryb = $("#jjryb").val();
+
+        var jjrname = $("#sjrname").val();
+        var jjrdz = $("#sjrdz").val();
+        var jjrphone = $("#sjrphone").val();
+        var jjryb = $("#sjryb").val();
+
+            if (jjrname == null  || jjrname == '' ) {
+                alert("寄件人姓名不能为空");
+                alert(jjrname);
+            }else{
+                if (jjrdz == null  || jjrdz == '' ) {
+                    alert("寄件人姓地址能为空");
+                }else{
+                    if (jjrphone == null  || jjrphone == '' ) {
+                        alert("寄件人电话不能为空");
+                    }else{
+                        if (jjryb == null  || jjryb == '' ) {
+                            alert("寄件人邮编不能为空");
+                        }else{
+                            if (sjrname == null  || sjrname == '' ) {
+                                alert("收件人姓名不能为空");
+                            }else{
+                                if (sjrdz == null  || sjrdz == '' ) {
+                                    alert("收件人姓地址能为空");
+                                }else{
+                                    if (sjrphone == null  || sjrphone == '' ) {
+                                        alert("收件人电话不能为空");
+                                    }else{
+                                        if (sjryb == null  || sjryb == '' ) {
+                                            alert("收件人邮编不能为空");
+                                        }else{
+                                           alert("快递请求已发出，等待揽收！");
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
             }
-        });
+
+
+
     }
-
-    layui.use('laydate', function () {
-        var laydate = layui.laydate;
-        laydate.render({
-            elem: '#productorder_confirm_date1'
-        });
-        laydate.render({
-            elem: '#productorder_confirm_date2'
-        });
-
-
-    });
-
 
 </script>
 

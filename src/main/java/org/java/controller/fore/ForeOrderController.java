@@ -650,7 +650,7 @@ public class ForeOrderController extends BaseController {
         ProductOrder productOrder = new ProductOrder()
                 .setProductOrder_id(order.getProductOrder_id())
                 .setProductOrder_pay_date(new Date())
-                .setProductOrder_status((byte) 1);
+                .setProductOrder_status((Integer) 1);
 
         boolean yn = productOrderService.update(productOrder);
         if (yn) {
@@ -692,7 +692,7 @@ public class ForeOrderController extends BaseController {
         ProductOrder productOrder = new ProductOrder()
                 .setProductOrder_id(order.getProductOrder_id())
                 .setProductOrder_delivery_date(new Date())
-                .setProductOrder_status((byte) 2);
+                .setProductOrder_status((Integer) 2);
 
         productOrderService.update(productOrder);
 
@@ -737,7 +737,7 @@ public class ForeOrderController extends BaseController {
         logger.info("更新订单信息");
         ProductOrder productOrder = new ProductOrder()
                 .setProductOrder_id(order.getProductOrder_id())
-                .setProductOrder_status((byte) 3)
+                .setProductOrder_status((Integer) 3)
                 .setProductOrder_confirm_date(new Date());
 
         boolean yn = productOrderService.update(productOrder);
@@ -787,7 +787,7 @@ public class ForeOrderController extends BaseController {
         logger.info("更新订单信息");
         ProductOrder productOrder = new ProductOrder()
                 .setProductOrder_id(order.getProductOrder_id())
-                .setProductOrder_status((byte) 4);
+                .setProductOrder_status((Integer) 4);
 
         boolean yn = productOrderService.update(productOrder);
         if (yn) {
@@ -908,7 +908,7 @@ public class ForeOrderController extends BaseController {
         logger.info("生成的订单号为：{}", productOrder_code);
         logger.info("整合订单对象");
         ProductOrder productOrder = new ProductOrder()
-                .setProductOrder_status((byte) 0)
+                .setProductOrder_status((Integer) 0)
                 .setProductOrder_address(new Address().setAddress_areaId(districtAddressId))
                 .setProductOrder_post(productOrder_post)
                 .setProductOrder_user(new User().setUser_id(Integer.valueOf(userId.toString())))
@@ -1020,7 +1020,7 @@ public class ForeOrderController extends BaseController {
         logger.info("生成的订单号为：{}", productOrder_code);
         logger.info("整合订单对象");
         ProductOrder productOrder = new ProductOrder()
-                .setProductOrder_status((byte) 0)
+                .setProductOrder_status((Integer) 0)
                 .setProductOrder_address(new Address().setAddress_areaId(districtAddressId))
                 .setProductOrder_post(productOrder_post)
                 .setProductOrder_user(new User().setUser_id(Integer.valueOf(userId.toString())))

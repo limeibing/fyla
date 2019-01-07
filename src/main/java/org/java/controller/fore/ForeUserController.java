@@ -35,19 +35,19 @@ public class ForeUserController extends BaseController {
     //转到前台天猫-用户详情页
     @RequestMapping(value = "userDetails", method = RequestMethod.GET)
     public String goToUserDetail(HttpSession session, Map<String, Object> map) {
-        logger.info("检查用户是否登录");
+        //nfo("检查用户是否登录");
         Object userId = checkUser(session);
         if (userId != null) {
-            logger.info("获取用户信息");
+            //nfo("获取用户信息");
             User user = userService.get(Integer.parseInt(userId.toString()));
             map.put("user", user);
 
-            logger.info("获取用户所在地区级地址");
+            //nfo("获取用户所在地区级地址");
             String districtAddressId = user.getUser_address().getAddress_areaId();
             Address districtAddress = addressService.get(districtAddressId);
-            logger.info("获取市级地址信息");
+            //nfo("获取市级地址信息");
             Address cityAddress = addressService.get(districtAddress.getAddress_regionId().getAddress_areaId());
-            logger.info("获取其他地址信息");
+            //nfo("获取其他地址信息");
             List<Address> addressList = addressService.getRoot();
             List<Address> cityList = addressService.getList(null, cityAddress.getAddress_regionId().getAddress_areaId());
             List<Address> districtList = addressService.getList(null, cityAddress.getAddress_areaId());
@@ -70,16 +70,16 @@ public class ForeUserController extends BaseController {
     public String uploadUserHeadImage(@RequestParam MultipartFile file, HttpSession session
     ) {
         String originalFileName = file.getOriginalFilename();
-        logger.info("获取图片原始文件名：{}", originalFileName);
+        //nfo("获取图片原始文件名：{}", originalFileName);
         String extension = originalFileName.substring(originalFileName.lastIndexOf('.'));
         String fileName = UUID.randomUUID() + extension;
         String filePath = session.getServletContext().getRealPath("/") + "res/images/item/userProfilePicture/" + fileName;
-        logger.info("文件上传路径：{}", filePath);
+        //nfo("文件上传路径：{}", filePath);
         JSONObject jsonObject = new JSONObject();
         try {
-            logger.info("文件上传中...");
+            //nfo("文件上传中...");
             file.transferTo(new File(filePath));
-            logger.info("文件上传成功！");
+            //nfo("文件上传成功！");
             jsonObject.put("success", true);
             jsonObject.put("fileName", fileName);
         } catch (IOException e) {
@@ -101,16 +101,16 @@ public class ForeUserController extends BaseController {
                              @RequestParam(value = "user_profile_picture_src", required = false) String user_profile_picture_src /* 用户头像*/,
                              @RequestParam(value = "user_password") String user_password/* 用户密码 */
     ) throws ParseException, UnsupportedEncodingException {
-        logger.info("检查用户是否登录");
+        //nfo("检查用户是否登录");
         Object userId = checkUser(session);
         if (userId != null) {
-            logger.info("获取用户信息");
+            //nfo("获取用户信息");
             User user = userService.get(Integer.parseInt(userId.toString()));
             map.put("user", user);
         } else {
             return "redirect:/login";
         }
-        logger.info("创建用户对象");
+        //nfo("创建用户对象");
         if (user_profile_picture_src != null && user_profile_picture_src.equals("")) {
             user_profile_picture_src = null;
         }
@@ -123,9 +123,9 @@ public class ForeUserController extends BaseController {
                 .setUser_address(new Address().setAddress_areaId(user_address))
                 .setUser_profile_picture_src(user_profile_picture_src)
                 .setUser_password(user_password);
-        logger.info("执行修改");
+        //nfo("执行修改");
         if (userService.update(userUpdate)) {
-            logger.info("修改成功!跳转到用户详情页面");
+            //nfo("修改成功!跳转到用户详情页面");
             return "redirect:/userDetails";
         }
         throw new RuntimeException();

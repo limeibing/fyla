@@ -31,19 +31,19 @@ public class ForeRegisterController extends BaseController{
     public String goToPage(Map<String,Object> map) {
         String addressId = "110000";
         String cityAddressId = "110100";
-        logger.info("获取省份信息");
+        //nfo("获取省份信息");
         List<Address> addressList = addressService.getRoot();
-        logger.info("获取addressId为{}的市级地址信息", addressId);
+        //nfo("获取addressId为{}的市级地址信息", addressId);
         List<Address> cityAddress = addressService.getList(null, addressId);
-        logger.info("获取cityAddressId为{}的区级地址信息", cityAddressId);
+        //nfo("获取cityAddressId为{}的区级地址信息", cityAddressId);
         List<Address> districtAddress = addressService.getList(null, cityAddressId);
         map.put("addressList", addressList);
         map.put("cityList", cityAddress);
         map.put("districtList", districtAddress);
         map.put("addressId", addressId);
         map.put("cityAddressId", cityAddressId);
-        logger.info("转到前台-用户注册页");
-        return "fore/register";
+        //nfo("转到前台-用户注册页");
+        return "page/person/two/home/register";
     }
 
     //天猫前台-用户注册-ajax
@@ -57,16 +57,16 @@ public class ForeRegisterController extends BaseController{
             @RequestParam(value = "user_birthday") String user_birthday /*用户生日*/,
             @RequestParam(value = "user_address") String user_address  /*用户所在地 */
     ) throws ParseException {
-        logger.info("验证用户名是否存在");
+        //nfo("验证用户名是否存在");
         Integer count = userService.getTotal(new User().setUser_name(user_name));
         if (count > 0) {
-            logger.info("用户名已存在，返回错误信息!");
+            //nfo("用户名已存在，返回错误信息!");
             JSONObject object = new JSONObject();
             object.put("success", false);
             object.put("msg", "用户名已存在，请重新输入！");
             return object.toJSONString();
         }
-        logger.info("创建用户对象");
+        //nfo("创建用户对象");
         User user = new User()
                 .setUser_name(user_name)
                 .setUser_nickname(user_nickname)
@@ -75,9 +75,9 @@ public class ForeRegisterController extends BaseController{
                 .setUser_birthday(new SimpleDateFormat("yyyy-MM-dd").parse(user_birthday))
                 .setUser_address(new Address().setAddress_areaId(user_address))
                 .setUser_homeplace(new Address().setAddress_areaId("130000"));
-        logger.info("用户注册");
+        //nfo("用户注册");
         if (userService.add(user)) {
-            logger.info("注册成功");
+            //nfo("注册成功");
             JSONObject object = new JSONObject();
             object.put("success", true);
             return object.toJSONString();

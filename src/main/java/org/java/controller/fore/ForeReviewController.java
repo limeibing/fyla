@@ -35,17 +35,17 @@ public class ForeReviewController extends BaseController {
     @RequestMapping(value = "review/{orderItem_id}", method = RequestMethod.GET)
     public String goToPage(HttpSession session, Map<String, Object> map,
                            @PathVariable("orderItem_id") Integer orderItem_id) {
-        logger.info("检查用户是否登录");
+        //nfo("检查用户是否登录");
         Object userId = checkUser(session);
         User user;
         if (userId != null) {
-            logger.info("获取用户信息");
+            //nfo("获取用户信息");
             user = userService.get(Integer.parseInt(userId.toString()));
             map.put("user", user);
         } else {
             return "redirect:/login";
         }
-        logger.info("获取订单项信息");
+        //nfo("获取订单项信息");
         ProductOrderItem orderItem = productOrderItemService.get(orderItem_id);
         if (orderItem == null) {
             logger.warn("订单项不存在，返回订单页");
@@ -68,7 +68,7 @@ public class ForeReviewController extends BaseController {
             logger.warn("订单项所属商品已被评价，返回订单页");
             return "redirect:/order/0/10";
         }
-        logger.info("获取订单项所属产品信息和产品评论信息");
+        //nfo("获取订单项所属产品信息和产品评论信息");
         Product product = productService.get(orderItem.getProductOrderItem_product().getProduct_id());
         product.setProduct_review_count(reviewService.getTotalByProductId(product.getProduct_id()));
         product.setSingleProductImageList(productImageService.getList(product.getProduct_id(), (byte) 0, new PageUtil(0, 1)));
@@ -76,7 +76,7 @@ public class ForeReviewController extends BaseController {
 
         map.put("orderItem", orderItem);
 
-        logger.info("转到前台天猫-评论添加页");
+        //nfo("转到前台天猫-评论添加页");
         return "fore/addReview";
     }
 
@@ -85,17 +85,17 @@ public class ForeReviewController extends BaseController {
     public String addReview(HttpSession session, Map<String, Object> map,
                             @RequestParam Integer orderItem_id,
                             @RequestParam String review_content) throws UnsupportedEncodingException {
-        logger.info("检查用户是否登录");
+        //nfo("检查用户是否登录");
         Object userId = checkUser(session);
         User user;
         if (userId != null) {
-            logger.info("获取用户信息");
+            //nfo("获取用户信息");
             user = userService.get(Integer.parseInt(userId.toString()));
             map.put("user", user);
         } else {
             return "redirect:/login";
         }
-        logger.info("获取订单项信息");
+        //nfo("获取订单项信息");
         ProductOrderItem orderItem = productOrderItemService.get(orderItem_id);
         if (orderItem == null) {
             logger.warn("订单项不存在，返回订单页");
@@ -118,14 +118,14 @@ public class ForeReviewController extends BaseController {
             logger.warn("订单项所属商品已被评价，返回订单页");
             return "redirect:/order/0/10";
         }
-        logger.info("整合评论信息");
+        //nfo("整合评论信息");
         Review review = new Review()
                 .setReview_product(orderItem.getProductOrderItem_product())
                 .setReview_content(new String(review_content.getBytes("ISO-8859-1"), "UTF-8"))
                 .setReview_createDate(new Date())
                 .setReview_user(user)
                 .setReview_orderItem(orderItem);
-        logger.info("添加评论");
+        //nfo("添加评论");
         Boolean yn = reviewService.add(review);
         if (!yn) {
             throw new RuntimeException();
@@ -140,7 +140,7 @@ public class ForeReviewController extends BaseController {
     public String getReviewInfo(@RequestParam("product_id") Integer product_id,
                                 @RequestParam("index") Integer index/* 页数 */,
                                 @RequestParam("count") Integer count/* 行数*/) {
-        logger.info("获取产品评论信息");
+        //nfo("获取产品评论信息");
         List<Review> reviewList = reviewService.getListByProductId(product_id, new PageUtil(index, 10));
         if (reviewList != null) {
             for (Review review : reviewList) {

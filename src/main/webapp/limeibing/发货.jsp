@@ -229,14 +229,14 @@
             <li class="person">
                 <p><i class="am-icon-newspaper-o"></i>店铺管理</p>
                 <ul>
-                    <li><a href="information.html">我要开店</a></li>
+                    <li><a href="#">我要开店</a></li>
                 </ul>
             </li>
             <li class="person">
                 <p><i class="am-icon-balance-scale"></i>交易管理</p>
                 <ul>
-                    <li><a href="order.html">卖出的宝贝</a></li>
-                    <li><a href="change.html">评价</a></li>
+                    <li><a href="/kdcg">卖出的宝贝</a></li>
+                    <li><a href="#">评价</a></li>
                 </ul>
             </li>
             <li class="person">

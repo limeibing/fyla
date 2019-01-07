@@ -312,7 +312,7 @@
             , {field: 'product_sale_price', width: 120, title: '限时优惠价', sort: true}
             , {field: 'product_id', width:250 , title: '操作',templet: function (d) {
                 if(d.product_isEnabled==0) {
-                    return '<a class="layui-btn layui-btn-xs" onclick="del1(' + d.product_id + ')"  >删除宝贝</a><a class="layui-btn layui-btn-xs" onclick="rx(' + d.product_id + ')"  >热销</a>';
+                    return '<a class="layui-btn layui-btn-xs" onclick="del1(' + d.product_id + ')"  >删除宝贝</a><a class="layui-btn layui-btn-xs" onclick="xj(' + d.product_id + ')"  >下架销售</a>';
 
                 }else if(d.product_isEnabled==1) {
                     return '<a class="layui-btn layui-btn-xs" onclick="sj(' + d.product_id + ')"  >取消特销</a><a class="layui-btn layui-btn-xs" onclick="xj(' + d.product_id + ')"  >下架特销</a>';
@@ -334,7 +334,7 @@
         tableIns.reload({
             where : {
 
-                'product_isEnabled': 1
+                'product_isEnabled': 0
             },
             page:{
                 curr:1
@@ -347,7 +347,7 @@
         tableIns.reload({
             where : {
 
-                'product_isEnabled': 2
+                'product_isEnabled': 1
             },
             page:{
                 curr:1
@@ -360,7 +360,7 @@
         tableIns.reload({
             where : {
 
-                'product_isEnabled': 0
+                'product_isEnabled': 2
             },
             page:{
                 curr:1

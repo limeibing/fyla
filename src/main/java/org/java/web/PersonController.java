@@ -29,7 +29,7 @@ public class PersonController {
     @RequestMapping("/personxiugai")
     @ResponseBody
     public void personxiugai(@RequestParam Map map, HttpSession ses){
-        userService.updateTwo(map);
+       // userService.updateTwo(map);
         User id=(User) ses.getAttribute("user");
         int user_id=id.getUser_id();
         User user1=userService.get(user_id);

@@ -7,6 +7,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+
     <link rel="stylesheet" href="${pageContext.request.contextPath}/page/person/res/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/page/person/res/css/bootstrap-select.min.css"/>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/page/person/res/css/fore/fore_main.css"/>
@@ -15,4 +16,5 @@
     <script src="${pageContext.request.contextPath}/page/person/res/js/bootstrap-select.min.js"></script>
     <script src="${pageContext.request.contextPath}/page/person/res/js/defaults-zh_CN.min.js"></script>
     <script src="${pageContext.request.contextPath}/page/person/res/js/base.js"></script>
+
 </head>

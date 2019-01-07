@@ -1,21 +1,56 @@
 package org.java.web;
 
 import com.alibaba.fastjson.JSON;
+import org.apache.http.HttpResponse;
 import org.java.entity.User;
 import org.java.service.UserService;
+import org.java.util.HttpUtils;
 import org.java.util.SendEmail;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.File;
+import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.HashMap;
 import java.util.Map;
 
 @Controller
 public class PersonController {
+
+    /********************验证******************************************/
+
+    protected void sendYZM(HttpServletRequest request, HttpServletResponse response,String phone) throws ServletException, IOException {
+        String host = "https://dxyzm.market.alicloudapi.com";
+        String path = "/chuangxin/dxjk";
+        String method = "POST";
+        String appcode = "ed4d9887428f4dbab34835acbb32a6fe";
+        int aa = (int) ((Math.random() * 9 + 1) * 100000);
+        Map<String, String> headers = new HashMap<String, String>();
+        //最后在header中的格式(中间是英文空格)为Authorization:APPCODE 83359fd73fe94948385f570e3c139105
+        headers.put("Authorization", "APPCODE " + appcode);
+        Map<String, String> querys = new HashMap<String, String>();
+        querys.put("content", "【悦吉拉拉】你的验证码是：" + aa + "，1分钟内有效！");
+        querys.put("mobile", phone);
+        Map<String, String> bodys = new HashMap<String, String>();
+        try {
+            HttpResponse res = HttpUtils.doPost(host, path, method, headers, querys, bodys);
+            System.out.println(res.toString());
+            System.out.println("验证码是111：" + aa);
+            //获取response的body
+            //System.out.println(EntityUtils.toString(response.getEntity()));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+    /*************************************************/
 
     public static final String FROM = "1350430787@qq.com";// 发件人的email
     public static final String PWD = "ouydszashinbgcbf";// 发件人密码--邮箱密码
@@ -26,6 +61,11 @@ public class PersonController {
     @Autowired
     private UserService userService;
 
+    //首页
+    @RequestMapping("/home")
+    public String home(){
+        return  "page/person/two/home/home3";
+    }
     @RequestMapping("/personxiugai")
     @ResponseBody
     public void personxiugai(@RequestParam Map map, HttpSession ses){
@@ -77,11 +117,15 @@ public class PersonController {
     }
 
 
+
+
     @RequestMapping(value = "/phone1" , method = RequestMethod.POST , produces = "application/json; charset=utf-8")
     @ResponseBody
-    public void phone1(HttpServletRequest req,HttpServletResponse response) throws Exception{
+    public void phone1(@RequestParam String phone1 ,HttpServletRequest req,HttpServletResponse response) throws Exception{
         response.setCharacterEncoding("UTF-8");
         response.setContentType("text/html;charset=UTF-8");
+
+        sendYZM(req, response, phone1);
 
         PrintWriter out=response.getWriter();
         String context ="验证码："+ (int)((Math.random()*9+1)*100000);
@@ -92,9 +136,11 @@ public class PersonController {
     }
     @RequestMapping(value = "/phone2" , method = RequestMethod.POST , produces = "application/json; charset=utf-8")
     @ResponseBody
-    public void phone2(HttpServletRequest req,HttpServletResponse response) throws Exception{
+    public void phone2(@RequestParam String phone2 ,HttpServletRequest req,HttpServletResponse response) throws Exception{
         response.setCharacterEncoding("UTF-8");
         response.setContentType("text/html;charset=UTF-8");
+
+        sendYZM(req, response, phone2);
 
         PrintWriter out=response.getWriter();
         String context ="新手机号验证码："+ (int)((Math.random()*9+1)*100000);
@@ -105,14 +151,70 @@ public class PersonController {
     }
     @RequestMapping("/btn")
     @ResponseBody
-    public void  btn(@RequestParam Map map,HttpSession ses){
-         String phone2=(String)map.get("phone2");
+    public void  btn(@RequestParam String phone2,HttpSession ses){
+         System.out.println("phone2"+phone2);
          ses.setAttribute("phone", phone2);
         // return  "page/person/two/person/safety";
     }
     @RequestMapping("/btninfo")
     public String  btninfo(){
+        System.out.println("btninfo");
         return  "page/person/two/person/safety";
     }
+
+
+
+
+
+    /**
+     * 资料收集图片上传
+     *
+     * @param file
+     * @param
+     * @return
+     */
+    @RequestMapping("/submit/imgs")
+    @ResponseBody
+    public Map<String, Object> collectionCorrectInfoUpload(MultipartFile file) {
+        Map<String, Object> m = new HashMap<>();
+        try {
+            File f = new File("c:/upload/");
+            if (f.exists()) {
+                f.delete();
+            }
+            if (!f.exists()) {
+                f.mkdir();
+            }
+            uploadFile(file, "");
+            m.put("code", 0);
+            m.put("msg", "");
+        } catch (Exception e) {
+            m.put("code", 1);
+        }
+        return m;
+    }
+
+
+    /**
+     * 文件上传
+     *
+     * @param file
+     * @param path
+     * @return
+     * @throws IOException
+     */
+    private String uploadFile(MultipartFile file, String path) {
+        String name = file.getOriginalFilename();//上传文件的真实名称
+
+        File f = new File("c:/upload/", name);
+        try {
+            file.transferTo(f);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return f.getName();
+    }
+
+
 
 }

@@ -22,6 +22,7 @@ public class GerenController {
     //商城首页
     @RequestMapping("/shouye")
     public String shouye(){ return  "page/person/two/home/home3"; }
+
    //个人中心
     @RequestMapping("/gerenzhongxin")
     public String gerenzhongxin(){
@@ -44,19 +45,43 @@ public class GerenController {
         return  "page/person/two/person/safety";
         //return  "page/person/two/person/index";
     }
+    //订单管理
+    @RequestMapping("/dingdanguanli")
+    public String dingdanguanli(){
+
+        return  "page/person/two/person/order";
+        //return  "page/person/two/person/index";
+    }
+
 
     //地址管理
-    @RequestMapping("/geren/dizhiguanli")
+    @RequestMapping("/dizhiguanli")
     public String dizhiguanli(){
 
         return  "page/person/two/person/address";
         //return  "page/person/two/person/index";
     }
     //快捷支付
-    @RequestMapping("/geren/kuaijiezhifu")
+    @RequestMapping("/kuaijiezhifu")
     public String kuaijiezhifu(){
 
         return  "page/person/two/person/cardlist";
         //return  "page/person/two/person/index";
     }
+    //退款售后
+    @RequestMapping("/tuikuanshouhou")
+    public String tuikuanshouhou(){
+
+        return  "page/person/two/person/change";
+        //return  "page/person/two/person/index";
+    }
+    //评价商品
+    @RequestMapping("/pingjiashangpin")
+    public String pingjiashangpin(){
+
+        return  "page/person/two/person/comment";
+        //return  "page/person/two/person/index";
+    }
+
+
 }

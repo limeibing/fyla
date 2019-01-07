@@ -18,7 +18,6 @@
 	<link href="${pageContext.request.contextPath}/page/person/two/css/personal.css" rel="stylesheet" type="text/css">
 	<link href="${pageContext.request.contextPath}/page/person/two/css/stepstyle.css" rel="stylesheet" type="text/css">
 
-	<%--<script type="text/javascript" src="${pageContext.request.contextPath}/page/person/two/js/jquery-1.7.2.min.js"></script>--%>
 	<script src="${pageContext.request.contextPath}/page/person/two/AmazeUI-2.4.2/assets/js/amazeui.js"></script>
 
 </head>

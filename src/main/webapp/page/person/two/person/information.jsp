@@ -12,7 +12,7 @@
 
 		<title>个人资料</title>
 
-		<link href="${pageContext.request.contextPath}/page/person/two/AmazeUI-2.4.2/assets/css/admin.css" rel="stylesheet" type="text/css">
+        <link href="${pageContext.request.contextPath}/page/person/two/AmazeUI-2.4.2/assets/css/admin.css" rel="stylesheet" type="text/css">
 		<link href="${pageContext.request.contextPath}/page/person/two/AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet" type="text/css">
 
 		<link href="${pageContext.request.contextPath}/page/person/two/css/personal.css" rel="stylesheet" type="text/css">
@@ -121,9 +121,9 @@
 					<!--头像 -->
 					<div class="user-infoPic">
 
-						<div class="filePic">
-							<input type="file" class="inputPic" allowexts="gif,jpeg,jpg,png,bmp" accept="image/*">
-							<img class="am-circle am-img-thumbnail" src="../images/getAvatar.do.jpg" alt="" />
+						<div class="filePic" >
+							<input type="file" class="inputPic" allowexts="gif,jpeg,jpg,png,bmp" accept="image/*" id="submit">
+							<img  class="am-circle am-img-thumbnail" src="../images/getAvatar.do.jpg" alt="" />
 						</div>
 
 						<p class="am-form-help">头像</p>
@@ -134,7 +134,8 @@
 								<span></span><a href="#" style="color: red;">会员专享</a>
 							</div>
 						</div>
-					</div>
+
+                    </div>
 
 					<!--个人信息 -->
 					<div class="info-main">
@@ -330,6 +331,21 @@
         })
     });
 </script>
+
+
+	<script type="text/javascript">
+        $("#submit").click(function () {
+            $.ajax({
+                url:'${pageContext.request.contextPath}/submit/imgs',
+                data:'',
+                type:'post',
+                success:function () {
+                    //window.location.href="${pageContext.request.contextPath}/information";
+                }
+            })
+        });
+	</script>
+
 	</body>
 
 </html>

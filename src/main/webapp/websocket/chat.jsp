@@ -45,7 +45,7 @@
 
 <ul class="layui-nav layui-bg-blue">
 
-    <li class="layui-nav-item mobile-none"><a href="" target="_blank">首页</a></li>
+    <li class="layui-nav-item mobile-none"><a href="${pageContext.request.contextPath}/home" target="_blank">首页</a></li>
     <li class="layui-nav-item mobile-none"><a href="" target="_blank">消息</a></li>
     <li class="layui-nav-item mobile-none">
         <a href="javascript:;">我的皮肤</a>

@@ -149,13 +149,13 @@
 				<div class="am-form-group">
 					<label for="user-new-phone" class="am-form-label">验证手机</label>
 					<div class="am-form-content">
-						<input type="text" id="user-new-phone" placeholder="绑定新手机号" name="phone2">
+						<input type="text" id="user-new-phone" placeholder="绑定新手机号" name="phone3">
 					</div>
 				</div>
 				<div class="am-form-group code">
 					<label for="user-new-code" class="am-form-label">验证码</label>
 					<div class="am-form-content">
-						<input type="tel" id="user-new-code" placeholder="短信验证码">
+						<input type="text"  id="user-new-code" placeholder="短信验证码">
 					</div>
 					<a class="btn" href="javascript:void(0);" onclick="sendMobileCode();" id="sendMobileCode">
 						<div class="am-btn am-btn-danger" id="phone2">验证码</div>
@@ -256,7 +256,7 @@
         $step.nextStep();
         $.ajax({
             url:'${pageContext.request.contextPath}/phone1',
-            data: "phone1"+phone1,
+            data: {"phone1":18571693213},
             type:'post',
             success:function (data) {
                 alert(data);
@@ -269,14 +269,14 @@
 <script type="text/javascript">
 
     var $step = $("#step");
-    var phone2=$("[name=phone2]").text();
 
     $("#phone2").click(function () {
 
         $step.nextStep();
+
         $.ajax({
             url:'${pageContext.request.contextPath}/phone2',
-            data: "phone2"+phone2,
+            data: {"phone2":$("[name=phone3]").val()},
             type:'post',
             dataType:'json',
             success:function (data) {
@@ -295,7 +295,7 @@
         $step.nextStep();
         $.ajax({
             url:'${pageContext.request.contextPath}/btn',
-            data: $("#frm").serialize(),
+            data: {"phone2":$("[name=phone3]").val()},
             type:'post',
             dataType:'json',
             success:function () {

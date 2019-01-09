@@ -2,39 +2,31 @@ package org.java.controller.admin;
 
 
 import com.alibaba.fastjson.JSON;
-import com.sun.org.apache.bcel.internal.generic.IF_ACMPEQ;
 import org.java.dao.ProductMapper;
 import org.java.dao.ProductOrderMapper;
 import org.java.dao.UserMapper;
-import org.java.entity.Admin;
 import org.java.entity.Product;
 import org.java.entity.ProductOrder;
 import org.java.entity.User;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.stereotype.Controller;
-import org.json.JSONObject;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.multipart.MultipartFile;
 import org.java.util.Base64Util;
 import org.java.util.FileUtil;
 import org.java.util.HttpUtil;
-
-import java.io.PrintWriter;
-import java.net.URLEncoder;
-import java.text.SimpleDateFormat;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-
 import org.java.util.Token;
+import org.json.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.PrintWriter;
+import java.net.URLEncoder;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
 @Controller
 public class controller {
@@ -50,7 +42,6 @@ public class controller {
     @RequestMapping("/kai")
     public String kai2(HttpSession ses) {
         User user = (User) ses.getAttribute("user");
-        System.out.println(user + "jkjj");
         if (user == null) {
             return "redirect:/login";
         } else {
@@ -62,13 +53,11 @@ public class controller {
 
     @RequestMapping("/kai2")
     public String kai3() {
-
         return "/sj/kai2";
     }
 
     @RequestMapping("/kai4")
     public String kai4() {
-
         return "/sj/kai4";
     }
 
@@ -88,7 +77,6 @@ public class controller {
         // 身份证识别url
         String idcardIdentificate = "https://aip.baidubce.com/rest/2.0/ocr/v1/idcard";
         // 本地图片路径
-
         byte[] imgData = FileUtil.readFileByBytes(pash);
         String imgStr = Base64Util.encode(imgData);
         // 识别身份证正面id_card_side=front;识别身份证背面id_card_side=back;
@@ -99,8 +87,6 @@ public class controller {
          */
         String accessToken = Token.getAuth();
         String result = HttpUtil.post(idcardIdentificate, accessToken, params);
-
-
         JSONObject jsonObject = new JSONObject(result);
         JSONObject words_result = jsonObject.getJSONObject("words_result");
         Iterator<String> it = words_result.keys();
@@ -129,15 +115,10 @@ public class controller {
                     break;
             }
         }
-
         System.out.println(map + "*********************");
-
-
         if (map.containsKey("name") && map.containsKey("IDCard")) {
-
             if (map.get("name").equals(sfzname) && map.get("IDCard").equals(sfzid)) {
                 userMapper.sfzrenzhen(user.getUser_id().toString());
-
                 return "success";
             } else {
                 return "error";
@@ -147,10 +128,8 @@ public class controller {
         System.out.println(map.get("name").toString() + map.get("IDCard").toString() + "sdsd");
         return "error";
     }
-
     @RequestMapping("/kdcg")
     public String kdcg(HttpServletResponse resp, HttpServletRequest req, String productorder_confirm_date1, String productorder_confirm_date2, String productorder_status, String productorder_receiver, String product_name) throws Exception {
-
         return "/limeibing/已卖出的宝贝";
     }
 

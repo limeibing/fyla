@@ -434,14 +434,7 @@
                 </ul>
             </li>
 
-            <li class="person">
-                <p><i class="am-icon-qq"></i>服务客服</p>
-                <ul>
-                    <li><a href="#">退款管理</a></li>
-                    <li><a href="#">违规记录</a></li>
-                    <li><a href="#">基金还款</a></li>
-                </ul>
-            </li>
+
         </ul>
 
     </aside>
@@ -457,14 +450,13 @@
         var jjrphone = $("#jjrphone").val();
         var jjryb = $("#jjryb").val();
 
-        var jjrname = $("#sjrname").val();
-        var jjrdz = $("#sjrdz").val();
-        var jjrphone = $("#sjrphone").val();
-        var jjryb = $("#sjryb").val();
+        var sjrname = $("#sjrname").val();
+        var sjrdz = $("#sjrdz").val();
+        var sjrphone = $("#sjrphone").val();
+        var sjryb = $("#sjryb").val();
 
             if (jjrname == null  || jjrname == '' ) {
                 alert("寄件人姓名不能为空");
-                alert(jjrname);
             }else{
                 if (jjrdz == null  || jjrdz == '' ) {
                     alert("寄件人姓地址能为空");

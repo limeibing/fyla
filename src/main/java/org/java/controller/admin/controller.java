@@ -247,7 +247,7 @@ public class controller {
 
     @RequestMapping("/fbbb")
     public String fbbb(){
-        return "发布商品";
+        return "/limeibing/发布商品";
 
     }
 

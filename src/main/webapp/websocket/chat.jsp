@@ -36,7 +36,7 @@
         }
 
         .li6{
-            background-image: url("/image/28.png");
+            background-image: url("/image/28.jpg");
         }
 
     </style>
@@ -45,7 +45,7 @@
 
 <ul class="layui-nav layui-bg-blue">
 
-    <li class="layui-nav-item mobile-none"><a href="" target="_blank">首页</a></li>
+    <li class="layui-nav-item mobile-none"><a href="${pageContext.request.contextPath}/home" target="_blank">首页</a></li>
     <li class="layui-nav-item mobile-none"><a href="" target="_blank">消息</a></li>
     <li class="layui-nav-item mobile-none">
         <a href="javascript:;">我的皮肤</a>
@@ -56,7 +56,7 @@
                 <li class="li3" id="li3"><a href="#">海绵宝宝</a></li>
                 <li class="li4" id="li4"><a href="#">马小跳</a></li>
                 <li class="li6" id="li6"><a href="#">章若楠</a></li>
-                <li class="li5" id="li5"><a href="#">取消</a></li>
+              <%--  <li class="li5" id="li5"><a href="#">取消</a></li>--%>
             </ul>
         </dl>
     </li>
@@ -70,7 +70,7 @@
     </li>
     <li class="layui-nav-item"><a href="http://im.cymall.xin" target="_blank">二维社区</a></li>
 
-    <li class="online-count">当前在线人数: <span id="onlineCount">1</span></li>
+    <li class="online-count" style="display: none;">当前在线人数: <span id="onlineCount">1</span></li>
 
     <div class="nav-right" style="float: right;">
 
@@ -118,7 +118,7 @@
     <div class="cy-chat-tool">
         <div class="face-box" id="faceBox"></div>
         <span class="iconfont  icon-biaoqing" onclick="CHAT.openFace()" title="选择表情"></span>
-        <#--<span class="iconfont  icon-jianqie" title="剪切" ></span>-->
+        <span class="iconfont  icon-jianqie" title="剪切" ></span>
         <span class="iconfont  icon-tupian1" onclick="CHAT.chooseFile()" title="发送图片"></span>
         <input id="fileBtn" onchange="CHAT.sendPic(event)" type="file" name="fileName" accept="image/*" value="发送图片"
                style="display: none">
@@ -159,28 +159,91 @@
 
 </script>
 
+
+
+
 <script type="text/javascript">
 
+    function CurentTime()
+    {
+        var now = new Date();
+
+        var year = now.getFullYear();       //年
+        var month = now.getMonth() + 1;     //月
+        var day = now.getDate();            //日
+
+        var hh = now.getHours();            //时
+        var mm = now.getMinutes();          //分
+        var ss = now.getSeconds();           //秒
+
+        var clock = year + "-";
+
+        if(month < 10)
+            clock += "0";
+
+        clock += month + "-";
+
+        if(day < 10)
+            clock += "0";
+
+        clock += day + " ";
+
+        if(hh < 10)
+            clock += "0";
+
+        clock += hh + ":";
+        if (mm < 10) clock += '0';
+        clock += mm + ":";
+
+        if (ss < 10) clock += '0';
+        clock += ss;
+        return(clock);
+    }
+
+
+
     $('#button11').click(function() {
+
+        //自动回复的内容
+        var _li2 = "";
 
         //IE内核浏览器
         var strEmbed = '<embed name="embedPlay" src="/audio/ding.mp3" autostart="true" hidden="true" loop="false"></embed>';
 
-        $("#li").append( strEmbed );
-        $("#li").css("display","none");
-
-
         var text=$("[name=text]").text();
-        /*$.post("query",{"text": text})*/
+        /*console.log($("[name=text]").val());*/
+
+        var items = ['你好呀！','what？','小艾不理解你的意思？','你想和我说什么呢?','hello!','你想和我说什么呢?','你想说什么就直说，不用藏在心里哈~','此时无声胜有声？'];
+        var item = items[Math.floor(Math.random()*items.length)];
 
         $.ajax({
             type: "POST",
             url: "query",
             data: {
-                "text": text,
+                "text1":$("[name=text]").text(),
             },
-            dataType: "json",
+           /* dataType: "json",
+            contentType:'application/json;charset=UTF-8',
+            async:false,*/
             success: function(data) {
+                if ($("#onlineCount").text()==1) {
+                    _li2 = [
+                        '<li>',
+                        '<div class="cy-chat-user">',
+                        '<img src="/img/ms/37.jpg">',
+                        '<cite>'+5050+'<i>' + CurentTime() + '</i></cite>',
+                        ' </div>',
+                        ' <div class="cy-chat-text">',
+                         item,
+                        '</div>',
+                        '</li>'
+                    ].join("");
+
+                 /*   $("#li").append( strEmbed );
+                    $("#li").css("display","none");*/
+
+                }
+                $(".cy-chat-main ul").append(_li2);
 
             }
         });

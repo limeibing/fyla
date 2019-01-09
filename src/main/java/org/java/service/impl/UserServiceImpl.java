@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class UserServiceImpl implements UserService{
@@ -51,5 +52,16 @@ public class UserServiceImpl implements UserService{
     @Override
     public void sfzrenzhen( String user_id) {
         userMapper.sfzrenzhen(  user_id);
+    }
+
+    @Override
+    public List<Map<String,Object>>  findAddress(Integer user_id) {
+        System.err.println("购买实现类UID"+user_id);
+        return userMapper.findAddress(user_id);
+    }
+
+    @Override
+    public void updateTwo(Map<String, Object> m) {
+        userMapper.updateTwo(m);
     }
 }

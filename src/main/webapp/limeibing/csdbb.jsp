@@ -265,14 +265,8 @@
                 </ul>
             </li>
 
-            <li class="person">
-                <p><i class="am-icon-qq"></i>服务客服</p>
-                <ul>
-                    <li><a href="#">退款管理</a></li>
-                    <li><a href="#">违规记录</a></li>
-                    <li><a href="#">基金还款</a></li>
-                </ul>
-            </li>
+
+
         </ul>
 
     </aside>

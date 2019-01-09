@@ -6,6 +6,17 @@ public class Address implements Serializable {
     private String address_areaId;
     private String address_name;
     private Address address_regionId;
+    private String phone;
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+
 
     public Address() {
     }

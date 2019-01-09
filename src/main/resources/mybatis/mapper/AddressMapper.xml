@@ -6,6 +6,7 @@
     <resultMap id="address" type="org.java.entity.Address">
         <id property="address_areaId" column="address_areaId"/>
         <result property="address_name" column="address_name"/>
+        <result property="phone" column="phone"/>
         <association property="address_regionId" javaType="org.java.entity.Address">
             <id property="address_areaId" column="address_regionId"/>
         </association>

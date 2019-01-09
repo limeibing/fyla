@@ -1,0 +1,7 @@
+@font-face {
+  font-family: 'sellerCenter';
+  src: url('//at.alicdn.com/t/font_1477368998_835406.eot');/* IE9*/
+  src: url('//at.alicdn.com/t/font_1477368998_835406.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('//at.alicdn.com/t/font_1477368998_835406.woff') format('woff'), /* chrome、firefox */
+  url('//at.alicdn.com/t/font_1477368998_835406.ttf') format('truetype');/* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+}

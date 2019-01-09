@@ -1,0 +1,104 @@
+/* 系统公告: =gb-msg-notice {{{ */
+#gb-msg-notice {
+	position: absolute;
+	left: -9999px;
+	top: 0;
+	padding: 5px 20px 5px 5px;
+	border: 1px solid #febf90;
+	background-color: #fff8d9;
+	color: #404040;
+}
+#gb-msg-notice a {
+	color: #36c;
+}
+#gb-msg-notice a:hover {
+	color: #F60;
+}
+#gb-msg-notice .gb-msg-info {
+	padding-left: 20px;
+	background: transparent url(//gtd.alicdn.com/tps/i4/T1LjukXmNrXXXXXXXX-16-29.png) 0 3px no-repeat;
+}
+#gb-msg-notice .gb-msg-icon {
+	position: absolute;
+	width: 0;
+	height: 0;
+	line-height: 0;
+	font-size: 0;
+}
+#gb-msg-notice .gb-msg-close {
+	right: 5px;
+	top: 10px;
+	width: 9px;
+	height: 9px;
+	background: transparent url(//gtd.alicdn.com/tps/i4/T1LjukXmNrXXXXXXXX-16-29.png) 0 -20px no-repeat;
+	cursor: pointer;
+}
+#gb-msg-notice .gb-msg-tri,
+#gb-msg-notice .gb-msg-tri-inner {
+	border-top: 4px dashed transparent;
+	border-right: 4px dashed transparent;
+	border-bottom: 4px solid #febf90;
+	border-left: 4px solid #febf90;
+	left: 20px;
+	top: -8px;
+}
+#gb-msg-notice .gb-msg-tri-inner {
+	border-bottom-color: #fff8d9;
+	border-left-color: #fff8d9;
+	left: -3px;
+	top: -2px;
+}
+/* 系统公告 */
+#system-announce {
+	clear: both;
+	line-height: 18px;
+	padding: 8px 0;
+	border: 1px solid #eee;
+	background-color: #f6f6f6;
+	text-align: center;
+	font-weight: bold;
+	color: #f30;
+}
+.seller-announce {
+	text-align: center;
+	width: 100%;
+	height: 30px;
+	line-height: 30px;
+	background: #fffdc6;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	font-size: 12px;
+}
+.announce-b {
+	font-family: 'sellerCenter';
+	color: #0085d7;
+}
+/* banner */
+.adv {
+	margin: 0px auto;
+	width: 1190px;
+	text-align: center;
+}
+/*content 系统提示*/
+.seller-sys-notice {
+	width: 988px;
+	height: 42px;
+	line-height: 42px;
+	border: 1px dashed #E0E0E0;
+	background: #FAFAFA;
+	margin-bottom: 15px;
+}
+.seller-sys-notice .notice-icon {
+	color: #0085D7;
+	font-size: 16px;
+	font-family: "sellerCenter";
+	padding-left: 15px;
+	padding-right: 5px;
+}
+.seller-sys-notice .notice-main {
+	color: #333;
+}
+.seller-sys-notice .notice-main a {
+	color: #0085D7;
+}

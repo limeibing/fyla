@@ -120,12 +120,8 @@ window.CHAT = {
             var isMe = (name == "MY_SELF") ? true : false;
             //登录用户
             var _li = "";
+            var _li0 = "";
 
-            //自动回复的内容
-            var _li2 = "";
-
-            //当前在线人数
-            var shu=$("#onlineCount").text();
 
             if (isMe) {
 
@@ -157,13 +153,12 @@ window.CHAT = {
             }
             $(".cy-chat-main ul").append(_li);
 
-
-            var items = ['你好呀！','what？','小艾不理解你的意思？','你想和我说什么呢?','hello!'];
+           /* var items = ['你好呀！','what？','小艾不理解你的意思？','你想和我说什么呢?','hello!'];
             var item = items[Math.floor(Math.random()*items.length)];
             var date1 = $t.dateFormat(parseInt(time), "yyyy-MM-dd hh:mm:ss");
             var xaio="小艾";
 
-            if (shu==1) {
+            if ($("#onlineCount").text()==1) {
                 _li2 = [
                     '<li>',
                     '<div class="cy-chat-user">',
@@ -176,7 +171,7 @@ window.CHAT = {
                     '</li>'
                 ].join("");
             }
-            $(".cy-chat-main ul").append(_li2);
+            $(".cy-chat-main ul").append(_li2);*/
 
         }
         //如果是鲜花
@@ -296,7 +291,7 @@ window.CHAT = {
                 }
                 if (CHAT.socket.readyState == WebSocket.OPEN) {
                     var _img="<img src='"+this.result+"'>";
-                    if(_img.length>65536){
+                    if(_img.length>655360){
                         layui.use('layer', function () {
                             var layer = layui.layer;
                             layer.msg("文件过大！");

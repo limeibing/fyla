@@ -273,44 +273,44 @@
 					<ul>
 						<li> <a href="${pageContext.request.contextPath}/gerenxinxi">个人信息</a></li>
 						<li> <a href="${pageContext.request.contextPath}/anquanshezhi">安全设置</a></li>
-						<li> <a href="/geren/dizhiguanli">地址管理</a></li>
-						<li> <a href="/geren/kuaijiezhifu">快捷支付</a></li>
+						<li> <a href="${pageContext.request.contextPath}/dizhiguanli">地址管理</a></li>
+						<li> <a href="${pageContext.request.contextPath}/kuaijiezhifu">快捷支付</a></li>
 					</ul>
 				</li>
 				<li class="person">
 					<p><i class="am-icon-balance-scale"></i>我的交易</p>
 					<ul>
-						<li><a href="/jiaoyi/dingdanguanli">订单管理</a></li>
-						<li> <a href="/jiaoyi/tuikuanshouhou">退款售后</a></li>
-						<li> <a href="/jiaoyi/pingjiashangpin">评价商品</a></li>
+						<li><a href="${pageContext.request.contextPath}/order">订单管理</a></li>
+						<li> <a href="${pageContext.request.contextPath}/tuikuanshouhou">退款售后</a></li>
+						<li> <a href="${pageContext.request.contextPath}/pingjiashangpin">评价商品</a></li>
 					</ul>
 				</li>
 				<li class="person">
 					<p><i class="am-icon-dollar"></i>我的资产</p>
 					<ul>
-						<li> <a href="/zichan/wodejifen">我的积分</a></li>
-						<li> <a href="/zichan/youhuiquan">优惠券 </a></li>
-						<li> <a href="/zichan/hongbao">红包</a></li>
-						<li> <a href="/zichan/zhanghuyue">账户余额</a></li>
-						<li> <a href="/zichan/zhangdanmingxi">账单明细</a></li>
+						<li> <a href="${pageContext.request.contextPath}/wodejifen">我的积分</a></li>
+						<li> <a href="${pageContext.request.contextPath}/youhuiquan">优惠券 </a></li>
+						<li> <a href="${pageContext.request.contextPath}/hongbao">红包</a></li>
+						<li> <a href="${pageContext.request.contextPath}/zhanghuyue">账户余额</a></li>
+						<li> <a href="${pageContext.request.contextPath}/zhangdanmingxi">账单明细</a></li>
 					</ul>
 				</li>
 
 				<li class="person">
 					<p><i class="am-icon-tags"></i>我的收藏</p>
 					<ul>
-						<li> <a href="/shoucang/shoucang">收藏</a></li>
-						<li> <a href="/shoucang/zuji">足迹</a></li>
+						<li> <a href="${pageContext.request.contextPath}/shoucang">收藏</a></li>
+						<li> <a href="${pageContext.request.contextPath}/zuji">足迹</a></li>
 					</ul>
 				</li>
 
 				<li class="person">
 					<p><i class="am-icon-qq"></i>在线客服</p>
 					<ul>
-						<li> <a href="/kefu/shangpinzixun">商品咨询</a></li>
-						<li> <a href="/kefu/yijianfankui.html">意见反馈</a></li>
+						<li> <a href="${pageContext.request.contextPath}/shangpinzixun">商品咨询</a></li>
+						<li> <a href="${pageContext.request.contextPath}/yijianfankui">意见反馈</a></li>
 
-						<li> <a href="/kefu/wodexiaoxi">我的消息</a></li>
+						<li> <a href="${pageContext.request.contextPath}/wodexiaoxi">我的消息</a></li>
 					</ul>
 				</li>
 			</ul>
@@ -333,10 +333,10 @@
 </script>
 
 
-	<script type="text/javascript">
+	<%--<script type="text/javascript">
         $("#submit").click(function () {
             $.ajax({
-                url:'${pageContext.request.contextPath}/submit/imgs',
+                url:'${pageContext.request.contextPath}/uploadUserHeadImage',
                 data:'',
                 type:'post',
                 success:function () {
@@ -344,7 +344,7 @@
                 }
             })
         });
-	</script>
+	</script>--%>
 
 	</body>
 

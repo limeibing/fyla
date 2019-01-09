@@ -66,10 +66,13 @@ public class PersonController {
     public String home(){
         return  "page/person/two/home/home3";
     }
+
+
+
     @RequestMapping("/personxiugai")
     @ResponseBody
     public void personxiugai(@RequestParam Map map, HttpSession ses){
-       // userService.updateTwo(map);
+        userService.updateTwo(map);
         User id=(User) ses.getAttribute("user");
         int user_id=id.getUser_id();
         User user1=userService.get(user_id);
@@ -125,7 +128,7 @@ public class PersonController {
         response.setCharacterEncoding("UTF-8");
         response.setContentType("text/html;charset=UTF-8");
 
-        sendYZM(req, response, phone1);
+        //sendYZM(req, response, phone1);
 
         PrintWriter out=response.getWriter();
         String context ="验证码："+ (int)((Math.random()*9+1)*100000);
@@ -140,8 +143,9 @@ public class PersonController {
         response.setCharacterEncoding("UTF-8");
         response.setContentType("text/html;charset=UTF-8");
 
-        sendYZM(req, response, phone2);
+        //sendYZM(req, response, phone2);
 
+        req.getSession().setAttribute("phone", phone2);
         PrintWriter out=response.getWriter();
         String context ="新手机号验证码："+ (int)((Math.random()*9+1)*100000);
         out.write(JSON.toJSONString(context));
@@ -149,71 +153,27 @@ public class PersonController {
         out.close();
         System.out.println(context);
     }
-    @RequestMapping("/btn")
-    @ResponseBody
-    public void  btn(@RequestParam String phone2,HttpSession ses){
-         System.out.println("phone2"+phone2);
-         ses.setAttribute("phone", phone2);
-        // return  "page/person/two/person/safety";
-    }
-    @RequestMapping("/btninfo")
-    public String  btninfo(){
-        System.out.println("btninfo");
+
+    @RequestMapping("/fanhui")
+    public String  fanhui(){
+        System.out.println("fanhui");
         return  "page/person/two/person/safety";
     }
 
 
-
-
-
-    /**
-     * 资料收集图片上传
-     *
-     * @param file
-     * @param
-     * @return
-     */
-    @RequestMapping("/submit/imgs")
+    @RequestMapping("/commentlist")
     @ResponseBody
-    public Map<String, Object> collectionCorrectInfoUpload(MultipartFile file) {
-        Map<String, Object> m = new HashMap<>();
-        try {
-            File f = new File("c:/upload/");
-            if (f.exists()) {
-                f.delete();
-            }
-            if (!f.exists()) {
-                f.mkdir();
-            }
-            uploadFile(file, "");
-            m.put("code", 0);
-            m.put("msg", "");
-        } catch (Exception e) {
-            m.put("code", 1);
-        }
-        return m;
+    public void commentlist(@RequestParam Map map,HttpSession ses){
+        System.out.println("commentlist");
+    }
+    @RequestMapping("/comment")
+    public String  comment(){
+
+        return  "page/person/two/person/comment";
     }
 
 
-    /**
-     * 文件上传
-     *
-     * @param file
-     * @param path
-     * @return
-     * @throws IOException
-     */
-    private String uploadFile(MultipartFile file, String path) {
-        String name = file.getOriginalFilename();//上传文件的真实名称
 
-        File f = new File("c:/upload/", name);
-        try {
-            file.transferTo(f);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return f.getName();
-    }
 
 
 

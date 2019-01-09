@@ -4,7 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import org.java.util.ReplyUtil;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -14,24 +14,24 @@ import java.io.PrintWriter;
 public class RobotController {
 
 
-    @RequestMapping("/query")
-    public void query(String text, HttpServletRequest req, HttpServletResponse resp) throws Exception{
-        req.setCharacterEncoding("utf-8");
-        resp.setContentType("text/html");
+    @RequestMapping(value = "/query", method = RequestMethod.POST)
+    @ResponseBody
+    public void query(@RequestParam String text1, HttpServletRequest req, HttpServletResponse response) throws Exception{
+        response.setCharacterEncoding("UTF-8");
+        response.setContentType("text/html;charset=UTF-8");
 
-        String replayMessage = ReplyUtil.getMessage(text);
-
-        PrintWriter out=resp.getWriter();
-
+        String replayMessage = ReplyUtil.getMessage(text1);
         JSONObject json = JSON.parseObject(replayMessage);
 
-        System.out.println(json.getString("text"));
-
+        System.out.println(replayMessage);
 
         String msg=json.getString("text");
 
+        System.out.println(msg);
 
-        out.write(JSON.toJSONString(msg).toString());
+        PrintWriter out=response.getWriter();
+
+        out.write(JSON.toJSONString(msg));
 
         out.flush();
         out.close();

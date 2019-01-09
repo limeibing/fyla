@@ -76,7 +76,6 @@ public class ForeOrderController extends BaseController {
         //nfo("根据用户ID:{}获取订单列表", userId);
         List<ProductOrder> productOrderList = productOrderService.getList(new ProductOrder().setProductOrder_user(new User().setUser_id(Integer.valueOf(userId.toString()))), status_array, new OrderUtil("productOrder_id", true), pageUtil);
       //  System.out.println("点击结算之后3");
-
         //订单总数量
         Integer orderCount = 0;
         if (productOrderList.size() > 0) {
@@ -93,7 +92,6 @@ public class ForeOrderController extends BaseController {
                         if (order.getProductOrder_status() == 3) {
                             productOrderItem.setIsReview(reviewService.getTotalByOrderItemId(productOrderItem.getProductOrderItem_id()) > 0);
                         }
-
                     }
                 }
                 order.setProductOrderItemList(productOrderItemList);
@@ -109,10 +107,8 @@ public class ForeOrderController extends BaseController {
         map.put("productOrderList", productOrderList);
         map.put("categoryList", categoryList);
         map.put("status", status);
-
      //   System.out.println("点击结算之后6");
          //nfo("转到前台天猫-订单列表页");
-
       return "/page/person/two/person/order";
 //        return  "fore/productPayPage";
     }
@@ -696,7 +692,7 @@ public class ForeOrderController extends BaseController {
         ProductOrder productOrder = new ProductOrder()
                 .setProductOrder_id(order.getProductOrder_id())
                 .setProductOrder_pay_date(new Date())
-                .setProductOrder_status((byte) 1);
+                .setProductOrder_status((Integer) 1);
         System.err.println("进入支付页面4");
 
         boolean yn = productOrderService.update(productOrder);
@@ -741,7 +737,7 @@ public class ForeOrderController extends BaseController {
         ProductOrder productOrder = new ProductOrder()
                 .setProductOrder_id(order.getProductOrder_id())
                 .setProductOrder_delivery_date(new Date())
-                .setProductOrder_status((byte) 2);
+                .setProductOrder_status((Integer) 2);
 
         productOrderService.update(productOrder);
 
@@ -787,7 +783,7 @@ public class ForeOrderController extends BaseController {
         //nfo("更新订单信息");
         ProductOrder productOrder = new ProductOrder()
                 .setProductOrder_id(order.getProductOrder_id())
-                .setProductOrder_status((byte) 3)
+                .setProductOrder_status((Integer) 3)
                 .setProductOrder_confirm_date(new Date());
 
         boolean yn = productOrderService.update(productOrder);
@@ -837,7 +833,7 @@ public class ForeOrderController extends BaseController {
         //nfo("更新订单信息");
         ProductOrder productOrder = new ProductOrder()
                 .setProductOrder_id(order.getProductOrder_id())
-                .setProductOrder_status((byte) 4);
+                .setProductOrder_status((Integer) 4);
 
         boolean yn = productOrderService.update(productOrder);
         if (yn) {
@@ -959,7 +955,7 @@ public class ForeOrderController extends BaseController {
         //nfo("生成的订单号为：{}", productOrder_code);
         //nfo("整合订单对象");
         ProductOrder productOrder = new ProductOrder()
-                .setProductOrder_status((byte) 0)
+                .setProductOrder_status((Integer) 0)
                 .setProductOrder_address(new Address().setAddress_areaId(districtAddressId))
                 .setProductOrder_post(productOrder_post)
                 .setProductOrder_user(new User().setUser_id(Integer.valueOf(userId.toString())))
@@ -1071,7 +1067,7 @@ public class ForeOrderController extends BaseController {
         //nfo("生成的订单号为：{}", productOrder_code);
         //nfo("整合订单对象");
         ProductOrder productOrder = new ProductOrder()
-                .setProductOrder_status((byte) 0)
+                .setProductOrder_status((Integer) 0)
                 .setProductOrder_address(new Address().setAddress_areaId(districtAddressId))
                 .setProductOrder_post(productOrder_post)
                 .setProductOrder_user(new User().setUser_id(Integer.valueOf(userId.toString())))

@@ -555,7 +555,7 @@
 					<p><i class="am-icon-qq"></i>在线客服</p>
 					<ul>
 						<li> <a href="${pageContext.request.contextPath}/shangpinzixun">商品咨询</a></li>
-						<li> <a href="${pageContext.request.contextPath}/yijianfankui.html">意见反馈</a></li>
+						<li> <a href="${pageContext.request.contextPath}/yijianfankui">意见反馈</a></li>
 
 						<li> <a href="${pageContext.request.contextPath}/wodexiaoxi">我的消息</a></li>
 					</ul>

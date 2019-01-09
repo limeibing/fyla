@@ -134,7 +134,7 @@
 				<div class="am-form-group bind">
 					<label for="user-phone" class="am-form-label">验证手机</label>
 					<div class="am-form-content">
-						<span id="user-phone" class="phone1">18571693213</span>
+						<span id="user-phone" class="phone1">${sessionScope.phone} </span>
 					</div>
 				</div>
 				<div class="am-form-group code">
@@ -162,7 +162,7 @@
 					</a>
 				</div>
 				<div class="info-btn">
-					<div class="am-btn am-btn-danger" id="btn">保存修改</div>
+					<a href="${pageContext.request.contextPath}/fanhui"><div class="am-btn am-btn-danger" id="btn">保存修改</div></a>
 				</div>
 
 			</form>
@@ -196,51 +196,51 @@
 	<aside class="menu">
 		<ul>
 			<li class="person active">
-				<a href="#"><i class="am-icon-user"></i>个人中心</a>
+				<a href="${pageContext.request.contextPath}/gerenzhongxin"><i class="am-icon-user"></i>个人中心</a>
 			</li>
 			<li class="person">
 				<p><i class="am-icon-newspaper-o"></i>个人资料</p>
 				<ul>
 					<li> <a href="${pageContext.request.contextPath}/gerenxinxi">个人信息</a></li>
 					<li> <a href="${pageContext.request.contextPath}/anquanshezhi">安全设置</a></li>
-					<li> <a href="address.html">地址管理</a></li>
-					<li> <a href="cardlist.html">快捷支付</a></li>
+					<li> <a href="${pageContext.request.contextPath}/dizhiguanli">地址管理</a></li>
+					<li> <a href="${pageContext.request.contextPath}/kuaijiezhifu">快捷支付</a></li>
 				</ul>
 			</li>
 			<li class="person">
 				<p><i class="am-icon-balance-scale"></i>我的交易</p>
 				<ul>
-					<li><a href="order.html">订单管理</a></li>
-					<li> <a href="change.html">退款售后</a></li>
-					<li> <a href="comment.html">评价商品</a></li>
+					<li><a href="${pageContext.request.contextPath}/order">订单管理</a></li>
+					<li> <a href="${pageContext.request.contextPath}/tuikuanshouhou">退款售后</a></li>
+					<li> <a href="${pageContext.request.contextPath}/pingjiashangpin">评价商品</a></li>
 				</ul>
 			</li>
 			<li class="person">
 				<p><i class="am-icon-dollar"></i>我的资产</p>
 				<ul>
-					<li> <a href="points.html">我的积分</a></li>
-					<li> <a href="coupon.html">优惠券 </a></li>
-					<li> <a href="bonus.html">红包</a></li>
-					<li> <a href="walletlist.html">账户余额</a></li>
-					<li> <a href="bill.html">账单明细</a></li>
+					<li> <a href="${pageContext.request.contextPath}/wodejifen">我的积分</a></li>
+					<li> <a href="${pageContext.request.contextPath}/youhuiquan">优惠券 </a></li>
+					<li> <a href="${pageContext.request.contextPath}/hongbao">红包</a></li>
+					<li> <a href="${pageContext.request.contextPath}/zhanghuyue">账户余额</a></li>
+					<li> <a href="${pageContext.request.contextPath}/zhangdanmingxi">账单明细</a></li>
 				</ul>
 			</li>
 
 			<li class="person">
 				<p><i class="am-icon-tags"></i>我的收藏</p>
 				<ul>
-					<li> <a href="collection.html">收藏</a></li>
-					<li> <a href="foot.html">足迹</a></li>
+					<li> <a href="${pageContext.request.contextPath}/shoucang">收藏</a></li>
+					<li> <a href="${pageContext.request.contextPath}/zuji">足迹</a></li>
 				</ul>
 			</li>
 
 			<li class="person">
 				<p><i class="am-icon-qq"></i>在线客服</p>
 				<ul>
-					<li> <a href="consultation.html">商品咨询</a></li>
-					<li> <a href="suggest.html">意见反馈</a></li>
+					<li> <a href="${pageContext.request.contextPath}/shangpinzixun">商品咨询</a></li>
+					<li> <a href="${pageContext.request.contextPath}/yijianfankui">意见反馈</a></li>
 
-					<li> <a href="news.html">我的消息</a></li>
+					<li> <a href="${pageContext.request.contextPath}/wodexiaoxi">我的消息</a></li>
 				</ul>
 			</li>
 		</ul>
@@ -293,15 +293,15 @@
 
     $("#btn").click(function () {
         $step.nextStep();
-        $.ajax({
+       /* $.ajax({
             url:'${pageContext.request.contextPath}/btn',
             data: {"phone2":$("[name=phone3]").val()},
             type:'post',
             dataType:'json',
             success:function () {
-                 window.location.href="${pageContext.request.contextPath}/btninfo";
+                 window.location.href="${pageContext.request.contextPath}/fanhui";
             }
-        })
+        })*/
     })
 
 </script>

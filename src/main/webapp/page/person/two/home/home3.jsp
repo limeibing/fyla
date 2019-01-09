@@ -66,7 +66,7 @@
                 <div class="menu-hd"><a id="mc-menu-hd" href="${pageContext.request.contextPath}/cart" target="_top"><i class="am-icon-shopping-cart  am-icon-fw"></i><span>购物车</span><strong id="J_MiniCartNum" class="h">0</strong></a></div>
             </div>
             <div class="topMessage mini-cart">
-                <div class="menu-hd"><a id="mc-menu-hd2" href="#" target="_top"><i >🏬</i><span>商家中心</span><strong id="J_MiniC2artNum" class="h">0</strong></a></div>
+                <div class="menu-hd"><a id="mc-menu-hd2" href="/kai" target="_top"><i >🏬</i><span>商家支持</span><strong id="J_MiniC2artNum" class="h">0</strong></a></div>
             </div>
             <div class="topMessage mini-cart">
             </div>

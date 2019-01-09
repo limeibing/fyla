@@ -1,6 +1,4 @@
 package org.java.controller.admin;
-
-
 import com.alibaba.fastjson.JSON;
 import org.java.dao.ProductMapper;
 import org.java.dao.ProductOrderMapper;
@@ -17,7 +15,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -27,18 +24,14 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-
 @Controller
 public class controller {
-
     @Autowired
     UserMapper userMapper;
     @Autowired
     ProductOrderMapper productOrderMapper;
     @Autowired
     ProductMapper productMapper;
-
-
     @RequestMapping("/kai")
     public String kai2(HttpSession ses) {
         User user = (User) ses.getAttribute("user");
@@ -47,25 +40,19 @@ public class controller {
         } else {
             return "/sj/kai";
         }
-
     }
-
-
     @RequestMapping("/kai2")
     public String kai3() {
         return "/sj/kai2";
     }
-
     @RequestMapping("/kai4")
     public String kai4() {
         return "/sj/kai4";
     }
-
     @RequestMapping("/renzhenzhifubao")
     public String renzhenzhifubao() {
         return "/limeibing/身份证";
     }
-
     @RequestMapping("/sfzyz")
     @ResponseBody
     public String sfzyz(String sfzname, String sfzid, HttpSession ses, HttpServletResponse resp) throws Exception {
@@ -132,9 +119,8 @@ public class controller {
     public String kdcg(HttpServletResponse resp, HttpServletRequest req, String productorder_confirm_date1, String productorder_confirm_date2, String productorder_status, String productorder_receiver, String product_name) throws Exception {
         return "/limeibing/已卖出的宝贝";
     }
-
     @RequestMapping("/kdcg1")
-    public void kdcg1(HttpServletResponse resp, HttpServletRequest req, String productorder_confirm_date1,String  productorder_id, String productorder_confirm_date2, String productorder_status, String productorder_receiver, String product_name) throws Exception {
+    public void kdcg1(HttpServletResponse resp, HttpServletRequest req, String productorder_confirm_date1, String productorder_id, String productorder_confirm_date2, String productorder_status, String productorder_receiver, String product_name) throws Exception {
         Map m = new HashMap();
         resp.setContentType("text/html;charset=utf-8");
         req.setCharacterEncoding("UTF-8");
@@ -165,12 +151,10 @@ public class controller {
             e.printStackTrace();
         }
     }
-
     @RequestMapping("/csdbb")
     public String csdbb(HttpServletResponse resp, HttpServletRequest req, String product_isEnabled) throws Exception {
         return "/limeibing/csdbb";
     }
-
     @RequestMapping("/cszdbb")
     public void cszdbb(HttpServletResponse resp, HttpServletRequest req, String product_isEnabled) throws Exception {
         resp.setContentType("text/html;charset=utf-8");
@@ -193,54 +177,39 @@ public class controller {
         out.flush();
         out.close();
     }
-
     @RequestMapping("/delbb")
     public void delbb(String bbid) {
-
         System.out.println(bbid + "deldd");
     }
-
     @RequestMapping("/sj")
     public void sj(String bbid) {
-
         System.out.println(bbid);
         productMapper.sj(bbid);
         System.out.println("sj");
     }
-
     @RequestMapping("/rx")
     public void rx(String bbid) {
         System.out.println(bbid);
         productMapper.rx(bbid);
-
-        System.out.println("rx");
     }
-
     @RequestMapping("/xj")
     public void xj(String bbid) {
         System.out.println(bbid);
         productMapper.xj(bbid);
-
-        System.out.println("xj");
     }
-
     @RequestMapping("/fbbb")
-    public String fbbb(){
+    public String fbbb() {
         return "/limeibing/发布商品";
-
     }
-
     @RequestMapping("/file")
-    public String file(){
+    public String file() {
         return "/file";
-
     }
     @RequestMapping("/fh")
     public String fh() {
         System.out.println("发货");
         return "/limeibing/发货";
     }
-
     @RequestMapping("/bbfh")
     public void bbfh(String bbid, HttpServletResponse resq) throws Exception {
         productOrderMapper.bbfh(bbid);
@@ -275,23 +244,9 @@ public class controller {
         out.flush();
         out.close();
     }
-
     @RequestMapping("/jkd")
     public String jkd() {
         System.out.println("jkd");
         return "/limeibing/寄快件";
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
 }

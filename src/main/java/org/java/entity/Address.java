@@ -27,6 +27,7 @@ public class Address implements Serializable {
                 "address_areaId='" + address_areaId + '\'' +
                 ", address_name='" + address_name + '\'' +
                 ", address_regionId=" + address_regionId +
+                ", phone='" + phone + '\'' +
                 '}';
     }
 

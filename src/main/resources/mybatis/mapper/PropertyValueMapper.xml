@@ -25,11 +25,11 @@
     <insert id="insertList" parameterType="java.util.List">
         INSERT propertyValue(propertyValue_id,propertyValue_value,propertyValue_property_id,propertyValue_product_id)
         VALUES
-        <foreach collection="propertyValue_list" index="index" item="org.java.entity.PropertyValue" separator=",">
+        <foreach collection="propertyValueList" index="index" item="PropertyValue" separator=",">
             (null,
-            #{propertyValue.propertyValue_value},
-            #{propertyValue.propertyValue_property.property_id},
-            #{propertyValue.propertyValue_product.product_id})
+            #{PropertyValue.propertyValue_value},
+            #{PropertyValue.propertyValue_property.property_id},
+            #{PropertyValue.propertyValue_product.product_id})
         </foreach>
     </insert>
     <update id="updateOne" parameterType="org.java.entity.PropertyValue">

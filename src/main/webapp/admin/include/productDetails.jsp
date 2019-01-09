@@ -122,7 +122,7 @@
                 //单击保存按钮时
                 $("#btn_product_save").click(function () {
                     var product_id = $("#details_product_id").val();
-                    var product_category_id = $("#select_product_category").selectpicker("val");
+                    var product_category_id = 1;
                     var product_isEnabled = $("input[name='radio_product_isEnabled']:checked").val();
                     var product_name = $.trim($("#input_product_name").val());
                     var product_title = $.trim($("#input_product_title").val());
@@ -198,7 +198,7 @@
 
                     //数据集
                     var dataList = {
-                        "product_category_id": product_category_id,
+                        "product_category_id": 1,
                         "product_isEnabled": product_isEnabled,
                         "product_name": product_name,
                         "product_title": product_title,
@@ -211,6 +211,7 @@
                         "productDetailsImageList": productDetailsImageList
                     };
                     doAction(dataList, "admin/product/" + product_id, "PUT");
+
                 });
             }
 
@@ -270,44 +271,44 @@
                 $(".menu_li[data-toggle=product]").click();
             });
             //更改产品类型列表时
-            $("#select_product_category").change(function () {
-                $.ajax({
-                    url: "admin/property/type/"+$(this).val(),
-                    type: "get",
-                    data: null,
-                    success: function (data) {
-                        $(".loader").css("display", "none");
-                        //清空原有数据
-                        var listDiv = $(".details_property_list");
-                        listDiv.empty().append("<span class='details_title text_info'>属性值信息</span>");
-                        //显示产品属性数据
-                        if(data.propertyList.length > 0){
-                            for(var i = 0;i<data.propertyList.length;i++){
-                                var propertyId = data.propertyList[i].property_id;
-                                var propertyName = data.propertyList[i].property_name;
-                                if(data.propertyList[i+1] !== undefined){
-                                    var nextPropertyId = data.propertyList[i+1].property_id;
-                                    var nextPropertyName = data.propertyList[i+1].property_name;
-                                    i++;
-                                    listDiv.append("<label class='frm_label lbl_property_name text_info' id='lbl_product_property_" + propertyId + "' for='input_product_property_" + propertyId + "'>" + propertyName + "</label><input class='frm_input' id='input_product_property_" + propertyId + "' type='text' maxlength='50'/><label class='frm_label lbl_property_name text_info' id='lbl_product_property_" + nextPropertyId + "' for='input_product_property_" + nextPropertyId + "'>" + nextPropertyName + "</label><input class='frm_input' id='input_product_property_" + nextPropertyId + "' type='text' maxlength='50'/><div class='br'></div>");
-                                } else {
-                                    listDiv.append("<label class='frm_label lbl_property_name text_info' id='lbl_product_property_" + propertyId + "' for='input_product_property_" + propertyId + "'>" + propertyName + "</label><input class='frm_input' id='input_product_property_" + propertyId + "' type='text' maxlength='50'/><div class='br'></div>");
-                                }
-                            }
-                        }
-                    },
-                    beforeSend: function () {
-                        $(".loader").css("display", "block");
-                    },
-                    error: function () {
-
-                    }
-                });
-            });
-            //获取到输入框焦点时
-            $("input:text").focus(function () {
-                styleUtil.basicErrorHide($(this).prev("label"));
-            });
+            // $("#select_product_category").change(function () {
+            //     $.ajax({
+            //         url: "admin/property/type/"+$(this).val(),
+            //         type: "get",
+            //         data: null,
+            //         success: function (data) {
+            //             $(".loader").css("display", "none");
+            //             //清空原有数据
+            //             var listDiv = $(".details_property_list");
+            //             listDiv.empty().append("<span class='details_title text_info'>属性值信息</span>");
+            //             //显示产品属性数据
+            //             if(data.propertyList.length > 0){
+            //                 for(var i = 0;i<data.propertyList.length;i++){
+            //                     var propertyId = data.propertyList[i].property_id;
+            //                     var propertyName = data.propertyList[i].property_name;
+            //                     if(data.propertyList[i+1] !== undefined){
+            //                         var nextPropertyId = data.propertyList[i+1].property_id;
+            //                         var nextPropertyName = data.propertyList[i+1].property_name;
+            //                         i++;
+            //                         listDiv.append("<label class='frm_label lbl_property_name text_info' id='lbl_product_property_" + propertyId + "' for='input_product_property_" + propertyId + "'>" + propertyName + "</label><input class='frm_input' id='input_product_property_" + propertyId + "' type='text' maxlength='50'/><label class='frm_label lbl_property_name text_info' id='lbl_product_property_" + nextPropertyId + "' for='input_product_property_" + nextPropertyId + "'>" + nextPropertyName + "</label><input class='frm_input' id='input_product_property_" + nextPropertyId + "' type='text' maxlength='50'/><div class='br'></div>");
+            //                     } else {
+            //                         listDiv.append("<label class='frm_label lbl_property_name text_info' id='lbl_product_property_" + propertyId + "' for='input_product_property_" + propertyId + "'>" + propertyName + "</label><input class='frm_input' id='input_product_property_" + propertyId + "' type='text' maxlength='50'/><div class='br'></div>");
+            //                     }
+            //                 }
+            //             }
+            //         },
+            //         beforeSend: function () {
+            //             $(".loader").css("display", "block");
+            //         },
+            //         error: function () {
+            //
+            //         }
+            //     });
+            // });
+            // //获取到输入框焦点时
+            // $("input:text").focus(function () {
+            //     styleUtil.basicErrorHide($(this).prev("label"));
+            // });
         });
 
         //图片上传
@@ -403,8 +404,8 @@
                                 ajaxUtil.getPage("/product/" + data.product_id, null, true);
                             }, 170);
                         });
-                        $(".modal-body").text("保存成功！");
-                        $('#modalDiv').modal();
+                       alert("商品新增成功！");
+                       location.reload();
                     }
                 },
                 beforeSend: function () {
@@ -444,7 +445,13 @@
     <input type="hidden" value="${requestScope.product.product_id}" id="details_product_id"/>
     <div class="frm_div_last warn_height">
         <label class="frm_label text_info" id="lbl_product_category_id" >产品类型</label>
+        <div style="display: none;">
+        <select class="selectpicker" id="select_product_category" data-size="8" >
 
+                <option value="1">大衣/服装</option>
+
+        </select>
+        </div>
         <label class="frm_label text_info" id="lbl_product_isEnabled" for="radio_product_isEnabled_true">产品状态</label>
         <input id="radio_product_isEnabled_true" name="radio_product_isEnabled" type="radio" value="0" checked>
         <label class="frm_label text_info" id="lbl_product_isEnabled_true" for="radio_product_isEnabled_true">销售中</label>
@@ -559,10 +566,12 @@
     </c:forEach>
 </div>
 
+
 <div class="details_tools_div">
     <input class="frm_btn" id="btn_product_save" type="button" value="保存"/>
     <input class="frm_btn frm_clear" id="btn_product_cancel" type="button" value="取消"/>
 </div>
+
 
 </body>
 </html>

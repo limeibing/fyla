@@ -124,42 +124,34 @@
 					<li class="person">
 						<p><i class="am-icon-newspaper-o"></i>店铺管理</p>
 						<ul>
-							<li> <a href="information.html">我要开店</a></li>
+							<li> <a href="#">我要开店</a></li>
 						</ul>
 					</li>
 					<li class="person">
 						<p><i class="am-icon-balance-scale"></i>交易管理</p>
 						<ul>
-							<li><a href="order.html">卖出的宝贝</a></li>
-							<li> <a href="change.html">评价</a></li>
+							<li><a href="/kdcg">卖出的宝贝</a></li>
 						</ul>
 					</li>
 					<li class="person">
 						<p><i class="am-icon-dollar"></i>物流管理</p>
 						<ul>
-							<li> <a href="points.html">发货</a></li>
-							<li> <a href="coupon.html">物流管理</a></li>
-							<li> <a href="bonus.html">物流服务</a></li>
-							<li> <a href="walletlist.html">寄快递</a></li>
+							<li> <a href="/fh">发货</a></li>
+							<li> <a href="#">物流管理</a></li>
+							<li> <a href="#">物流服务</a></li>
+							<li> <a href="/jkd">寄快递</a></li>
 						</ul>
 					</li>
 
 					<li class="person">
 						<p><i class="am-icon-tags"></i>宝贝管理</p>
 						<ul>
-							<li> <a href="collection.html">出售中的宝贝</a></li>
-							<li> <a href="foot.html">仓库中的宝贝</a></li>														
+							<li> <a href="/kdcg">出售中的宝贝</a></li>
+							<li> <a href="/kdcg">仓库中的宝贝</a></li>
 						</ul>
 					</li>
 
-					<li class="person">
-						<p><i class="am-icon-qq"></i>服务客服</p>
-						<ul>
-							<li> <a href="consultation.html">退款管理</a></li>
-							<li> <a href="suggest.html">违规记录</a></li>							
-							<li> <a href="suggest.html">基金还款</a></li>	
-						</ul>
-					</li>
+
 				</ul>
 
 			</aside>

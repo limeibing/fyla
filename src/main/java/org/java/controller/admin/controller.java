@@ -17,6 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -26,6 +27,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+
 @Controller
 public class controller {
 
@@ -40,6 +42,7 @@ public class controller {
 
     @Autowired
     ProductMapper productMapper;
+
     @RequestMapping("/kai")
     public String kai2(HttpSession ses) {
         User user = (User) ses.getAttribute("user");
@@ -49,18 +52,22 @@ public class controller {
             return "/sj/kai";
         }
     }
+
     @RequestMapping("/kai2")
     public String kai3() {
         return "/sj/kai2";
     }
+
     @RequestMapping("/kai4")
     public String kai4() {
         return "/sj/kai4";
     }
+
     @RequestMapping("/renzhenzhifubao")
     public String renzhenzhifubao() {
         return "/limeibing/身份证";
     }
+
     @RequestMapping("/sfzyz")
     @ResponseBody
     public String sfzyz(String sfzname, String sfzid, HttpSession ses, HttpServletResponse resp) throws Exception {
@@ -123,10 +130,12 @@ public class controller {
         System.out.println(map.get("name").toString() + map.get("IDCard").toString() + "sdsd");
         return "error";
     }
+
     @RequestMapping("/kdcg")
     public String kdcg(HttpServletResponse resp, HttpServletRequest req, String productorder_confirm_date1, String productorder_confirm_date2, String productorder_status, String productorder_receiver, String product_name) throws Exception {
         return "/limeibing/已卖出的宝贝";
     }
+
     @RequestMapping("/kdcg1")
     public void kdcg1(HttpServletResponse resp, HttpServletRequest req, String productorder_confirm_date1, String productorder_id, String productorder_confirm_date2, String productorder_status, String productorder_receiver, String product_name) throws Exception {
         Map m = new HashMap();
@@ -159,10 +168,12 @@ public class controller {
             e.printStackTrace();
         }
     }
+
     @RequestMapping("/csdbb")
     public String csdbb(HttpServletResponse resp, HttpServletRequest req, String product_isEnabled) throws Exception {
         return "/limeibing/csdbb";
     }
+
     @RequestMapping("/cszdbb")
     public void cszdbb(HttpServletResponse resp, HttpServletRequest req, String product_isEnabled) throws Exception {
         resp.setContentType("text/html;charset=utf-8");
@@ -185,45 +196,54 @@ public class controller {
         out.flush();
         out.close();
     }
+
     @RequestMapping("/delbb")
     public void delbb(String bbid) {
         System.out.println(bbid + "deldd");
     }
+
     @RequestMapping("/sj")
     public void sj(String bbid) {
         System.out.println(bbid);
         productMapper.sj(bbid);
         System.out.println("sj");
     }
+
     @RequestMapping("/rx")
     public void rx(String bbid) {
         System.out.println(bbid);
         productMapper.rx(bbid);
     }
+
     @RequestMapping("/xj")
     public void xj(String bbid) {
         System.out.println(bbid);
         productMapper.xj(bbid);
     }
+
     @RequestMapping("/fbbb")
     public String fbbb() {
         return "/limeibing/发布商品";
     }
+
     @RequestMapping("/file")
     public String file() {
         return "/file";
     }
+
     @RequestMapping("/fh")
     public String fh() {
         System.out.println("发货");
         return "/limeibing/发货";
     }
+
     @RequestMapping("/bbfh")
     public void bbfh(String bbid, HttpServletResponse resq) throws Exception {
         productOrderMapper.bbfh(bbid);
         PrintWriter out = resq.getWriter();
         out.write(JSON.toJSONString("msg").toString());
     }
+
     @RequestMapping("/bbqrfh")
     public void bbqrfh(HttpServletResponse resp, HttpServletRequest req, String bbid
             , String productorder_pay_date1, String productorder_pay_date2, String productorder_id, String productorder_receiver
@@ -252,6 +272,7 @@ public class controller {
         out.flush();
         out.close();
     }
+
     @RequestMapping("/jkd")
     public String jkd() {
         System.out.println("jkd");
@@ -259,18 +280,12 @@ public class controller {
     }
 
     @RequestMapping("/scfl")
-    public void scfl(String details_category_id)
-    {
+    public void scfl(String details_category_id) {
         System.out.println("******************************************************************");
-        Integer category_id=Integer.parseInt(details_category_id);
+        Integer category_id = Integer.parseInt(details_category_id);
         categoryMapper.scfl(category_id);
         System.out.println("删除商品分类成功！");
     }
-
-
-
-
-
 
 
 

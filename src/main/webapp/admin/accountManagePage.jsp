@@ -73,8 +73,8 @@
                                 ajaxUtil.getPage("account", null, true);
                             }, 170);
                         });
-                        $(".modal-body").text("信息保存成功！");
-                        $('#modalDiv').modal();
+                        alert("信息已更新");
+                        location.href='/admin';
                     } else {
                         styleUtil.errorShow($("#text_password_details_msg"), data.message);
                     }

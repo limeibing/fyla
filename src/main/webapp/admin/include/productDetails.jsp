@@ -404,7 +404,7 @@
                                 ajaxUtil.getPage("/product/" + data.product_id, null, true);
                             }, 170);
                         });
-                       alert("商品新增成功！");
+                       alert("商品信息操作成功！");
                        location.reload();
                     }
                 },

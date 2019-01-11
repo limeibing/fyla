@@ -1,19 +1,20 @@
 package org.java.service.impl;
 
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.java.dao.CategoryMapper;
 import org.java.entity.Category;
 import org.java.service.CategoryService;
 import org.java.util.PageUtil;
+import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.annotation.Resource;
 import java.util.List;
-
 @Service
 public class CategoryServiceImpl implements CategoryService {
+
     @Autowired
     private CategoryMapper categoryMapper;
     @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
@@ -41,5 +42,10 @@ public class CategoryServiceImpl implements CategoryService {
     @Override
     public Integer getTotal(String category_name) {
         return categoryMapper.selectTotal(category_name);
+    }
+
+    @Override
+    public void scfl(Integer category_id) {
+        categoryMapper.scfl(category_id);
     }
 }

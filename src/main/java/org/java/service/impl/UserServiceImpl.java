@@ -1,19 +1,22 @@
 package org.java.service.impl;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.java.dao.UserMapper;
 import org.java.entity.User;
 import org.java.service.UserService;
 import org.java.util.OrderUtil;
 import org.java.util.PageUtil;
-import org.springframework.stereotype.Service;
+
+
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-
+import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Map;
-
+import org.springframework.stereotype.Component;
 @Service
+@Component
 public class UserServiceImpl implements UserService{
     @Autowired
     private UserMapper userMapper;

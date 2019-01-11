@@ -1,10 +1,12 @@
 package org.java.controller.admin;
 
+
 import com.alibaba.fastjson.JSONObject;
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.java.controller.BaseController;
 import org.java.entity.Admin;
 import org.java.service.AdminService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,6 +24,7 @@ import java.util.UUID;
  */
 @Controller
 public class AccountController extends BaseController{
+
     @Autowired
     private AdminService adminService;
 

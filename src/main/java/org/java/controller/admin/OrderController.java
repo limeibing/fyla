@@ -1,5 +1,6 @@
 package org.java.controller.admin;
 
+
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
@@ -15,7 +16,7 @@ import org.java.util.PageUtil;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import javax.annotation.Resource;
+
 import javax.servlet.http.HttpSession;
 import java.util.Date;
 import java.util.List;
@@ -27,18 +28,25 @@ import java.util.Stack;
  */
 @Controller
 public class OrderController extends BaseController{
+
     @Autowired
     private ProductOrderService productOrderService;
+
     @Autowired
     private AddressService addressService;
+
     @Autowired
     private UserService userService;
+
     @Autowired
     private ProductOrderItemService productOrderItemService;
+
     @Autowired
     private ProductService productService;
+
     @Autowired
     private ProductImageService productImageService;
+
     @Autowired
     private LastIDService lastIDService;
 

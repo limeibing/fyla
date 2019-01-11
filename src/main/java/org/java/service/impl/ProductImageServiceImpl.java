@@ -1,19 +1,23 @@
 package org.java.service.impl;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.java.dao.ProductImageMapper;
 import org.java.entity.ProductImage;
 import org.java.service.ProductImageService;
 import org.java.util.PageUtil;
+
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.annotation.Resource;
-import java.util.List;
 
+import java.util.List;
+import org.springframework.stereotype.Component;
 @Service
 public class ProductImageServiceImpl implements ProductImageService{
+
     @Autowired
     private ProductImageMapper productImageMapper;
     @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)

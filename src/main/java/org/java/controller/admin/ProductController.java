@@ -1,5 +1,6 @@
 package org.java.controller.admin;
 
+
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
@@ -13,7 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.annotation.Resource;
+
 import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
@@ -26,16 +27,22 @@ import java.util.*;
  */
 @Controller
 public class ProductController extends BaseController{
+
     @Autowired
     private CategoryService categoryService;
+
     @Autowired
     private ProductService productService;
+
     @Autowired
     private ProductImageService productImageService;
+
     @Autowired
     private PropertyService propertyService;
+
     @Autowired
     private PropertyValueService propertyValueService;
+
     @Autowired
     private LastIDService lastIDService;
 

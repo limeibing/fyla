@@ -1,5 +1,6 @@
 package org.java.service.impl;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.java.dao.ProductOrderMapper;
 import org.java.entity.OrderGroup;
@@ -7,17 +8,20 @@ import org.java.entity.ProductOrder;
 import org.java.service.ProductOrderService;
 import org.java.util.OrderUtil;
 import org.java.util.PageUtil;
+
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.annotation.Resource;
+
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
-
+import org.springframework.stereotype.Component;
 @Service
 public class ProductOrderServiceImpl implements ProductOrderService{
+
     @Autowired
     private ProductOrderMapper productOrderMapper;
 

@@ -1,5 +1,6 @@
 package org.java.controller.admin;
 
+
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.java.controller.BaseController;
@@ -11,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.annotation.Resource;
+
 import javax.servlet.http.HttpSession;
 
 /**
@@ -19,6 +20,7 @@ import javax.servlet.http.HttpSession;
  */
 @Controller
 public class AdminLoginController extends BaseController {
+
     @Autowired
     private AdminService adminService;
 

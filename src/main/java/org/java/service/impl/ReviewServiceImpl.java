@@ -5,13 +5,12 @@ import org.java.dao.ReviewMapper;
 import org.java.entity.Review;
 import org.java.service.ReviewService;
 import org.java.util.PageUtil;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.annotation.Resource;
 import java.util.List;
-
 @Service
 public class ReviewServiceImpl implements ReviewService{
     @Autowired

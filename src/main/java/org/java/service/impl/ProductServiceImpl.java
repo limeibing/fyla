@@ -1,21 +1,25 @@
 package org.java.service.impl;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.java.dao.ProductMapper;
 import org.java.entity.Product;
 import org.java.service.ProductService;
 import org.java.util.OrderUtil;
 import org.java.util.PageUtil;
+
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.annotation.Resource;
+
 import java.util.List;
 import java.util.Map;
 
 @Service
 public class ProductServiceImpl implements ProductService {
+
     @Autowired
     private ProductMapper productMapper;
     @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)

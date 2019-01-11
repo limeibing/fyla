@@ -41,4 +41,12 @@
             <if test="category_name != null">category_name LIKE concat('%',#{category_name},'%')</if>
         </where>
     </select>
+
+    <delete id="scfl">
+        DELETE FROM category
+	WHERE
+	category_id = #{category_id}
+
+    </delete>
+
 </mapper>

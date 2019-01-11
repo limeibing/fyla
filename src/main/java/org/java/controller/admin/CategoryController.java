@@ -1,5 +1,6 @@
 package org.java.controller.admin;
 
+
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
@@ -15,7 +16,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.annotation.Resource;
+
 import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
@@ -31,10 +32,13 @@ import java.util.UUID;
  */
 @Controller
 public class CategoryController extends BaseController {
+
     @Autowired
     private CategoryService categoryService;
+
     @Autowired
     private LastIDService lastIDService;
+
     @Autowired
     private PropertyService propertyService;
 

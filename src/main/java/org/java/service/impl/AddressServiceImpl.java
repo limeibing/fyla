@@ -1,5 +1,6 @@
 package org.java.service.impl;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.java.dao.AddressMapper;
 import org.java.entity.Address;
@@ -12,7 +13,8 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
-public class AddressServiceImpl implements AddressService{
+class AddressServiceImpl implements AddressService{
+
     @Autowired
     private AddressMapper addressMapper;
 

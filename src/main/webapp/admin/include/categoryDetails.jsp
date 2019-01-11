@@ -175,7 +175,9 @@
                             }, 170);
                         });
                         $(".modal-body").text("保存成功！");
-                        $('#modalDiv').modal();
+                        alert("新增成功！");
+                        location.reload();
+
                     }
                 },
                 beforeSend: function () {
@@ -213,6 +215,7 @@
         <label class="frm_label text_info" id="lbl_category_name" for="input_category_name">分类名称</label>
         <input class="frm_input" id="input_category_name" type="text" maxlength="50"
                value="${requestScope.category.category_name}"/>
+
     </div>
 </div>
 <div class="details_div">
@@ -258,11 +261,28 @@
     </c:if>
 </div>
 <div class="details_tools_div">
+    <input class="frm_btn" id="scfl" onclick="scfl()" type="button" value="删除该分类"/>
     <input class="frm_btn" id="btn_category_save" type="button" value="保存"/>
     <input class="frm_btn frm_clear" id="btn_category_cancel" type="button" value="取消"/>
 </div>
+<script>
+    function scfl() {
+        var details_category_id=$("#details_category_id").val();
+        var question =confirm("确实要删除吗?");
+        if(question==false) {
+            alert("您已取消操作");
+        }else{
+            var question2 =confirm("您正在执行删除工作,确实要删除该商品分类下的所有商品分类信息吗?");
+            if(question2==false) {
+                alert("您已取消操作");
+            }else{
+                alert("已删除所有该分类下的宝贝!");
+                $.post('/scfl?details_category_id='+details_category_id);
+                location.reload();
+            }
+        }
 
-<%-- 模态框 --%>
-<div class="loader"></div>
+    }
+</script>
 </body>
 </html>

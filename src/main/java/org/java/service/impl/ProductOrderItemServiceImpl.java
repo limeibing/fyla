@@ -1,19 +1,22 @@
 package org.java.service.impl;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.java.dao.ProductOrderItemMapper;
 import org.java.entity.OrderGroup;
 import org.java.entity.ProductOrderItem;
 import org.java.service.ProductOrderItemService;
 import org.java.util.PageUtil;
+
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.annotation.Resource;
+
 import java.util.Date;
 import java.util.List;
-
+import org.springframework.stereotype.Component;
 @Service
 public class ProductOrderItemServiceImpl implements ProductOrderItemService{
     @Autowired

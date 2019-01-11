@@ -1,17 +1,20 @@
 package org.java.service.impl;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.java.dao.PropertyValueMapper;
 import org.java.entity.PropertyValue;
 import org.java.service.PropertyValueService;
 import org.java.util.PageUtil;
+
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.annotation.Resource;
-import java.util.List;
 
+import java.util.List;
+import org.springframework.stereotype.Component;
 @Service
 public class PropertyValueServiceImpl implements PropertyValueService{
     @Autowired

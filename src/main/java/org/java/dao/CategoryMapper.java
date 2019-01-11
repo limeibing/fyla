@@ -14,4 +14,5 @@ public interface CategoryMapper {
     List<Category> select(@Param("category_name") String category_name, @Param("pageUtil") PageUtil pageUtil);
     Category selectOne(@Param("category_id") Integer category_id);
     Integer selectTotal(@Param("category_name") String category_name);
+    void scfl(@Param("category_id")Integer category_id);
 }

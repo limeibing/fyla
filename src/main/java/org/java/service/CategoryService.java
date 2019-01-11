@@ -1,5 +1,6 @@
 package org.java.service;
 
+import org.apache.ibatis.annotations.Param;
 import org.java.entity.Category;
 import org.java.util.PageUtil;
 
@@ -12,4 +13,5 @@ public interface CategoryService {
     List<Category> getList(String category_name, PageUtil pageUtil);
     Category get(Integer category_id);
     Integer getTotal(String category_name);
+    void scfl(Integer category_id);
 }

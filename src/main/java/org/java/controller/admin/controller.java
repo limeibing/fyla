@@ -1,5 +1,7 @@
 package org.java.controller.admin;
+
 import com.alibaba.fastjson.JSON;
+import org.java.dao.CategoryMapper;
 import org.java.dao.ProductMapper;
 import org.java.dao.ProductOrderMapper;
 import org.java.dao.UserMapper;
@@ -26,10 +28,16 @@ import java.util.List;
 import java.util.Map;
 @Controller
 public class controller {
+
     @Autowired
     UserMapper userMapper;
+
+    @Autowired
+    CategoryMapper categoryMapper;
+
     @Autowired
     ProductOrderMapper productOrderMapper;
+
     @Autowired
     ProductMapper productMapper;
     @RequestMapping("/kai")
@@ -249,4 +257,23 @@ public class controller {
         System.out.println("jkd");
         return "/limeibing/寄快件";
     }
+
+    @RequestMapping("/scfl")
+    public void scfl(String details_category_id)
+    {
+        System.out.println("******************************************************************");
+        Integer category_id=Integer.parseInt(details_category_id);
+        categoryMapper.scfl(category_id);
+        System.out.println("删除商品分类成功！");
+    }
+
+
+
+
+
+
+
+
+
+
 }

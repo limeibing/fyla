@@ -187,7 +187,7 @@
        SELECT * FROM productorder po,address ad,USER us
 
        <where>
-           po.productorder_address=ad.address_areaId   AND po.productorder_user_id=us.user_id and po.productorder_status=1
+           po.productorder_address=ad.address_areaId   AND po.productorder_user_id=us.user_id
            <if test="productorder_pay_date1 != null and productorder_pay_date2 != null" >
                and  po.productorder_pay_date BETWEEN #{productorder_pay_date1} AND #{productorder_pay_date2}
            </if>

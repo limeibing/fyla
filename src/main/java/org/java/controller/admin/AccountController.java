@@ -62,13 +62,12 @@ public class AccountController extends BaseController{
     //管理员头像上传
     @ResponseBody
     @RequestMapping(value = "/admin/uploadAdminHeadImage", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
-    public String uploadAdminHeadImage(@RequestParam MultipartFile file, HttpSession session) {
+    public String uploadAdminHeadImage(@RequestParam MultipartFile file, HttpSession session) throws  Exception{
         String originalFileName = file.getOriginalFilename();
         logger.info("获取图片原始文件名：{}", originalFileName);
         String extension = originalFileName.substring(originalFileName.lastIndexOf('.'));
         String fileName = UUID.randomUUID() + extension;
         String filePath = session.getServletContext().getRealPath("/") + "res/images/item/adminProfilePicture/" + fileName;
-
         logger.info("文件上传路径：{}", filePath);
         JSONObject jsonObject = new JSONObject();
         try {

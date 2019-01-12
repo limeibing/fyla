@@ -136,8 +136,8 @@
                                                 <select id="productorder_status"
                                                         style="width:200px; height: 30px;border: 1px solid #ccc;text-indent:1em;">
                                                     <option value="" selected>请选择</option>
-                                                    <option value="1">已发货</option>
-                                                    <option value="2">未发货</option>
+                                                    <option value="1">待发货</option>
+                                                    <option value="2">已发货</option>
                                                     <option value="3">已收货</option>
                                                 </select>
                                             </td>
@@ -445,9 +445,9 @@
                     , {field: 'product_name', width: 522, title: '商品名', sort: true}
                     , {
                         field: 'productorder_status', width: 150, title: '订单状态', sort: true, templet: function (d) {
-                            if (d == 1) {
+                            if (d.productorder_status == 1) {
                                 return '订单正在处理中';
-                            } else if (d == 2) {
+                            } else if (d.productorder_status == 2) {
                                 return '订单正在派发中';
                             } else {
                                 return '订单已完成';

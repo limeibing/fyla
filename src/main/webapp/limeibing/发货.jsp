@@ -341,7 +341,14 @@
                     , {field: 'productOrder_pay_date', width: 522, title: '下单时间', sort: true}
                     , {
                         field: 'productOrder_status', width: 150, title: '订单状态', sort: true, templet: function (d) {
-                            return '<a class="layui-btn layui-btn-xs" onclick="bbfh(' + d.productOrder_id + ')"  >确认发货</a>';
+                            if(d.productOrder_status==1) {
+                                return '<a class="layui-btn layui-btn-xs" onclick="bbfh(' + d.productOrder_id + ')"  >确认发货</a>';
+                            }else if(d.productOrder_status==2) {
+                                return '<a class="layui-btn layui-btn-xs"   >已发货</a>';
+                            }else{
+                                return '<a class="layui-btn layui-btn-xs">确认发货</a>';
+                            }
+
                         }
                     }
 
@@ -384,7 +391,7 @@
             elem: '#productorder_pay_date1'
         });
         laydate.render({
-            elem: '#productorder_pay_date1'
+            elem: '#productorder_pay_date2'
         });
 
 

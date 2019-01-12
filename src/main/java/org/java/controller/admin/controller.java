@@ -54,17 +54,31 @@ public class controller {
     }
 
     @RequestMapping("/kai2")
-    public String kai3() {
-        return "/sj/kai2";
+    public String kai3(HttpSession ses) {
+
+        User user = (User) ses.getAttribute("user");
+        if (user == null) {
+            return "redirect:/login";
+        } else {
+            return "/sj/kai2";
+        }
+
+
     }
 
     @RequestMapping("/kai4")
-    public String kai4() {
-        return "/sj/kai4";
+    public String kai4(HttpSession ses) {
+        User user = (User) ses.getAttribute("user");
+        if (user == null) {
+            return "redirect:/login";
+        } else {
+            return "/sj/kai4";
+        }
+
     }
 
     @RequestMapping("/renzhenzhifubao")
-    public String renzhenzhifubao() {
+    public String renzhenzhifubao(HttpSession ses) {
         return "/limeibing/身份证";
     }
 
@@ -132,12 +146,16 @@ public class controller {
     }
 
     @RequestMapping("/kdcg")
-    public String kdcg(HttpServletResponse resp, HttpServletRequest req, String productorder_confirm_date1, String productorder_confirm_date2, String productorder_status, String productorder_receiver, String product_name) throws Exception {
-        return "/limeibing/已卖出的宝贝";
+    public String kdcg(HttpServletResponse resp, HttpServletRequest req, HttpSession ses, String productorder_confirm_date1, String productorder_confirm_date2, String productorder_status, String productorder_receiver, String product_name) throws Exception {
+
+            return "redirect:/login";
+
+
+
     }
 
     @RequestMapping("/kdcg1")
-    public void kdcg1(HttpServletResponse resp, HttpServletRequest req, String productorder_confirm_date1, String productorder_id, String productorder_confirm_date2, String productorder_status, String productorder_receiver, String product_name) throws Exception {
+    public void kdcg1(HttpServletResponse resp, HttpSession ses, HttpServletRequest req, String productorder_confirm_date1, String productorder_id, String productorder_confirm_date2, String productorder_status, String productorder_receiver, String product_name) throws Exception {
         Map m = new HashMap();
         resp.setContentType("text/html;charset=utf-8");
         req.setCharacterEncoding("UTF-8");
@@ -170,12 +188,19 @@ public class controller {
     }
 
     @RequestMapping("/csdbb")
-    public String csdbb(HttpServletResponse resp, HttpServletRequest req, String product_isEnabled) throws Exception {
-        return "/limeibing/csdbb";
-    }
+    public String csdbb(HttpServletResponse resp, HttpSession ses, HttpServletRequest req, String product_isEnabled) throws Exception {
+        User user = (User) ses.getAttribute("user");
+        if (user == null) {
+            return "redirect:/login";
+        } else {
+            return "/limeibing/csdbb";
+        }
+
+
+}
 
     @RequestMapping("/cszdbb")
-    public void cszdbb(HttpServletResponse resp, HttpServletRequest req, String product_isEnabled) throws Exception {
+    public void cszdbb(HttpServletResponse resp, HttpSession ses, HttpServletRequest req, String product_isEnabled) throws Exception {
         resp.setContentType("text/html;charset=utf-8");
         req.setCharacterEncoding("UTF-8");
         Map m = new HashMap();
@@ -198,54 +223,61 @@ public class controller {
     }
 
     @RequestMapping("/delbb")
-    public void delbb(String bbid) {
+    public void delbb(String bbid, HttpSession ses) {
         System.out.println(bbid + "deldd");
     }
 
     @RequestMapping("/sj")
-    public void sj(String bbid) {
+    public void sj(String bbid, HttpSession ses) {
         System.out.println(bbid);
         productMapper.sj(bbid);
         System.out.println("sj");
     }
 
     @RequestMapping("/rx")
-    public void rx(String bbid) {
+    public void rx(String bbid, HttpSession ses) {
         System.out.println(bbid);
         productMapper.rx(bbid);
     }
 
     @RequestMapping("/xj")
-    public void xj(String bbid) {
+    public void xj(String bbid, HttpSession ses) {
         System.out.println(bbid);
         productMapper.xj(bbid);
     }
 
     @RequestMapping("/fbbb")
-    public String fbbb() {
+    public String fbbb(HttpSession ses) {
         return "/limeibing/发布商品";
     }
 
     @RequestMapping("/file")
-    public String file() {
+    public String file(HttpSession ses) {
         return "/file";
     }
 
     @RequestMapping("/fh")
-    public String fh() {
-        System.out.println("发货");
-        return "/limeibing/发货";
+    public String fh(HttpSession ses) {
+
+        User user = (User) ses.getAttribute("user");
+        if (user == null) {
+            return "redirect:/login";
+        } else {
+            System.out.println("发货");
+            return "/limeibing/发货";
+        }
+
     }
 
     @RequestMapping("/bbfh")
-    public void bbfh(String bbid, HttpServletResponse resq) throws Exception {
+    public void bbfh(String bbid, HttpServletResponse resq, HttpSession ses) throws Exception {
         productOrderMapper.bbfh(bbid);
         PrintWriter out = resq.getWriter();
         out.write(JSON.toJSONString("msg").toString());
     }
 
     @RequestMapping("/bbqrfh")
-    public void bbqrfh(HttpServletResponse resp, HttpServletRequest req, String bbid
+    public void bbqrfh(HttpServletResponse resp, HttpServletRequest req, String bbid, HttpSession ses
             , String productorder_pay_date1, String productorder_pay_date2, String productorder_id, String productorder_receiver
     ) throws Exception {
         resp.setContentType("text/html;charset=utf-8");
@@ -274,21 +306,24 @@ public class controller {
     }
 
     @RequestMapping("/jkd")
-    public String jkd() {
-        System.out.println("jkd");
-        return "/limeibing/寄快件";
+    public String jkd(HttpSession ses) {
+        User user = (User) ses.getAttribute("user");
+        if (user == null) {
+            return "redirect:/login";
+        } else {
+            System.out.println("jkd");
+            return "/limeibing/寄快件";
+        }
+
     }
 
     @RequestMapping("/scfl")
-    public void scfl(String details_category_id) {
+    public void scfl(String details_category_id, HttpSession ses) {
         System.out.println("******************************************************************");
         Integer category_id = Integer.parseInt(details_category_id);
         categoryMapper.scfl(category_id);
         System.out.println("删除商品分类成功！");
     }
-
-
-
 
 
 }

@@ -35,11 +35,8 @@ public class ForeLoginController extends BaseController {
     @RequestMapping( "login/doLogin" )
     public String checkLogin(HttpSession session, @RequestParam(value = "name",required = false) String name,
                              @RequestParam(value = "password",required = false) String password) {
-
-
         //nfo("用户验证登录");
         User user = userService.login(name, password);
-
         JSONObject jsonObject = new JSONObject();
         if (user == null) {
             //nfo("登录验证失败");
@@ -50,9 +47,7 @@ public class ForeLoginController extends BaseController {
             session.setAttribute("user", user );
             jsonObject.put("success", true);
         }
-
         return     jsonObject.toJSONString() ;
-
     }
 
     //退出当前账号

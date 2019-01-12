@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en" >
 <head>
@@ -143,7 +144,16 @@
                             <span class="title">交易管理</span></div>
                         <ul class="list">
                             <li>
-                                <a target="_blank" href="" data-spm="d28">已卖出的宝贝</a></li>
+                                <c:if test="${sessionScope.user.user_renzhen==1}">
+
+                                <a target="_blank" href="/kdcg" data-spm="d28">已卖出的宝贝</a></li>
+
+                            </c:if>
+                            <c:if test="${sessionScope.user.user_renzhen==0}">
+
+                                <a target="_blank" onclick="alert('请完成认证！')" data-spm="d28">已卖出的宝贝</a></li>
+
+                            </c:if>
                             <li>
                                 <a target="_blank" href="" data-spm="d27">评价管理</a></li>
                         </ul>
@@ -153,13 +163,23 @@
                             <span class="title">物流管理</span></div>
                         <ul class="list">
                             <li>
-                                <a target="_blank" href="" data-spm="d30">发货</a></li>
+                                <c:if test="${sessionScope.user.user_renzhen==1}">
+                                <a target="_blank" href="/fh" data-spm="d30">发货</a></li>
+                            </c:if>
+                            <c:if test="${sessionScope.user.user_renzhen==0}">
+                                <a target="_blank" onclick="alert('请完成认证')" data-spm="d30">发货</a></li>
+                            </c:if>
                             <li>
                                 <a target="_blank" href="" data-spm="d32">物流工具</a></li>
                             <li>
                                 <a target="_blank" href="" data-spm="d34">物流服务</a></li>
                             <li>
-                                <a target="_blank" href="" data-spm="d33">我要寄快递</a></li>
+                                <c:if test="${sessionScope.user.user_renzhen==1}">
+                                <a target="_blank" href="/jkd" data-spm="d33">我要寄快递</a></li>
+                            </c:if>
+                            <c:if test="${sessionScope.user.user_renzhen==0}">
+                                <a target="_blank" onclick="alert('请完成认证')" data-spm="d33">我要寄快递</a></li>
+                            </c:if>
                         </ul>
                     </div>
                     <div class="category">
@@ -168,13 +188,29 @@
                         </div>
                         <ul class="list">
                             <li>
-                                <a target="_blank" href="" data-spm="d48">发布宝贝</a></li>
+                                <c:if test="${sessionScope.user.user_renzhen==1}">
+                                <a target="_blank" href="/fbbb" data-spm="d48">发布宝贝</a></li>
+                            </c:if>
                             <li>
-                                <a target="_blank" href="" data-spm="d45">出售中的宝贝</a></li>
+                                <c:if test="${sessionScope.user.user_renzhen==0}">
+                                <a target="_blank" onclick="alert('请完成认证！')" data-spm="d48">发布宝贝</a></li>
+                            </c:if>
                             <li>
-                                <a target="_blank" href="" data-spm="d44">仓库中的宝贝</a></li>
+                                <c:if test="${sessionScope.user.user_renzhen==1}">
+                                <a target="_blank" href="/csdbb" data-spm="d45">出售中的宝贝</a></li>
+                            </c:if>
+                            <c:if test="${sessionScope.user.user_renzhen==0}">
+                                <a target="_blank" onclick="alert('请完成认证！')" data-spm="d45">出售中的宝贝</a></li>
+                            </c:if>
                             <li>
-                                <a target="_blank" href="" data-spm="d47">体检中心</a></li>
+                                <c:if test="${sessionScope.user.user_renzhen==1}">
+                                <a target="_blank" href="/kdcg" data-spm="d44">仓库中的宝贝</a></li>
+                            </c:if>
+                            <c:if test="${sessionScope.user.user_renzhen==0}">
+                                <a target="_blank" onclick="alert('请完成认证！')" data-spm="d44">仓库中的宝贝</a></li>
+                            </c:if>
+                            <li>
+
                         </ul>
                     </div>
                     <div class="category last">

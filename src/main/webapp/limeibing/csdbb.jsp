@@ -369,7 +369,7 @@
        layer.open({
            type: 1
            ,
-           title: false //不显示标题栏
+           title: '删除操作，一旦删除，数据不可操作' //不显示标题栏
            ,
            closeBtn: false
            ,
@@ -379,7 +379,7 @@
            ,
            id: 'LAY_layuipro' //设定一个id，防止重复弹出
            ,
-           btn: ['火速围观', '残忍拒绝']
+           btn: ['确定删除', '取消操作']
            ,
            btnAlign: 'c'
            ,

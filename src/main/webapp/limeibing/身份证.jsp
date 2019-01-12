@@ -74,7 +74,7 @@
 													src=""
 													id="admin_profile_picture" width="50%" height="50%"
 													onerror="this.src='${pageContext.request.contextPath}/res/images/admin/loginPage/default_profile_picture-128x128.png'"/>
-											<input type="file" onchange="uploadImage(this)" accept="image/*" id="uploadImage">
+											<input type="file"  onchange="uploadImage(this)" accept="image/*" id="uploadImage">
 										</div>
 										<p class="titleText">身份证正面</p>
 
@@ -180,12 +180,10 @@
             return;
         }
         //判断大小
-        if (file.size > 512000) {
+        if (file.size > 5120000) {
             $("#btn-ok").unbind("click").click(function () {
                 $("#modalDiv").modal("hide");
             });
-            $(".modal-body").text("图片大小不能超过500K！");
-            $('#modalDiv').modal();
             return;
         }
         //清空值
@@ -233,7 +231,7 @@
                         location.href='/kdcg';
                         //进入下一个页面
                     }else {
-                        alert(data);
+                        alert("抱歉，身份证验证失败，请重新填写认证信息！");
                         location.href='/renzhenzhifubao';
 
                     }

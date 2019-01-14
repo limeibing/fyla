@@ -39,16 +39,16 @@
         <ul class="message-l">
             <div class="topMessage">
                 <div class="menu-hd">
-                    <c:if test="${requestScope.user.user_name==null}">
+                    <c:if test="${sessionScope.user.user_name==null}">
                         <em>  </em>
                         <a style="color: #ff335e" href="${pageContext.request.contextPath}/login">请登录</a>
                       &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                         <a style="color: #ff335e" href="${pageContext.request.contextPath}/register">免费注册</a>
                     </c:if>
-                    <c:if test="${requestScope.user.user_name!=null}">
+                    <c:if test="${sessionScope.user.user_name!=null}">
                         <em style="color: #ff335e">Hi，</em>
                         <a href="${pageContext.request.contextPath}/userDetails" class="userName"
-                           target="_blank">${requestScope.user.user_name}</a>
+                           target="_blank">${sessionScope.user.user_name}</a>
                         &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                         <a style="color: #808080" href="${pageContext.request.contextPath}/login/logout">退出</a>
                     </c:if>

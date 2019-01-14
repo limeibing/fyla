@@ -29,7 +29,11 @@ public class ForeLoginController extends BaseController {
         //nfo("转到前台天猫-登录页");
         return "page/person/two/home/login";
     }
-
+    @RequestMapping(value = "logins", method = RequestMethod.GET)
+    public String goToPages(HttpSession session, Map<String, Object> map) {
+        //nfo("转到前台天猫-登录页");
+        return "page/person/two/home/logins";
+    }
     //登陆验证-ajax
     @ResponseBody
     @RequestMapping( "login/doLogin" )
@@ -43,8 +47,29 @@ public class ForeLoginController extends BaseController {
             jsonObject.put("success", false);
         } else {
             //nfo("登录验证成功,用户ID传入会话");
+            System.out.println("前台登录的 ");
             session.setAttribute("userId", user.getUser_id());
             session.setAttribute("user", user );
+            jsonObject.put("success", true);
+        }
+        return     jsonObject.toJSONString() ;
+    }
+    @ResponseBody
+    @RequestMapping( "login/doLogins" )
+    public String checkLogins(HttpSession session, @RequestParam(value = "name",required = false) String name,
+                             @RequestParam(value = "password",required = false) String password) {
+        //nfo("用户验证登录");
+        User user = userService.login(name, password);
+        JSONObject jsonObject = new JSONObject();
+        if (user == null) {
+            //nfo("登录验证失败");
+            jsonObject.put("success", false);
+        } else {
+            //nfo("登录验证成功,用户ID传入会话");
+            System.out.println("商家登录的 ");
+            session.setAttribute("userId", user.getUser_id());
+            System.out.println("***********************************************************************");
+            session.setAttribute("users", user );
             jsonObject.put("success", true);
         }
         return     jsonObject.toJSONString() ;

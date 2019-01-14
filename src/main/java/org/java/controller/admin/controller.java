@@ -45,9 +45,9 @@ public class controller {
 
     @RequestMapping("/kai")
     public String kai2(HttpSession ses) {
-        User user = (User) ses.getAttribute("user");
+        User user = (User) ses.getAttribute("users");
         if (user == null) {
-            return "redirect:/login";
+            return "redirect:/logins";
         } else {
             return "/sj/kai";
         }
@@ -56,9 +56,9 @@ public class controller {
     @RequestMapping("/kai2")
     public String kai3(HttpSession ses) {
 
-        User user = (User) ses.getAttribute("user");
+        User user = (User) ses.getAttribute("users");
         if (user == null) {
-            return "redirect:/login";
+            return "redirect:/logins";
         } else {
             return "/sj/kai2";
         }
@@ -68,9 +68,9 @@ public class controller {
 
     @RequestMapping("/kai4")
     public String kai4(HttpSession ses) {
-        User user = (User) ses.getAttribute("user");
+        User user = (User) ses.getAttribute("users");
         if (user == null) {
-            return "redirect:/login";
+            return "redirect:/logins";
         } else {
             return "/sj/kai4";
         }
@@ -86,7 +86,7 @@ public class controller {
     @ResponseBody
     public String sfzyz(String sfzname, String sfzid, HttpSession ses, HttpServletResponse resp) throws Exception {
         System.out.println(sfzid + sfzname + "************");
-        User user = (User) ses.getAttribute("user");
+        User user = (User) ses.getAttribute("users");
         HashMap map = new HashMap<String, String>();
         String pash = ses.getAttribute("sfz").toString();
         System.out.println(pash);
@@ -148,7 +148,7 @@ public class controller {
     @RequestMapping("/kdcg")
     public String kdcg(HttpServletResponse resp, HttpServletRequest req, HttpSession ses, String productorder_confirm_date1, String productorder_confirm_date2, String productorder_status, String productorder_receiver, String product_name) throws Exception {
 
-            return "redirect:/login";
+            return "/limeibing/已卖出的宝贝";
 
 
 
@@ -189,9 +189,9 @@ public class controller {
 
     @RequestMapping("/csdbb")
     public String csdbb(HttpServletResponse resp, HttpSession ses, HttpServletRequest req, String product_isEnabled) throws Exception {
-        User user = (User) ses.getAttribute("user");
+        User user = (User) ses.getAttribute("users");
         if (user == null) {
-            return "redirect:/login";
+            return "redirect:/logins";
         } else {
             return "/limeibing/csdbb";
         }
@@ -259,9 +259,9 @@ public class controller {
     @RequestMapping("/fh")
     public String fh(HttpSession ses) {
 
-        User user = (User) ses.getAttribute("user");
+        User user = (User) ses.getAttribute("users");
         if (user == null) {
-            return "redirect:/login";
+            return "redirect:/logins";
         } else {
             System.out.println("发货");
             return "/limeibing/发货";
@@ -307,9 +307,9 @@ public class controller {
 
     @RequestMapping("/jkd")
     public String jkd(HttpSession ses) {
-        User user = (User) ses.getAttribute("user");
+        User user = (User) ses.getAttribute("users");
         if (user == null) {
-            return "redirect:/login";
+            return "redirect:/logins";
         } else {
             System.out.println("jkd");
             return "/limeibing/寄快件";

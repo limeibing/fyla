@@ -106,9 +106,9 @@
                                                 <div class=""></div><!-- react-text: 384 --> <!-- /react-text --></div>
                                         </div>
                                     </div>
-                                    <c:if test="${sessionScope.user.user_renzhen=='0'}">
+                                    <c:if test="${sessionScope.users.user_renzhen=='0'}">
                                     <div class="account-bind-status ">
-                                        <div class="tip-container tip-type-success"><p><!-- react-text: 388 -->您已绑定了支付宝账户：${sessionScope.user.user_id}
+                                        <div class="tip-container tip-type-success"><p><!-- react-text: 388 -->您已绑定了支付宝账户：${sessionScope.users.user_id}
                                             <!-- /react-text --><!-- react-text: 389 -->&nbsp;<!-- /react-text --><a
                                                     href="//member1.taobao.com/member/fresh/account_management.htm" target="_blank">查看</a></p>
                                             <p><!-- react-text: 392 -->开店类型必须与支付宝认证类型一致, 否则可能无法创建店铺。<!-- /react-text --></p></div>
@@ -175,21 +175,21 @@
                                                             </td>
 
                                                             <td>
-                                                                <c:if test="${sessionScope.user.user_renzhen=='0'}">
+                                                                <c:if test="${sessionScope.users.user_renzhen=='0'}">
                                                                 <div class="next-table-cell-wrapper"><span class="notPassed">未通过</span></div>
                                                                 </c:if>
-                                                                <c:if test="${sessionScope.user.user_renzhen=='1'}">
+                                                                <c:if test="${sessionScope.users.user_renzhen=='1'}">
                                                                     <div class="next-table-cell-wrapper"><span class="notPassed">已通过</span></div>
                                                                 </c:if>
                                                             </td>
                                                             <td>
                                                                 <div class="next-table-cell-wrapper">
                                                                     <div class="open-shop-condition-tips-container">
-                                                                        <c:if test="${sessionScope.user.user_renzhen=='0'}">
+                                                                        <c:if test="${sessionScope.users.user_renzhen=='0'}">
                                                                         <div><!-- react-text: 444 -->抱歉，您支付宝账户的身份信息不够完善<!-- /react-text -->
                                                                             <!-- react-text: 445 -->&nbsp;<!-- /react-text --></div>
                                                                         </c:if>
-                                                                        <c:if test="${sessionScope.user.user_renzhen=='1'}">
+                                                                        <c:if test="${sessionScope.users.user_renzhen=='1'}">
                                                                             <div><!-- react-text: 444 -->您支付宝账户的身份信息已完善，请点击<span style="color: #ff1d00">下一步</span><!-- /react-text -->
                                                                                 <!-- react-text: 445 -->&nbsp;<!-- /react-text --></div>
                                                                         </c:if>
@@ -197,14 +197,14 @@
                                                                 </div>
                                                             </td>
                                                             <td>
-                                                                <c:if test="${sessionScope.user.user_renzhen=='0'}">
+                                                                <c:if test="${sessionScope.users.user_renzhen=='0'}">
                                                                 <div class="next-table-cell-wrapper"><a shape="text"
                                                                                                         href="/renzhenzhifubao"
                                                                                                         type="primary" target="_blank"
                                                                                                         class="next-btn next-btn-text next-btn-primary next-btn-medium">
                                                                     <!-- react-text: 449 -->立即认证<!-- /react-text --></a></div>
                                                                 </c:if>
-                                                                <c:if test="${sessionScope.user.user_renzhen=='1'}">
+                                                                <c:if test="${sessionScope.users.user_renzhen=='1'}">
                                                                     <div class="next-table-cell-wrapper"><a
                                                                                                             href="#"
                                                                                                             type="primary" target="_blank"
@@ -244,11 +244,11 @@
                                     <div class="actions">
                                         <div class="actions-content"><a class="next-btn next-btn-normal next-btn-large ice-link  "
                                                                         type="normal"><!-- react-text: 469 -->上一步<!-- /react-text --></a>
-                                            <c:if test="${sessionScope.user.user_renzhen=='0'}">
+                                            <c:if test="${sessionScope.users.user_renzhen=='0'}">
                                             <button type="button" disabled class="next-btn next-btn-primary next-btn-large ice-link" onclick="kdcg()">
                                                 <!-- react-text: 471 -->下一步<!-- /react-text --></button>
                                             </c:if>
-                                            <c:if test="${sessionScope.user.user_renzhen=='1'}">
+                                            <c:if test="${sessionScope.users.user_renzhen=='1'}">
                                                 <button type="button" class="next-btn next-btn-primary next-btn-large ice-link" onclick="jrdp()">
                                                     <!-- react-text: 471 -->进入店铺<!-- /react-text --></button>
                                             </c:if>
@@ -280,12 +280,12 @@
                             <span class="title">交易管理</span></div>
                         <ul class="list">
                             <li>
-                                <c:if test="${sessionScope.user.user_renzhen==1}">
+                                <c:if test="${sessionScope.users.user_renzhen==1}">
 
                                 <a target="_blank" href="/kdcg" data-spm="d28">已卖出的宝贝</a></li>
 
                             </c:if>
-                            <c:if test="${sessionScope.user.user_renzhen==0}">
+                            <c:if test="${sessionScope.users.user_renzhen==0}">
 
                                 <a target="_blank" onclick="alert('请完成认证！')" data-spm="d28">已卖出的宝贝</a></li>
 
@@ -299,10 +299,10 @@
                             <span class="title">物流管理</span></div>
                         <ul class="list">
                             <li>
-                                <c:if test="${sessionScope.user.user_renzhen==1}">
+                                <c:if test="${sessionScope.users.user_renzhen==1}">
                                 <a target="_blank" href="/fh" data-spm="d30">发货</a></li>
                             </c:if>
-                            <c:if test="${sessionScope.user.user_renzhen==0}">
+                            <c:if test="${sessionScope.users.user_renzhen==0}">
                                 <a target="_blank" onclick="alert('请完成认证')" data-spm="d30">发货</a></li>
                             </c:if>
                             <li>
@@ -310,10 +310,10 @@
                             <li>
                                 <a target="_blank" href="" data-spm="d34">物流服务</a></li>
                             <li>
-                                <c:if test="${sessionScope.user.user_renzhen==1}">
+                                <c:if test="${sessionScope.users.user_renzhen==1}">
                                 <a target="_blank" href="/jkd" data-spm="d33">我要寄快递</a></li>
                             </c:if>
-                            <c:if test="${sessionScope.user.user_renzhen==0}">
+                            <c:if test="${sessionScope.users.user_renzhen==0}">
                                 <a target="_blank" onclick="alert('请完成认证')" data-spm="d33">我要寄快递</a></li>
                             </c:if>
                         </ul>
@@ -324,25 +324,25 @@
                         </div>
                         <ul class="list">
                             <li>
-                                <c:if test="${sessionScope.user.user_renzhen==1}">
+                                <c:if test="${sessionScope.users.user_renzhen==1}">
                                 <a target="_blank" href="/fbbb" data-spm="d48">发布宝贝</a></li>
                             </c:if>
                             <li>
-                                <c:if test="${sessionScope.user.user_renzhen==0}">
+                                <c:if test="${sessionScope.users.user_renzhen==0}">
                                 <a target="_blank" onclick="alert('请完成认证！')" data-spm="d48">发布宝贝</a></li>
                             </c:if>
                             <li>
-                                <c:if test="${sessionScope.user.user_renzhen==1}">
+                                <c:if test="${sessionScope.users.user_renzhen==1}">
                                 <a target="_blank" href="/csdbb" data-spm="d45">出售中的宝贝</a></li>
                             </c:if>
-                            <c:if test="${sessionScope.user.user_renzhen==0}">
+                            <c:if test="${sessionScope.users.user_renzhen==0}">
                                 <a target="_blank" onclick="alert('请完成认证！')" data-spm="d45">出售中的宝贝</a></li>
                             </c:if>
                             <li>
-                                <c:if test="${sessionScope.user.user_renzhen==1}">
+                                <c:if test="${sessionScope.users.user_renzhen==1}">
                                 <a target="_blank" href="/kdcg" data-spm="d44">仓库中的宝贝</a></li>
                             </c:if>
-                            <c:if test="${sessionScope.user.user_renzhen==0}">
+                            <c:if test="${sessionScope.users.user_renzhen==0}">
                                 <a target="_blank" onclick="alert('请完成认证！')" data-spm="d44">仓库中的宝贝</a></li>
                             </c:if>
                             <li>

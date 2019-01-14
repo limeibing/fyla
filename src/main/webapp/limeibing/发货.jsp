@@ -389,9 +389,11 @@
         var laydate = layui.laydate;
         laydate.render({
             elem: '#productorder_pay_date1'
+            ,type: 'datetime'
         });
         laydate.render({
             elem: '#productorder_pay_date2'
+            ,type: 'datetime'
         });
 
 

@@ -159,8 +159,8 @@ public class controller {
         Map m = new HashMap();
         resp.setContentType("text/html;charset=utf-8");
         req.setCharacterEncoding("UTF-8");
-        m.put("productorder_confirm_date1", productorder_confirm_date1 == null ? null : productorder_confirm_date1 + " 00:00:00");
-        m.put("productorder_confirm_date2", productorder_confirm_date2 == null ? null : productorder_confirm_date2 + " 00:00:00");
+        m.put("productorder_confirm_date1", productorder_confirm_date1);
+        m.put("productorder_confirm_date2", productorder_confirm_date2);
         m.put("productorder_status", productorder_status);
         m.put("productorder_receiver", productorder_receiver);
         m.put("product_name", product_name);
@@ -286,8 +286,8 @@ public class controller {
         PrintWriter out = resp.getWriter();
         Integer pageindex = Integer.parseInt(req.getParameter("page"));
         Integer pagesize = Integer.parseInt(req.getParameter("limit"));
-        m.put("productorder_pay_date1", productorder_pay_date1 != null ? productorder_pay_date1 + " 00:00:00" : null);
-        m.put("productorder_pay_date2", productorder_pay_date2 != null ? productorder_pay_date2 + " 00:00:00" : null);
+        m.put("productorder_pay_date1", productorder_pay_date1);
+        m.put("productorder_pay_date2", productorder_pay_date2);
         m.put("productorder_id", productorder_id);
         m.put("productorder_receiver", productorder_receiver);
         m.put("strts", pageindex);
